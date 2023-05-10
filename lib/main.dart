@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:animate_do/animate_do.dart';
 
 void main() {
   runApp( const MyApp());
@@ -22,6 +23,11 @@ class MyApp extends StatelessWidget{
         ),
         
         child:    Scaffold(
+          appBar: AppBar(
+            
+            backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+            title:  Center(child:  ElasticIn(child: const Text('BIENVENIDOS',style: TextStyle(color: Color.fromARGB(255, 255, 255, 255),fontSize: 60),))),
+          ),
           backgroundColor: Colors.transparent,
         body: Cuerpo(),
 
@@ -35,16 +41,16 @@ class MyApp extends StatelessWidget{
 Widget  Cuerpo(){
   // ignore: avoid_unnecessary_containers
   return Container(
-child:  Column(
+child:  Center(
+  child:   Column(
+    children:  <Widget> [
+      
+      inicio(),
+      espacio(),
+      opciones(),
+    ],
   
-  children:  <Widget> [
-     banner(),
-     espacio(),
-     espacio(),
-     opciones(),
-     
-    
-  ],
+  ),
 ),
 );
 }
@@ -64,7 +70,7 @@ Widget opciones(){
         width: 150,
         child: FloatingActionButton(
           backgroundColor: Colors.transparent,
-          
+          elevation: 0,
           child: const SizedBox(width: 190, height: 190, child: Image( image: AssetImage('assets/padre.png'))),
           onPressed: () {
       
@@ -81,7 +87,7 @@ SizedBox(
         width: 150,
         child: FloatingActionButton(
           backgroundColor: Colors.transparent,
-          
+          elevation: 0,
           child: const SizedBox(width: 190, height: 190, child: Image( image: AssetImage('assets/profe.png'))),
           onPressed: () {
       
@@ -98,7 +104,7 @@ height: 50,
         width: 150,
         child: FloatingActionButton(
           backgroundColor: Colors.transparent,
-          
+          elevation: 0,
           child: const SizedBox(width: 190, height: 190, child: Image( image: AssetImage('assets/admin.png'))),
           onPressed: () {
       
@@ -115,4 +121,11 @@ Widget espacio(){
     height: 50,
   );
 }
-//Coment
+
+
+Widget inicio(){
+  return Container(
+    color: Colors.black,
+    child: const Text('----¿Como desea iniciar sesion?----', style: TextStyle(fontSize: 30, color: Color.fromARGB(236, 255, 255, 255)),)
+    );
+}
