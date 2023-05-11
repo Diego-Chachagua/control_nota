@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget{
           appBar: AppBar(
             
             backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-            title:  Center(child:  ElasticIn(child: const Text('BIENVENIDOS',style: TextStyle(color: Color.fromARGB(255, 255, 255, 255),fontSize: 60),))),
+            title:  Center(child:  ElasticIn(child: const Text('BIENVENIDOS',style: TextStyle(color: Color.fromARGB(255, 255, 255, 255),fontSize: 55),))),
           ),
           backgroundColor: Colors.transparent,
         body: Cuerpo(),
@@ -126,6 +126,6 @@ Widget espacio(){
 Widget inicio(){
   return Container(
     color: Colors.black,
-    child: const Text('----¿Como desea iniciar sesion?----', style: TextStyle(fontSize: 30, color: Color.fromARGB(236, 255, 255, 255)),)
+    child: const Text('----¿Como desea iniciar sesion?----', style: TextStyle(fontSize: 25, color: Color.fromARGB(236, 255, 255, 255)),)
     );
 }
