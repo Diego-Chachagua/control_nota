@@ -1,3 +1,4 @@
+import 'package:control_notas/screens/form_p.dart';
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 
@@ -29,7 +30,68 @@ class MyApp extends StatelessWidget{
             title:  Center(child:  ElasticIn(child: const Text('BIENVENIDOS',style: TextStyle(color: Color.fromARGB(255, 255, 255, 255),fontSize: 55),))),
           ),
           backgroundColor: Colors.transparent,
-        body: Cuerpo(),
+        body: Column(
+          children: [
+            Cuerpo(),
+            Column(
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    crossAxisAlignment: CrossAxisAlignment.center,
+
+    children: [
+       SizedBox(
+        height: 150,
+        width: 150,
+        child: FloatingActionButton(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          child: const SizedBox(width: 190, height: 190, child: Image( image: AssetImage('assets/padre.png'))),
+          onPressed: () {
+
+          },
+          ),
+      ),
+
+const SizedBox(
+height: 50,
+),
+
+SizedBox(
+        height: 150,
+        width: 150,
+        child: FloatingActionButton(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          child: const SizedBox(width: 190, height: 190, child: Image( image: AssetImage('assets/profe.png'))),
+          onPressed: () {
+                MaterialPageRoute route = MaterialPageRoute(builder: (context) => const formp());
+
+                Navigator.push(context, route);
+              },
+          ),
+      ),
+
+const SizedBox(
+height: 50,
+),
+
+      SizedBox(
+        height: 150,
+        width: 150,
+        child: FloatingActionButton(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          child: const SizedBox(width: 190, height: 190, child: Image( image: AssetImage('assets/admin.png'))),
+          onPressed: () {
+      
+              },
+          ),
+      ),
+
+    ],
+  )
+          ],
+        ),
+        
 
         ),
       ),
@@ -47,7 +109,7 @@ child:  Center(
       
       inicio(),
       espacio(),
-      opciones(),
+      
     ],
   
   ),
@@ -73,8 +135,8 @@ Widget opciones(){
           elevation: 0,
           child: const SizedBox(width: 190, height: 190, child: Image( image: AssetImage('assets/padre.png'))),
           onPressed: () {
-      
-              },
+            
+          },
           ),
       ),
 

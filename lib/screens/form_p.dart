@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(  const MyApp());
+  runApp(  const formp());
 }
  
-class MyApp extends StatelessWidget{
-  const MyApp({super.key});
+// ignore: camel_case_types
+class formp extends StatelessWidget{
+  const formp({super.key});
 
   
   @override
