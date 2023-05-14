@@ -5,11 +5,11 @@ import '../main.dart';
 void main() {
   runApp(MaterialApp(
     title: 'Navigation Basics',
-    home: Formp(),
+    home: FormD(),
   ));
 }
 
-class Formp extends StatelessWidget {
+class FormD extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -94,7 +94,6 @@ Widget  Cuerpo(){
               control(),
               linea(),
               espacio(),
-              dui(),
               usuario(),
               contrasena(),
               
@@ -150,21 +149,7 @@ Widget contrasena(){
   );
 } 
 
-Widget dui(){
-  return Container(
-    padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
-    child: TextField(
-      obscureText: true,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20.0)
-        ),
-        counterStyle: const TextStyle(color: Colors.white),
-        hintText: "dui",
-      ),
-    ),
-  );
-} 
+
 
 Widget botones(){
   return Row(

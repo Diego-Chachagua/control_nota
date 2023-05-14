@@ -1,189 +1,94 @@
+import 'package:control_notas/screens/form_a.dart';
+import 'package:control_notas/screens/form_d.dart';
 import 'package:control_notas/screens/form_p.dart';
 import 'package:flutter/material.dart';
-import 'package:animate_do/animate_do.dart';
+
 
 void main() {
-  runApp( const MyApp());
-
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    title: 'Navigation Basics',
+    home: FirstRoute(),
+    
+  ));
 }
-//coment
-class MyApp extends StatelessWidget{
-  const MyApp({super.key});
+
+class FirstRoute extends StatelessWidget {
+  const FirstRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-      debugShowCheckedModeBanner: false,
-      // ignore: avoid_unnecessary_containers
-      home: Container(
-        decoration:  const BoxDecoration(
+    return Container(
+      decoration:  const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/fondo_o.jpg'),
             fit: BoxFit.cover
           ),
         ),
-        
-        child:    Scaffold(
-          appBar: AppBar(
+      child: Scaffold(
+         appBar: AppBar(
             
             backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-            title:  Center(child:  ElasticIn(child: const Text('BIENVENIDOS',style: TextStyle(color: Color.fromARGB(255, 255, 255, 255),fontSize: 55),))),
+            title:  const Center(child:  Text('BIENVENIDOS',style: TextStyle(color: Color.fromARGB(255, 255, 255, 255),fontSize: 55),)),
           ),
-          backgroundColor: Colors.transparent,
-        body: Column(
-          children: [
-            Cuerpo(),
-            Column(
-    mainAxisAlignment: MainAxisAlignment.spaceAround,
+        backgroundColor: Colors.transparent,
+        body: Center(
+          child: Column(
+            children: [
+              inicio(),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
     crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  MaterialButton(
+                    child: const SizedBox(height: 150, width: 150, child: Image(image: AssetImage('assets/padre.png'))),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Formp()),
+                      );
+                    },
+                  ),
 
-    children: [
-       SizedBox(
-        height: 150,
-        width: 150,
-        child: FloatingActionButton(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          child: const SizedBox(width: 190, height: 190, child: Image( image: AssetImage('assets/padre.png'))),
-          onPressed: () {
+                  const SizedBox(
+                    height: 50,
+                  ),
+    
+                  MaterialButton(
+                    child: const SizedBox(height: 150, width: 150, child: Image(image: AssetImage('assets/profe.png'))),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FormD()),
+                      );
+                    },
+                  ),
 
-          },
+                  const SizedBox(
+                    height: 50,
+                  ),
+    
+                  MaterialButton(
+                    child: const SizedBox(height: 150, width: 150, child: Image(image: AssetImage('assets/admin.png'))),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FormA()),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ],
           ),
-      ),
-
-const SizedBox(
-height: 50,
-),
-
-SizedBox(
-        height: 150,
-        width: 150,
-        child: FloatingActionButton(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          child: const SizedBox(width: 190, height: 190, child: Image( image: AssetImage('assets/profe.png'))),
-          onPressed: () {
-                MaterialPageRoute route = MaterialPageRoute(builder: (context) => const formp());
-
-                Navigator.push(context, route);
-              },
-          ),
-      ),
-
-const SizedBox(
-height: 50,
-),
-
-      SizedBox(
-        height: 150,
-        width: 150,
-        child: FloatingActionButton(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          child: const SizedBox(width: 190, height: 190, child: Image( image: AssetImage('assets/admin.png'))),
-          onPressed: () {
-      
-              },
-          ),
-      ),
-
-    ],
-  )
-          ],
-        ),
-        
-
         ),
       ),
     );
   }
 }
-
-// ignore: non_constant_identifier_names
-Widget  Cuerpo(){
-  // ignore: avoid_unnecessary_containers
-  return Container(
-child:  Center(
-  child:   Column(
-    children:  <Widget> [
-      
-      inicio(),
-      espacio(),
-      
-    ],
-  
-  ),
-),
-);
-}
-
-Widget banner(){
-  return const SizedBox(height: 90, child:  Image(image: AssetImage('assets/bienvenidos.png'),fit: BoxFit.fill, ));
-}
-
-Widget opciones(){
-  return  Column(
-    mainAxisAlignment: MainAxisAlignment.spaceAround,
-    crossAxisAlignment: CrossAxisAlignment.center,
-
-    children: [
-       SizedBox(
-        height: 150,
-        width: 150,
-        child: FloatingActionButton(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          child: const SizedBox(width: 190, height: 190, child: Image( image: AssetImage('assets/padre.png'))),
-          onPressed: () {
-            
-          },
-          ),
-      ),
-
-const SizedBox(
-height: 50,
-),
-
-SizedBox(
-        height: 150,
-        width: 150,
-        child: FloatingActionButton(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          child: const SizedBox(width: 190, height: 190, child: Image( image: AssetImage('assets/profe.png'))),
-          onPressed: () {
-      
-              },
-          ),
-      ),
-
-const SizedBox(
-height: 50,
-),
-
-      SizedBox(
-        height: 150,
-        width: 150,
-        child: FloatingActionButton(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          child: const SizedBox(width: 190, height: 190, child: Image( image: AssetImage('assets/admin.png'))),
-          onPressed: () {
-      
-              },
-          ),
-      ),
-
-    ],
-  );
-}
-
-Widget espacio(){
-  return const SizedBox(
-    height: 50,
-  );
-}
-
 
 Widget inicio(){
   return Container(
