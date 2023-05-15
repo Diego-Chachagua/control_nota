@@ -151,29 +151,3 @@ Widget contrasena(){
 
 
 
-Widget botones(){
-  return Row(
-    children: [
-
-const SizedBox(
-  width: 45,
-),
-
-      MaterialButton(
-      color: Colors.red,
-      onPressed: (){},
-      child: const Text('Cancelar'),
-      ),
-
-const SizedBox(
-  width: 30,
-),
-
-      MaterialButton(
-      color: const Color.fromARGB(255, 20, 250, 28),
-      onPressed: (){},
-      child: const Text('Iniciar'),
-      ),
-    ],
-  );
-}

@@ -1,6 +1,7 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 import '../main.dart';
+import 'hijos.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -56,7 +57,12 @@ class Formp extends StatelessWidget {
               
                   MaterialButton(
                   color: const Color.fromARGB(255, 20, 250, 28),
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Hijos()),
+                        );
+                  },
                   child: const Text('Iniciar'),
                   ),
                 ],
@@ -165,30 +171,3 @@ Widget dui(){
     ),
   );
 } 
-
-Widget botones(){
-  return Row(
-    children: [
-
-const SizedBox(
-  width: 45,
-),
-
-      MaterialButton(
-      color: Colors.red,
-      onPressed: (){},
-      child: const Text('Cancelar'),
-      ),
-
-const SizedBox(
-  width: 30,
-),
-
-      MaterialButton(
-      color: const Color.fromARGB(255, 20, 250, 28),
-      onPressed: (){},
-      child: const Text('Iniciar'),
-      ),
-    ],
-  );
-}
