@@ -1,3 +1,4 @@
+import 'package:control_notas/screens/periodo.dart';
 import 'package:flutter/material.dart';
 import 'package:prueba/periodo.dart';
 
@@ -48,7 +49,7 @@ class _CounterScreenState extends State<CounterScreen> {
           const  SizedBox(height: 150,),
           MaterialButton(
             padding: const  EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
               setState(() {});
             },
@@ -62,7 +63,7 @@ class _CounterScreenState extends State<CounterScreen> {
           ),
            MaterialButton(
             padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
               setState(() {});
             },
@@ -76,11 +77,11 @@ class _CounterScreenState extends State<CounterScreen> {
           ),
            MaterialButton(
             padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
               setState(() {});
             },
-            shape: RoundedRectangleBorder(),
+            shape: const RoundedRectangleBorder(),
             child: const Text(
               "Eliminar",
               style: TextStyle(
@@ -90,11 +91,11 @@ class _CounterScreenState extends State<CounterScreen> {
           ),
            MaterialButton(
             padding:const  EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
               setState(() {});
             },
-            shape: RoundedRectangleBorder(),
+            shape: const RoundedRectangleBorder(),
             child: const Text(
               "Consulta",
               style: TextStyle(
@@ -104,12 +105,12 @@ class _CounterScreenState extends State<CounterScreen> {
           ),
           MaterialButton(
             padding:const  EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
 
               Navigator.push(context, MaterialPageRoute(builder: (context) => const Periodos()));
             },
-            shape: RoundedRectangleBorder(),
+            shape: const RoundedRectangleBorder(),
             child: const Text(
               "Siguiente",
               style: TextStyle(
