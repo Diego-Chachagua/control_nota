@@ -1,9 +1,10 @@
 import 'package:control_notas/screens/periodo.dart';
 import 'package:flutter/material.dart';
-import 'periodo.dart';
 
 
 class Eleccion extends StatelessWidget{
+  const Eleccion({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
