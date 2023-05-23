@@ -27,36 +27,39 @@ class Hijos extends StatelessWidget{
         backgroundColor: Colors.transparent,
         body: Column(
           children: [
-            Table(
-              columnWidths: const {
-                0: FractionColumnWidth(0.5)
-              },
-              border: TableBorder.all(),
-              children: [
-                TableRow(
-                  children: [
-                    hijos(),
-                    nie(),
-                  ]
-                ),
-
-                TableRow(
-                  decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 255, 255, 255)
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Table(
+                columnWidths: const {
+                  0: FractionColumnWidth(0.5)
+                },
+                border: TableBorder.all(),
+                children: [
+                  TableRow(
+                    children: [
+                      hijos(),
+                      nie(),
+                    ]
                   ),
-                  children: [
-                    hijo1(),
-                    nie1(),
-                  ]
-                ),
-              ],
+            
+                  TableRow(
+                    decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 255, 255, 255)
+                    ),
+                    children: [
+                      hijo1(),
+                      nie1(),
+                    ]
+                  ),
+                ],
+              ),
             ),
             const SizedBox(
                 height: 40,
               ),
             nieb(),
               const SizedBox(
-                height: 40,
+                height: 20,
               ),
               
                   MaterialButton(
@@ -95,12 +98,15 @@ Widget nie1(){
 }
 
 Widget nieb(){
-  return  Container(
-    color: Colors.white,
-    child: const TextField(
-      decoration: InputDecoration(
-        counterStyle: TextStyle(color: Colors.white),
-        hintText: "Nie del alumno a ver boleta",
+  return  Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 90,vertical: 5),
+    child: Container(
+      color: Colors.white,
+      child: const TextField(
+        decoration: InputDecoration(
+          counterStyle: TextStyle(color: Colors.white),
+          hintText: "Nie del alumno a ver boleta",
+        ),
       ),
     ),
   );
