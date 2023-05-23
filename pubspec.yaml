@@ -69,6 +69,9 @@ flutter:
   - assets/fondo_f.jpg
   - assets/fondo_f1.jpg
   - assets/imagen1.jpeg
+  - assets/27.jpg
+  - assets/fondo.jpg
+  - assets/manual.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
