@@ -47,7 +47,7 @@ class FirstRoute extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Formp()),
+                        MaterialPageRoute(builder: (context) => const Formp()),
                       );
                     },
                   ),
@@ -61,7 +61,7 @@ class FirstRoute extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => FormD()),
+                        MaterialPageRoute(builder: (context) => const FormD()),
                       );
                     },
                   ),
@@ -75,7 +75,7 @@ class FirstRoute extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => FormA()),
+                        MaterialPageRoute(builder: (context) => const FormA()),
                       );
                     },
                   ),

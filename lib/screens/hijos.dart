@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     title: 'Navigation Basics',
     home: Hijos(),
   ));
 }
 
 class Hijos extends StatelessWidget{
+  const Hijos({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
