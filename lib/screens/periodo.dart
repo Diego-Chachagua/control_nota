@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:prueba/Screens/usuarios.dart';
+import 'package:control_notas/screens/usuarios.dart';
 
 class Periodos extends StatefulWidget {
   const Periodos({Key? key}) : super(key: key);

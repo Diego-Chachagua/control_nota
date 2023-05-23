@@ -1,6 +1,6 @@
 import 'package:control_notas/screens/periodo.dart';
 import 'package:flutter/material.dart';
-import 'package:prueba/periodo.dart';
+import 'periodo.dart';
 
 
 class Eleccion extends StatelessWidget{
