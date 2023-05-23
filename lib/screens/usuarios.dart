@@ -35,8 +35,8 @@ class _UsuariosState extends State<Usuarios> {
                 
             Container(
               //Primer textfield
-              padding: EdgeInsets.symmetric( horizontal: 150, vertical: 15,),
-              child: TextField(
+              padding: const EdgeInsets.symmetric( horizontal: 150, vertical: 15,),
+              child: const TextField(
                 //autofocus: true,
                 keyboardType: TextInputType.text,
                 autocorrect: true,
@@ -66,8 +66,8 @@ class _UsuariosState extends State<Usuarios> {
             
             Container(
               //SEGUNDO TEXTFIELD
-             padding: EdgeInsets.symmetric(horizontal: 150, vertical: 15,),
-             child: TextField(
+             padding: const EdgeInsets.symmetric(horizontal: 150, vertical: 15,),
+             child: const TextField(
               keyboardType: TextInputType.text,
               autocorrect: true,
               decoration: InputDecoration(
@@ -91,8 +91,8 @@ class _UsuariosState extends State<Usuarios> {
             ),
             //PRIMER BOTON DE VER USUARIOS
              MaterialButton(
-              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15, ),
-              color: Color.fromARGB(255, 255, 255, 255),
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15, ),
+              color: const Color.fromARGB(255, 255, 255, 255),
               onPressed: (){
               setState(() {
             
@@ -114,8 +114,8 @@ class _UsuariosState extends State<Usuarios> {
                 ),),
           //TERCER TEXFIELD 
           Container(
-            padding: EdgeInsets.symmetric( horizontal: 150, vertical: 15,),
-              child: TextField(
+            padding: const EdgeInsets.symmetric( horizontal: 150, vertical: 15,),
+              child: const TextField(
                 keyboardType: TextInputType.text,
               autocorrect: true,
               decoration: InputDecoration(
@@ -143,8 +143,8 @@ class _UsuariosState extends State<Usuarios> {
           ),
           //CUARTO TEXTFIELD 
           Container(
-             padding: EdgeInsets.symmetric( horizontal: 150, vertical: 15,),
-              child: TextField(
+             padding: const EdgeInsets.symmetric( horizontal: 150, vertical: 15,),
+              child: const TextField(
                 keyboardType: TextInputType.text,
               autocorrect: true,
               decoration: InputDecoration(
@@ -168,8 +168,8 @@ class _UsuariosState extends State<Usuarios> {
           ),
           //SEGUNDO BOTON PARA VER ESTUDIANTES
           MaterialButton(
-            padding: EdgeInsets.symmetric(horizontal: 19, vertical: 15, ),
-            color: Color.fromARGB(255, 255, 255, 255),
+            padding: const EdgeInsets.symmetric(horizontal: 19, vertical: 15, ),
+            color: const Color.fromARGB(255, 255, 255, 255),
              onPressed: (){
             setState(() {
               
@@ -191,8 +191,8 @@ class _UsuariosState extends State<Usuarios> {
                 ),
                 //QUINTO TEXTFIELD
                 Container(
-                  padding: EdgeInsets.symmetric( horizontal: 150, vertical: 15,),
-              child: TextField(
+                  padding: const EdgeInsets.symmetric( horizontal: 150, vertical: 15,),
+              child: const TextField(
                 keyboardType: TextInputType.text,
               autocorrect: true,
               decoration: InputDecoration(
@@ -215,8 +215,8 @@ class _UsuariosState extends State<Usuarios> {
                 ),
                 //SEXTO TEXTFIELD
                 Container(
-               padding: EdgeInsets.symmetric( horizontal: 150, vertical: 15,),
-              child: TextField(
+               padding: const EdgeInsets.symmetric( horizontal: 150, vertical: 15,),
+              child: const TextField(
                 keyboardType: TextInputType.text,
               autocorrect: true,
               decoration: InputDecoration(
@@ -238,15 +238,15 @@ class _UsuariosState extends State<Usuarios> {
                 ),
                 //TERCER BOTON PARA VER PADRES
                 MaterialButton(
-            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15, ),
-            color: Color.fromARGB(255, 255, 255, 255),
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15, ),
+            color: const Color.fromARGB(255, 255, 255, 255),
              onPressed: (){
              setState(() {
                
              });
              
              },
-             shape: RoundedRectangleBorder(),
+             shape: const RoundedRectangleBorder(),
             child: const Text(
               "Ver padres",
               style: TextStyle(
@@ -262,15 +262,15 @@ class _UsuariosState extends State<Usuarios> {
                 ),
                 //CUARTO BOTON PARA VER PROFESOR
                  MaterialButton(
-            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15, ),
-            color: Color.fromARGB(255, 255, 255, 255),
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15, ),
+            color: const Color.fromARGB(255, 255, 255, 255),
              onPressed: (){
              setState(() {
                
              });
              
              },
-             shape: RoundedRectangleBorder(),
+             shape: const RoundedRectangleBorder(),
             child: const Text(
               "Ver profesores",
               style: TextStyle(
@@ -318,7 +318,7 @@ class _UsuariosState extends State<Usuarios> {
              });
              
              },
-             shape: RoundedRectangleBorder(),
+             shape: const RoundedRectangleBorder(),
             child: const Text(
               "Ver boletas",
               style: TextStyle(
@@ -334,15 +334,15 @@ class _UsuariosState extends State<Usuarios> {
                 ),
                 //BOTON DE AYUDA
                  MaterialButton(
-            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15, ),
-            color: Color.fromARGB(255, 255, 255, 255),
+            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15, ),
+            color: const Color.fromARGB(255, 255, 255, 255),
              onPressed: (){
              setState(() {
                
              });
              
              },
-             shape: RoundedRectangleBorder(),
+             shape: const RoundedRectangleBorder(),
             child: const Text(
               "AYUDA",
               style: TextStyle(

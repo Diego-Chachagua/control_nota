@@ -36,7 +36,7 @@ class _PeriodosState extends State<Periodos> {
           const  SizedBox(height: 150,),
           MaterialButton(
             padding: const  EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
               setState(() {});
             },
@@ -50,7 +50,7 @@ class _PeriodosState extends State<Periodos> {
           ),
            MaterialButton(
             padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
               setState(() {});
             },
@@ -64,11 +64,11 @@ class _PeriodosState extends State<Periodos> {
           ),
            MaterialButton(
             padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
               setState(() {});
             },
-            shape: RoundedRectangleBorder(),
+            shape: const RoundedRectangleBorder(),
             child: const Text(
               "Periodo 3",
               style: TextStyle(
@@ -78,11 +78,11 @@ class _PeriodosState extends State<Periodos> {
           ),
            MaterialButton(
             padding:const  EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
               setState(() {});
             },
-            shape: RoundedRectangleBorder(),
+            shape: const RoundedRectangleBorder(),
             child: const Text(
               "Periodo 4",
               style: TextStyle(
@@ -92,11 +92,11 @@ class _PeriodosState extends State<Periodos> {
           ),
           MaterialButton(
             padding:const  EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
               setState(() {});
             },
-            shape: RoundedRectangleBorder(),
+            shape: const RoundedRectangleBorder(),
             child: const Text(
               "Recuperacion",
               style: TextStyle(
@@ -106,11 +106,11 @@ class _PeriodosState extends State<Periodos> {
           ),
           MaterialButton(
             padding:const  EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
               setState(() {});
             },
-            shape: RoundedRectangleBorder(),
+            shape: const RoundedRectangleBorder(),
             child: const Text(
               "Ver cuadro",
               style: TextStyle(
@@ -120,12 +120,12 @@ class _PeriodosState extends State<Periodos> {
           ),
            MaterialButton(
             padding:const  EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
           
-              Navigator.push(context, MaterialPageRoute(builder: (context) =>  Usuarios()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) =>  const Usuarios()));
             },
-            shape: RoundedRectangleBorder(),
+            shape: const RoundedRectangleBorder(),
             child: const Text(
               "Siguiente",
               style: TextStyle(
