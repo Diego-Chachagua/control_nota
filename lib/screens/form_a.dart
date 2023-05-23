@@ -1,6 +1,7 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 import '../main.dart';
+import 'eleccion.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -58,7 +59,9 @@ class FormA extends StatelessWidget {
               
                   MaterialButton(
                   color: const Color.fromARGB(255, 20, 250, 28),
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Eleccion()));
+                  },
                   child: const Text('Iniciar'),
                   ),
                 ],
