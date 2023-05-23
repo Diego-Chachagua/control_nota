@@ -14,7 +14,7 @@ import 'dart:io';
 
 Future<dynamic> eliminarUsu(var usu ,String usu2) async{
   http.Response enviar = await http.post(
-    Uri.parse('https://notas10073.000webhostapp.com/eliminarusuario.php'),
+    Uri.parse('https://notasincas.000webhostapp.com/eliminarusuario.php'),
     body: <String, dynamic>{
       "usu": usu,
       "usu2": usu2,
