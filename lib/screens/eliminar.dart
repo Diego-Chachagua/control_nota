@@ -1,3 +1,6 @@
+// ignore_for_file: avoid_print
+
+import 'package:control_notas/developer/consultad.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -24,6 +27,8 @@ class EliminarDatos extends StatefulWidget {
 }
 
 class _EliminarDatosState extends State<EliminarDatos> {
+  String usu = '';
+  String usu2 = '';
   String _seleccionada = 'Seleccione una opcion';
   List opcion = ['Seleccione una opcion', 'Maestro', 'Estudiante', 'Padre'];
   TextEditingController _controller = TextEditingController();
@@ -87,7 +92,7 @@ class _EliminarDatosState extends State<EliminarDatos> {
         items: GetOptionsDropDownButton(),
         onChanged: (value) {
           setState(() {
-            _seleccionada = value.toString();
+            usu2 = _seleccionada = value.toString();
           });
         },
       ),
@@ -127,8 +132,14 @@ class _EliminarDatosState extends State<EliminarDatos> {
   Widget Boton() {
     return Row(children: [
       ElevatedButton(
-        onPressed: () {
+        onPressed: () async {
           // Lógica que se ejecutará cuando se presione el botón "Guardar"
+          usu = _controller.text;
+          usu2;
+          print(usu);
+          print(usu2);
+          _controller.text = '';
+          await eliminarUsu(usu, usu2);
           setState(() {});
         },
         child: Text('Eliminar'),
