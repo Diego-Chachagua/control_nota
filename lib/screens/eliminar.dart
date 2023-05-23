@@ -34,7 +34,7 @@ class _EliminarDatosState extends State<EliminarDatos> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/01.jpg'), fit: BoxFit.cover),
+            image: AssetImage('assets/fondo_o.jpg'), fit: BoxFit.cover),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
