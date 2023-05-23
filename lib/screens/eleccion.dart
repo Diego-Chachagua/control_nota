@@ -1,6 +1,8 @@
 import 'package:control_notas/screens/periodo.dart';
 import 'package:flutter/material.dart';
 
+import 'eliminar.dart';
+
 
 class Eleccion extends StatelessWidget{
   const Eleccion({super.key});
@@ -80,7 +82,7 @@ class _CounterScreenState extends State<CounterScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
             color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
-              setState(() {});
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> const EliminarDatos()));
             },
             shape: const RoundedRectangleBorder(),
             child: const Text(
