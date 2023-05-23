@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     title: 'Navigation Basics',
     home: FormA(),
   ));
 }
 
 class FormA extends StatelessWidget {
+  const FormA({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,7 +46,7 @@ class FormA extends StatelessWidget {
                   onPressed: (){
             Navigator.pop(
                           context,
-                          MaterialPageRoute(builder: (context) => FirstRoute()),
+                          MaterialPageRoute(builder: (context) => const FirstRoute()),
                         );
                   },
                   child: const Text('Cancelar'),

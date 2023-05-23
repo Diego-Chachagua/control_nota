@@ -4,13 +4,15 @@ import '../main.dart';
 import 'hijos.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     title: 'Navigation Basics',
     home: Formp(),
   ));
 }
 
 class Formp extends StatelessWidget {
+  const Formp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,7 +47,7 @@ class Formp extends StatelessWidget {
                   onPressed: (){
             Navigator.pop(
                           context,
-                          MaterialPageRoute(builder: (context) => FirstRoute()),
+                          MaterialPageRoute(builder: (context) => const FirstRoute()),
                         );
                   },
                   child: const Text('Cancelar'),
@@ -60,7 +62,7 @@ class Formp extends StatelessWidget {
                   onPressed: (){
                     Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Hijos()),
+                          MaterialPageRoute(builder: (context) => const Hijos()),
                         );
                   },
                   child: const Text('Iniciar'),

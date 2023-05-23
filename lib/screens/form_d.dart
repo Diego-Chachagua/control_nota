@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     title: 'Navigation Basics',
     home: FormD(),
   ));
 }
 
 class FormD extends StatelessWidget {
+  const FormD({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
