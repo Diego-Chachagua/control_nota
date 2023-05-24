@@ -73,6 +73,16 @@ flutter:
   - assets/27.jpg
   - assets/fondo.jpg
   - assets/manual.png
+  - assets/hpp1.png
+  - assets/info3.png
+  - assets/ingles1.png
+  - assets/lenguaje1.png
+  - assets/mate.png
+  - assets/muci.png
+  - assets/oplv1.png
+  - assets/quimica1.png
+  - assets/seminario1.png
+  - assets/sociales1.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
