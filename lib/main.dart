@@ -1,6 +1,7 @@
 import 'package:control_notas/screens/form_a.dart';
 import 'package:control_notas/screens/form_d.dart';
 import 'package:control_notas/screens/form_p.dart';
+import 'package:control_notas/screens/manual.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -31,53 +32,70 @@ class FirstRoute extends StatelessWidget {
             title:  const Center(child:  Text('BIENVENIDOS',style: TextStyle(color: Color.fromARGB(255, 255, 255, 255),fontSize: 55),)),
           ),
         backgroundColor: Colors.transparent,
-        body: Center(
+        body: SingleChildScrollView(
           child: Column(
             children: [
               inicio(),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-    crossAxisAlignment: CrossAxisAlignment.center,
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(
+                      height: 50,
+                    ),
+                    MaterialButton(
+                      child: const SizedBox(height: 150, width: 150, child: Image(image: AssetImage('assets/padre.png'))),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Formp()),
+                        );
+                      },
+                    ),
+                      
+                    const SizedBox(
+                      height: 50,
+                    ),
+                        
+                    MaterialButton(
+                      child: const SizedBox(height: 150, width: 150, child: Image(image: AssetImage('assets/profe.png'))),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const FormD()),
+                        );
+                      },
+                    ),
+                      
+                    const SizedBox(
+                      height: 50,
+                    ),
+                        
+                    MaterialButton(
+                      child: const SizedBox(height: 150, width: 150, child: Image(image: AssetImage('assets/admin.png'))),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const FormA()),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              Row(
                 children: [
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  MaterialButton(
-                    child: const SizedBox(height: 150, width: 150, child: Image(image: AssetImage('assets/padre.png'))),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const Formp()),
-                      );
-                    },
-                  ),
-
-                  const SizedBox(
-                    height: 50,
-                  ),
-    
-                  MaterialButton(
-                    child: const SizedBox(height: 150, width: 150, child: Image(image: AssetImage('assets/profe.png'))),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const FormD()),
-                      );
-                    },
-                  ),
-
-                  const SizedBox(
-                    height: 50,
-                  ),
-    
-                  MaterialButton(
-                    child: const SizedBox(height: 150, width: 150, child: Image(image: AssetImage('assets/admin.png'))),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const FormA()),
-                      );
-                    },
+                  ElevatedButton(
+          onPressed: () {
+            // Lógica que se ejecutará cuando se presione el botón "Guardar"
+            Navigator.push(context,MaterialPageRoute(builder: (context) => const Manual()), );
+          },
+          style: ElevatedButton.styleFrom(
+            primary: const Color.fromARGB(
+                    255, 64, 65, 66), // Cambia el color de fondo del botón a rojo
+          ),
+          child: const Text('Ayuda'),
                   ),
                 ],
               ),
@@ -95,3 +113,6 @@ Widget inicio(){
     child: const Text('----¿Como desea iniciar sesion?----', style: TextStyle(fontSize: 25, color: Color.fromARGB(236, 255, 255, 255)),)
     );
 }
+
+
+      

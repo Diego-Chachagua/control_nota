@@ -1,7 +1,11 @@
 // ignore: file_names
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import '../developer/consultaso.dart';
 import '../main.dart';
 import 'hijos.dart';
+import 'manual.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -10,8 +14,21 @@ void main() {
   ));
 }
 
-class Formp extends StatelessWidget {
+class Formp extends StatefulWidget {
   const Formp({super.key});
+
+  @override
+  State<Formp> createState() => _FormpState();
+}
+
+class _FormpState extends State<Formp> {
+final duib =TextEditingController();
+final usuariob =TextEditingController();
+final contrab =TextEditingController();
+
+String duibd = "";
+String usuariobd = "";
+String contrabd = "";
 
   @override
   Widget build(BuildContext context) {
@@ -59,14 +76,46 @@ class Formp extends StatelessWidget {
               
                   MaterialButton(
                   color: const Color.fromARGB(255, 20, 250, 28),
-                  onPressed: (){
-                    Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const Hijos()),
-                        );
+                  onPressed: () async {
+
+                    duibd = duib.text;
+                    usuariobd = usuariob.text;
+                    contrabd = contrab.text;
+                    if (duibd.isNotEmpty || usuariobd.isNotEmpty || contrabd.isNotEmpty) {
+                    dynamic respuesta = await comprobarp(usuariobd, duibd,contrabd);
+                    if (respuesta == "error") {
+                        _mensaje(context);
+
+                      //se produjo un error
+                    }
+                    if (respuesta == "noExiste") {
+                      //no hay usuario con ese nombre
+                      _mensajeUsu(context);
+                    } else {
+
+                      if(respuesta == "hijo"){
+                        // ignore: use_build_context_synchronously
+                        Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Manual()),
+                   );
+                      } else if(respuesta == "hijos"){
+                        // ignore: use_build_context_synchronously
+                        Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Hijos()),
+                   );
+                      }
+                    }
+                  }
+  
+
+
+
+                   setState(() {});
                   },
                   child: const Text('Iniciar'),
-                  ),
+  ),
                 ],
                 ),
               ],
@@ -76,7 +125,7 @@ class Formp extends StatelessWidget {
           ),
     );
   }
-}
+
 
 // ignore: non_constant_identifier_names
 Widget  Cuerpo(){
@@ -131,6 +180,7 @@ Widget usuario(){
   return  Container(
     padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
     child: TextField(
+      controller: usuariob,
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.0)
@@ -146,6 +196,7 @@ Widget contrasena(){
   return Container(
     padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
     child: TextField(
+      controller: contrab,
       obscureText: true,
       decoration: InputDecoration(
         border: OutlineInputBorder(
@@ -162,7 +213,7 @@ Widget dui(){
   return Container(
     padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
     child: TextField(
-      obscureText: true,
+      controller: duib,
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.0)
@@ -173,3 +224,59 @@ Widget dui(){
     ),
   );
 } 
+
+void _mensajeUsu(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("Usuario no existe"),
+            content: const Text(
+                'Los datos ingresados no coinciden con alguna cuenta de usuario'),
+            actions: [
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    usuariob.clear();
+                    duib.clear();
+                    contrab.clear();
+                  },
+                  child: const Text('Aceptar'),
+                ),
+              )
+            ],
+          );
+        });
+  }
+
+void _mensaje(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("Error de conexión"),
+            content:
+                const Text('Ocurrió un error al conectar con la base de datos'
+                    'o consulta errónea.'),
+            actions: [
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    setState(() {
+                      Navigator.pop(context);
+                    usuariob.clear();
+                    duib.clear();
+                    contrab.clear();
+                    });
+                  },
+                  child: const Text('Aceptar'),
+                ),
+              )
+            ],
+          );
+        });
+  }
+  
+}
+
