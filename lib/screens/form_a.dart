@@ -1,5 +1,6 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
+import '../developer/consultaso.dart';
 import '../main.dart';
 import 'eleccion.dart';
 
@@ -10,8 +11,19 @@ void main() {
   ));
 }
 
-class FormA extends StatelessWidget {
+class FormA extends StatefulWidget {
   const FormA({super.key});
+
+  @override
+  State<FormA> createState() => _FormAState();
+}
+
+class _FormAState extends State<FormA> {
+final usuariob =TextEditingController();
+final contrab =TextEditingController();
+
+String usuariobd = "";
+String contrabd = "";
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +71,29 @@ class FormA extends StatelessWidget {
               
                   MaterialButton(
                   color: const Color.fromARGB(255, 20, 250, 28),
-                  onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Eleccion()));
+                  onPressed: () async{
+                     usuariobd = usuariob.text;
+                    contrabd = contrab.text;
+                    if (usuariobd.isNotEmpty || contrabd.isNotEmpty) {
+                    dynamic respuesta = await comprobara(usuariobd,contrabd);
+                    if (respuesta == "error") {
+                        _mensaje(context);
+
+                      //se produjo un error
+                    }
+                    if (respuesta == "noExiste") {
+                      //no hay usuario con ese nombre
+                      _mensajeUsu(context);
+                    } else {
+                         if(respuesta == "admin"){
+                        // ignore: use_build_context_synchronously
+                        Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Eleccion()),
+                   );
+                      }
+                    }
+                    }
                   },
                   child: const Text('Iniciar'),
                   ),
@@ -73,7 +106,7 @@ class FormA extends StatelessWidget {
           ),
     );
   }
-}
+
 
 // ignore: non_constant_identifier_names
 Widget  Cuerpo(){
@@ -127,6 +160,7 @@ Widget usuario(){
   return  Container(
     padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
     child: TextField(
+      controller: usuariob,
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.0)
@@ -142,6 +176,7 @@ Widget contrasena(){
   return Container(
     padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
     child: TextField(
+      controller: contrab,
       obscureText: true,
       decoration: InputDecoration(
         border: OutlineInputBorder(
@@ -154,5 +189,55 @@ Widget contrasena(){
   );
 } 
 
+void _mensajeUsu(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("Usuario no existe"),
+            content: const Text(
+                'Los datos ingresados no coinciden con alguna cuenta de usuario'),
+            actions: [
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    usuariob.clear();
+                    contrab.clear();
+                  },
+                  child: const Text('Aceptar'),
+                ),
+              )
+            ],
+          );
+        });
+  }
 
+void _mensaje(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("Error de conexión"),
+            content:
+                const Text('Ocurrió un error al conectar con la base de datos'
+                    'o consulta errónea.'),
+            actions: [
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    setState(() {
+                      Navigator.pop(context);
+                    usuariob.clear();
+                    contrab.clear();
+                    });
+                  },
+                  child: const Text('Aceptar'),
+                ),
+              )
+            ],
+          );
+        });
+  }
 
+}

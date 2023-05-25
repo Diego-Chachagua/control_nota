@@ -28,3 +28,35 @@ Future<dynamic> comprobarp(String usuariobd, String duibd, String contrabd) asyn
     return enviar.body;
   }
 }
+
+Future<dynamic> comprobard(String usuariobd, String contrabd) async{
+  http.Response enviar = await http.post(
+    Uri.parse('https://notasincas.000webhostapp.com/formd.php'),
+    body: <String, dynamic>{
+      "usuario": usuariobd,
+      "contra": contrabd,
+    },
+  );
+   if (enviar.statusCode == 201) {
+    return "error";
+  } else {
+
+    return enviar.body;
+  }
+}
+
+Future<dynamic> comprobara(String usuariobd, String contrabd) async{
+  http.Response enviar = await http.post(
+    Uri.parse('https://notasincas.000webhostapp.com/forma.php'),
+    body: <String, dynamic>{
+      "usuario": usuariobd,
+      "contra": contrabd,
+    },
+  );
+   if (enviar.statusCode == 201) {
+    return "error";
+  } else {
+
+    return enviar.body;
+  }
+}
