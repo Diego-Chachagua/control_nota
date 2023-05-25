@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:control_notas/screens/usuarios.dart';
 
+import 'cuadro.dart';
+
 class Periodos extends StatefulWidget {
   const Periodos({Key? key}) : super(key: key);
 
@@ -38,7 +40,9 @@ class _PeriodosState extends State<Periodos> {
             padding: const  EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
             color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
-              setState(() {});
+              setState(() {
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>   CuadroN1()));
+              });
             },
             shape: const RoundedRectangleBorder(),
             child: const Text(

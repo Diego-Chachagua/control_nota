@@ -1,13 +1,17 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
+import '../main.dart';
+import '../developer/consultasf.dart';
 
 class CuadroN1 extends StatelessWidget {
   CuadroN1({super.key});
-  final notaEstu = TextEditingController();
+  final nieEstu = TextEditingController();
   final a1 = TextEditingController();
   final a2 = TextEditingController();
   final po = TextEditingController();
 
-  var nota, act1, act2, pruO;
+  var nie, act1, act2, pruO;
 
   @override
   Widget build(BuildContext context) {
@@ -136,8 +140,9 @@ class CuadroN1 extends StatelessWidget {
                                     color: Colors.white,
                                     width: 90,
                                     height: 20,
-                                    child: const Center(
+                                    child:  Center(
                                         child: TextField(
+                                          controller: nieEstu,
                                       keyboardType: TextInputType.number,
                                     )),
                                   ),
@@ -159,8 +164,9 @@ class CuadroN1 extends StatelessWidget {
                                   color: Colors.white,
                                   width: 50,
                                   height: 20,
-                                  child: const Center(
+                                  child:  Center(
                                       child: TextField(
+                                        controller: a1,
                                     keyboardType: TextInputType.number,
                                   )),
                                 ),
@@ -176,8 +182,9 @@ class CuadroN1 extends StatelessWidget {
                                   color: Colors.white,
                                   width: 50,
                                   height: 20,
-                                  child: const Center(
+                                  child:  Center(
                                       child: TextField(
+                                        controller: a2,
                                     keyboardType: TextInputType.number,
                                   )),
                                 ),
@@ -193,8 +200,9 @@ class CuadroN1 extends StatelessWidget {
                                   color: Colors.white,
                                   width: 50,
                                   height: 20,
-                                  child: const Center(
+                                  child:  Center(
                                       child: TextField(
+                                        controller: po,
                                     keyboardType: TextInputType.number,
                                   )),
                                 ),
@@ -205,16 +213,35 @@ class CuadroN1 extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 ElevatedButton(
-      onPressed: () {},
-      child: const Center(child: Text('Guardar')),
-    ),
+                                  onPressed: () async {
+                                    act1 = a1.text;
+                                    act2= a2.text;
+                                    pruO = po.text;
+                                    nie= nieEstu.text;
+                                    print("$act1, $act2, $pruO, $nie");
+                                    a1.text="";
+                                    a2.text="";
+                                    po.text="";
+                                    nieEstu.text="";
+                                    if(nie!=""){
+                                      dynamic respuesta = await verNie(nie);
+                                      if(respuesta == "error"){
+                                        _notify(context,nie);
+                                      }
+                                      if(respuesta == "noEncontrado"){
+                                        _notify_error(context);
+                                      }
+                                    }
+                                  },
+                                  child: const Center(child: Text('Guardar')),
+                                ),
                                 const SizedBox(
                                   width: 30,
                                 ),
                                 ElevatedButton(
-      onPressed: () {},
-      child: const Center(child: Text('Reiniciar')),
-    ),
+                                  onPressed: () {},
+                                  child: const Center(child: Text('Reiniciar')),
+                                ),
                               ],
                             ),
                           ]),
@@ -232,7 +259,53 @@ class CuadroN1 extends StatelessWidget {
           ),
         ));
   }
+  
+  void _notify(BuildContext context, String? nie) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("NIE no encontrado"),
+            content:  Text(
+                'Ningun NIE coincide con el ingresado : $nie '),
+            actions: [
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);      
+                  },
+                  child: const Text('Aceptar'),
+                ),
+              )
+            ],
+          );
+        });
+  }
+  
+  void _notify_error(BuildContext context) {
+   showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("OPPS!"),
+            content: const Text(
+                'Algo salio mal en la base de datos'),
+            actions: [
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text('Aceptar'),
+                ),
+              )
+            ],
+          );
+        });
+  }
 }
+
+
 
 class Caja extends StatelessWidget {
   @override
@@ -381,7 +454,7 @@ class Tabledata extends StatelessWidget {
           ])
         ]);
   }
+
+  
+  
 }
-
-
-
