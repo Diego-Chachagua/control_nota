@@ -26,7 +26,7 @@ class _MateriaState extends State<Materia> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/fondo_f1.jpg'), fit: BoxFit.cover),
+            image: AssetImage('assets/fondo_o.jpg'), fit: BoxFit.cover),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,

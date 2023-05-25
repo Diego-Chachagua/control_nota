@@ -56,7 +56,7 @@ class _ProfesorState extends State<Profesor> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/01.jpg'), fit: BoxFit.cover),
+            image: AssetImage('assets/fondo_o.jpg'), fit: BoxFit.cover),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -72,7 +72,7 @@ class _ProfesorState extends State<Profesor> {
               const DrawerHeader(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('assets/01.jpg'), fit: BoxFit.cover),
+                      image: AssetImage('assets/fondo_o.jpg'), fit: BoxFit.cover),
                 ),
                 child: Text(
                   'Secciones que dara el docente',
