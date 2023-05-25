@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, sort_child_properties_last, prefer_const_constructors, deprecated_member_use, avoid_function_literals_in_foreach_calls, prefer_final_fields
 
 import 'package:control_notas/developer/consultad.dart';
 import 'package:flutter/material.dart';
@@ -50,30 +50,30 @@ class _EliminarDatosState extends State<EliminarDatos> {
         ),
         body: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
-          children: <Widget>[Cuerpo()],
+          children: <Widget>[cuerpo()],
         ),
       ),
     );
   }
 
-  Widget Cuerpo() {
+  Widget cuerpo() {
     // ignore: avoid_unnecessary_containers
     return Container(
       child: Column(
         children: <Widget>[
-          DropdDown(),
+          dropdDown(),
           espacio(),
           espacio(),
           _createInput(),
           espacio(),
           espacio(),
-          Boton()
+          boton()
         ],
       ),
     );
   }
 
-  List<DropdownMenuItem<String>> GetOptionsDropDownButton() {
+  List<DropdownMenuItem<String>> getOptionsDropDownButton() {
     List<DropdownMenuItem<String>> opciones = [];
     opcion.forEach((element) {
       opciones.add(DropdownMenuItem(
@@ -84,12 +84,12 @@ class _EliminarDatosState extends State<EliminarDatos> {
     return opciones;
   }
 
-  Widget DropdDown() {
+  Widget dropdDown() {
     return Row(children: <Widget>[
      const SizedBox(width: 1),
       DropdownButton(
         value: _seleccionada,
-        items: GetOptionsDropDownButton(),
+        items: getOptionsDropDownButton(),
         onChanged: (value) {
           setState(() {
             usu2 = _seleccionada = value.toString();
@@ -129,7 +129,7 @@ class _EliminarDatosState extends State<EliminarDatos> {
     );
   }
 
-  Widget Boton() {
+  Widget boton() {
     return Row(children: [
       ElevatedButton(
         onPressed: () async {
@@ -142,7 +142,7 @@ class _EliminarDatosState extends State<EliminarDatos> {
           await eliminarUsu(usu, usu2);
           setState(() {});
         },
-        child: Text('Eliminar'),
+        child: const Text('Eliminar'),
         style: ElevatedButton.styleFrom(
           primary: Color.fromARGB(
               255, 222, 10, 10), // Cambia el color de fondo del botón a rojo
