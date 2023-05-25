@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
-
-
 class CuadroN1 extends StatelessWidget {
-  const CuadroN1({super.key});
-  
-  
+  CuadroN1({super.key});
+  final notaEstu = TextEditingController();
+  final a1 = TextEditingController();
+  final a2 = TextEditingController();
+  final po = TextEditingController();
+
+  var nota, act1, act2, pruO;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,19 +33,14 @@ class CuadroN1 extends StatelessWidget {
                       ),
                       Text(
                         'GRADO: "1°"',
-                        style: TextStyle(
-                          fontSize: 25,
-                          color: Colors.white
-                        ),
+                        style: TextStyle(fontSize: 25, color: Colors.white),
                       ),
                       SizedBox(
                         width: 30,
                       ),
                       Text(
                         'SECCION: "H"',
-                        style: TextStyle(
-                          fontSize: 25, color: Colors.white),
-                        
+                        style: TextStyle(fontSize: 25, color: Colors.white),
                       ),
                     ],
                   ),
@@ -55,10 +53,7 @@ class CuadroN1 extends StatelessWidget {
                       ),
                       Text(
                         'MATERIA: Estudios Sociales',
-                        style: TextStyle(
-                          fontSize: 25,
-                           color: Colors.white
-                        ),
+                        style: TextStyle(fontSize: 25, color: Colors.white),
                       ),
                     ],
                   ),
@@ -70,10 +65,7 @@ class CuadroN1 extends StatelessWidget {
                       ),
                       Text(
                         'PERIODO: 1',
-                        style: TextStyle(
-                          fontSize: 25,
-                           color: Colors.white
-                        ),
+                        style: TextStyle(fontSize: 25, color: Colors.white),
                       ),
                     ],
                   ),
@@ -110,7 +102,124 @@ class CuadroN1 extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      IngresoNotas(),
+                      Container(
+                        height: 200,
+                        width: 390,
+                        color: Color.fromARGB(176, 3, 52, 95),
+                        foregroundDecoration:
+                            BoxDecoration(border: Border.all(width: 3.0)),
+                        child: Center(
+                          child: Column(children: [
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            const Text(
+                              '  Ingreso de Notas',
+                              style:
+                                  TextStyle(fontSize: 18, color: Colors.white),
+                            ),
+                            const SizedBox(
+                              height: 13,
+                            ),
+                            Center(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Text(
+                                    'NIE:',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  const SizedBox(
+                                    width: 2,
+                                  ),
+                                  Container(
+                                    color: Colors.white,
+                                    width: 90,
+                                    height: 20,
+                                    child: const Center(
+                                        child: TextField(
+                                      keyboardType: TextInputType.number,
+                                    )),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 25),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text(
+                                  'Actividad 1:',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                const SizedBox(
+                                  width: 2,
+                                ),
+                                Container(
+                                  color: Colors.white,
+                                  width: 50,
+                                  height: 20,
+                                  child: const Center(
+                                      child: TextField(
+                                    keyboardType: TextInputType.number,
+                                  )),
+                                ),
+                                const SizedBox(width: 15),
+                                const Text(
+                                  'Actividad 2:',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                const SizedBox(
+                                  width: 2,
+                                ),
+                                Container(
+                                  color: Colors.white,
+                                  width: 50,
+                                  height: 20,
+                                  child: const Center(
+                                      child: TextField(
+                                    keyboardType: TextInputType.number,
+                                  )),
+                                ),
+                                const SizedBox(width: 15),
+                                const Text(
+                                  'Prueba:',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                const SizedBox(
+                                  width: 2,
+                                ),
+                                Container(
+                                  color: Colors.white,
+                                  width: 50,
+                                  height: 20,
+                                  child: const Center(
+                                      child: TextField(
+                                    keyboardType: TextInputType.number,
+                                  )),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 25),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                ElevatedButton(
+      onPressed: () {},
+      child: const Center(child: Text('Guardar')),
+    ),
+                                const SizedBox(
+                                  width: 30,
+                                ),
+                                ElevatedButton(
+      onPressed: () {},
+      child: const Center(child: Text('Reiniciar')),
+    ),
+                              ],
+                            ),
+                          ]),
+                        ),
+                      ),
                       ElevatedButton(
                         onPressed: () {},
                         child: const Center(child: Text('Regresar')),
@@ -274,139 +383,5 @@ class Tabledata extends StatelessWidget {
   }
 }
 
-class IngresoNotas extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 200,
-      width: 390,
-      color: Color.fromARGB(176, 3, 52, 95),
-      foregroundDecoration: BoxDecoration(border: Border.all(width: 3.0)),
-      child: Center(
-        child: Column(children: [
-          const SizedBox(
-            height: 10,
-          ),
-          const Text(
-            '  Ingreso de Notas',
-            style: TextStyle(fontSize: 18, color: Colors.white),
-          ),
-          const SizedBox(
-            height: 13,
-          ),
-          Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'NIE:',
-                  style: TextStyle(color: Colors.white),
-                ),
-                const SizedBox(
-                  width: 2,
-                ),
-                Campo()
-              ],
-            ),
-          ),
-          const SizedBox(height: 25),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Actividad 1:',
-                style: TextStyle(color: Colors.white),
-              ),
-              const SizedBox(
-                width: 2,
-              ),
-              Campo1(),
-              const SizedBox(width: 15),
-              const Text(
-                'Actividad 2:',
-                style: TextStyle(color: Colors.white),
-              ),
-              const SizedBox(
-                width: 2,
-              ),
-              Campo1(),
-              const SizedBox(width: 15),
-              const Text(
-                'Prueba:',
-                style: TextStyle(color: Colors.white),
-              ),
-              const SizedBox(
-                width: 2,
-              ),
-              Campo1(),
-            ],
-          ),
-          const SizedBox(height: 25),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Boton1(),
-              const SizedBox(
-                width: 30,
-              ),
-              Boton2()
-            ],
-          ),
-        ]),
-      ),
-    );
-  }
-}
 
-class Campo extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      width: 90,
-      height: 20,
-      child: const Center(
-          child: TextField(
-        keyboardType: TextInputType.number,
-      )),
-    );
-  }
-}
 
-class Campo1 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      width: 50,
-      height: 20,
-      child: const Center(
-          child: TextField(
-            
-        keyboardType: TextInputType.number,
-      )),
-    );
-  }
-}
-
-class Boton1 extends StatelessWidget {
-  @override
-  Widget build(Object context) {
-    return ElevatedButton(
-      onPressed: () {},
-      child: const Center(child: Text('Guardar')),
-    );
-  }
-}
-
-class Boton2 extends StatelessWidget {
-  @override
-  Widget build(Object context) {
-    return ElevatedButton(
-      onPressed: () {
-      
-      },
-      child: const Center(child: Text('Reiniciar')),
-    );
-  }
-}
