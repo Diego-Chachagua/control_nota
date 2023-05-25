@@ -1,5 +1,7 @@
 import 'package:control_notas/screens/periodo.dart';
 import 'package:flutter/material.dart';
+import 'RegistroAlum.dart';
+import 'RegistroProf.dart';
 
 import 'eliminar.dart';
 
@@ -68,7 +70,7 @@ class _CounterScreenState extends State<CounterScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
             color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
-              setState(() {});
+              setState(() {Navigator.push(context, MaterialPageRoute(builder: (context)=> const Profesores()));});
             },
             shape:const  RoundedRectangleBorder(),
             child: const Text(
