@@ -1,4 +1,5 @@
 // ignore: file_names
+import 'package:control_notas/screens/materias.dart';
 import 'package:flutter/material.dart';
 import '../main.dart';
 
@@ -58,7 +59,7 @@ class FormD extends StatelessWidget {
               
                   MaterialButton(
                   color: const Color.fromARGB(255, 20, 250, 28),
-                  onPressed: (){},
+                  onPressed: (){ Navigator.push(context,MaterialPageRoute(builder: (context) => Materias()), );},
                   child: const Text('Iniciar'),
                   ),
                 ],
