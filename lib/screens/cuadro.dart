@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:control_notas/screens/periodo.dart';
 import 'package:flutter/material.dart';
 import '../main.dart';
 import '../developer/consultasf.dart';
@@ -74,31 +75,127 @@ class CuadroN1 extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 10),
+                  //encabezado de tabla de notas
                   Table(
-                    defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                    columnWidths: const {
-                      0: FractionColumnWidth(0.09),
-                      1: FractionColumnWidth(0.17),
-                      2: FractionColumnWidth(0.35),
-                      3: FractionColumnWidth(0.08),
-                      4: FractionColumnWidth(0.08),
-                      5: FractionColumnWidth(0.08),
-                      6: FractionColumnWidth(0.08),
-                    },
-                    border: TableBorder.all(),
-                    children: [
-                      TableRow(children: [
-                        Caja(),
-                        Caja1(),
-                        Caja2(),
-                        A1(),
-                        A2(),
-                        PO(),
-                        PM(),
-                      ]),
-                    ],
-                  ),
-                  Tabledata(),
+        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+        columnWidths: const {
+          0: FractionColumnWidth(0.09),
+          1: FractionColumnWidth(0.17),
+          2: FractionColumnWidth(0.35),
+          3: FractionColumnWidth(0.08),
+          4: FractionColumnWidth(0.08),
+          5: FractionColumnWidth(0.08),
+          6: FractionColumnWidth(0.08),
+        },
+        border: TableBorder.all(),
+        children: [
+          TableRow(children: [
+            Container(
+                height: 20,
+                color: Colors.white,
+                child: const Center(
+                  child: Text('N°'),
+                )),
+            Container(
+                height: 20,
+                color: Colors.white,
+                child: const Center(
+                  child: Text('NIE'),
+                )),
+            Container(
+                height: 20,
+                color: Colors.white,
+                child: const Center(
+                  child: Text('Nombre completo'),
+                )),
+            Container(
+                height: 20,
+                color: Colors.white,
+                child: const Center(
+                  child: Text('A1'),
+                )),
+            Container(
+                height: 20,
+                color: Colors.white,
+                child: const Center(
+                  child: Text('A2'),
+                )),
+            Container(
+                height: 20,
+                color: Colors.white,
+                child: const Center(
+                  child: Text('PO'),
+                )),
+            Container(
+                height: 20,
+                color: Colors.white,
+                child: const Center(
+                  child: Text('PM'),
+                )),
+          ])
+        ]),
+        //inicio de definicon de tabla para datos desde la base
+        
+Table(
+        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+        columnWidths: const {
+          0: FractionColumnWidth(0.09),
+          1: FractionColumnWidth(0.17),
+          2: FractionColumnWidth(0.35),
+          3: FractionColumnWidth(0.08),
+          4: FractionColumnWidth(0.08),
+          5: FractionColumnWidth(0.08),
+          6: FractionColumnWidth(0.08),
+        },
+        border: TableBorder.all(),
+        children: [
+          TableRow(children: [
+            Container(
+                height: 20,
+                color: Colors.white,
+                child: const Center(
+                  child: Text('1'),
+                )),
+            Container(
+                height: 20,
+                color: Colors.white,
+                child: const Center(
+                  child: Text('123456789'),
+                )),
+            Container(
+                height: 20,
+                color: Colors.white,
+                child: const Center(
+                  child: Text('Name And Last Name'),
+                )),
+            Container(
+                height: 20,
+                color: Colors.white,
+                child: const Center(
+                  child: Text('0'),
+                )),
+            Container(
+                height: 20,
+                color: Colors.white,
+                child: const Center(
+                  child: Text('0'),
+                )),
+            Container(
+                height: 20,
+                color: Colors.white,
+                child: const Center(
+                  child: Text('0'),
+                )),
+            Container(
+                height: 20,
+                color: Colors.white,
+                child: const Center(
+                  child: Text('0'),
+                )),
+          ])
+        ]),
+
+
                   const SizedBox(
                     height: 290,
                   ),
@@ -214,22 +311,36 @@ class CuadroN1 extends StatelessWidget {
                               children: [
                                 ElevatedButton(
                                   onPressed: () async {
-                                    act1 = a1.text;
-                                    act2= a2.text;
-                                    pruO = po.text;
+                                    //verifica que campos estan vacios
+                                    if(a1.text!=""){
+                                      act1 = a1.text;
+                                    }
+                                    if(a2.text!=""){
+                                      act2= a2.text;
+                                    }
+                                    if(po.text!=""){
+                                      pruO = po.text;
+                                    }
                                     nie= nieEstu.text;
-                                    print("$act1, $act2, $pruO, $nie");
+                                    //limpieza de campos 
                                     a1.text="";
                                     a2.text="";
                                     po.text="";
                                     nieEstu.text="";
+                                    //verificacion de nie si esta o no en la base
                                     if(nie!=""){
                                       dynamic respuesta = await verNie(nie);
-                                      if(respuesta == "error"){
-                                        _notify(context,nie);
-                                      }
                                       if(respuesta == "noEncontrado"){
-                                        _notify_error(context);
+                                         _notify(context,nie);
+                                      }else{
+                                        //insercion de datos en la base
+                                         dynamic respuesta = await insertNP1(nie,act1,act2,pruO);
+                                         if(respuesta == "noEncontrado"){
+                                         
+                                      }else{
+                                        //mensaje de confirmacion
+                                        _notify1(context);
+                                      }
                                       }
                                     }
                                   },
@@ -239,7 +350,12 @@ class CuadroN1 extends StatelessWidget {
                                   width: 30,
                                 ),
                                 ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    a1.text="";
+                                    a2.text="";
+                                    po.text="";
+                                    nieEstu.text="";
+                                  },
                                   child: const Center(child: Text('Reiniciar')),
                                 ),
                               ],
@@ -248,7 +364,9 @@ class CuadroN1 extends StatelessWidget {
                         ),
                       ),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> const Periodos()));
+                        },
                         child: const Center(child: Text('Regresar')),
                       ),
                     ],
@@ -265,7 +383,7 @@ class CuadroN1 extends StatelessWidget {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text("NIE no encontrado"),
+            title: const Text("OPPS!\nNIE no encontrado"),
             content:  Text(
                 'Ningun NIE coincide con el ingresado : $nie '),
             actions: [
@@ -281,20 +399,20 @@ class CuadroN1 extends StatelessWidget {
           );
         });
   }
-  
-  void _notify_error(BuildContext context) {
-   showDialog(
+
+  void _notify1(BuildContext context) {
+    showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text("OPPS!"),
-            content: const Text(
-                'Algo salio mal en la base de datos'),
+      title: const Text("Datos Ingresados \n correctamente!"),
+            content:  const Text(
+                'Datos ingresados con exito'),
             actions: [
               Center(
                 child: TextButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pop(context);      
                   },
                   child: const Text('Aceptar'),
                 ),
@@ -303,158 +421,4 @@ class CuadroN1 extends StatelessWidget {
           );
         });
   }
-}
-
-
-
-class Caja extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        height: 20,
-        color: Colors.white,
-        child: const Center(
-          child: Text('N°'),
-        ));
-  }
-}
-
-class Caja1 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 20,
-      color: Colors.white,
-      child: const Center(
-        child: Text('NIE'),
-      ),
-    );
-  }
-}
-
-class Caja2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        height: 20,
-        color: Colors.white,
-        child: const Center(
-          child: Text('Nombre Estudiante'),
-        ));
-  }
-}
-
-class A1 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        height: 20,
-        color: Colors.white,
-        child: const Center(
-          child: Text('A1'),
-        ));
-  }
-}
-
-class A2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        height: 20,
-        color: Colors.white,
-        child: const Center(
-          child: Text('A2'),
-        ));
-  }
-}
-
-class PO extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        height: 20,
-        color: Colors.white,
-        child: const Center(
-          child: Text('PO'),
-        ));
-  }
-}
-
-class PM extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        height: 20,
-        color: Colors.white,
-        child: const Center(
-          child: Text('PM'),
-        ));
-  }
-}
-
-class Tabledata extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Table(
-        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-        columnWidths: const {
-          0: FractionColumnWidth(0.09),
-          1: FractionColumnWidth(0.17),
-          2: FractionColumnWidth(0.35),
-          3: FractionColumnWidth(0.08),
-          4: FractionColumnWidth(0.08),
-          5: FractionColumnWidth(0.08),
-          6: FractionColumnWidth(0.08),
-        },
-        border: TableBorder.all(),
-        children: [
-          TableRow(children: [
-            Container(
-                height: 20,
-                color: Colors.white,
-                child: const Center(
-                  child: Text('1'),
-                )),
-            Container(
-                height: 20,
-                color: Colors.white,
-                child: const Center(
-                  child: Text('123456789'),
-                )),
-            Container(
-                height: 20,
-                color: Colors.white,
-                child: const Center(
-                  child: Text('Name And Last Name'),
-                )),
-            Container(
-                height: 20,
-                color: Colors.white,
-                child: const Center(
-                  child: Text('0'),
-                )),
-            Container(
-                height: 20,
-                color: Colors.white,
-                child: const Center(
-                  child: Text('0'),
-                )),
-            Container(
-                height: 20,
-                color: Colors.white,
-                child: const Center(
-                  child: Text('0'),
-                )),
-            Container(
-                height: 20,
-                color: Colors.white,
-                child: const Center(
-                  child: Text('0'),
-                )),
-          ])
-        ]);
-  }
-
-  
-  
 }

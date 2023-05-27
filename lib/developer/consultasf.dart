@@ -11,7 +11,7 @@ import 'dart:collection';
 
 // ignore: unused_import
 import 'dart:io';
-
+//busqueda de nie en la base de datos 
 Future<dynamic> verNie(String nieEstu) async{
   http.Response enviar = await http.post(
     Uri.parse('https://notasincas.000webhostapp.com/nieestu.php'),
@@ -19,10 +19,18 @@ Future<dynamic> verNie(String nieEstu) async{
       "niestu": nieEstu,  
     },
   );
-   if (enviar.statusCode == 201) {
-    return "error";
-  } else {
-
     return enviar.body;
-  }
+}
+//ingreso de notas en periodo 1 en la base de datos
+Future<dynamic> insertNP1(String nieEstu,String a1, String a2 , String po) async{
+  http.Response enviar = await http.post(
+    Uri.parse('https://notasincas.000webhostapp.com/envionp1.php'),
+    body: <String, dynamic>{
+      "niestu": nieEstu, 
+      "a1":a1, 
+      "a2":a2,
+      "po":po,
+    },
+  );
+    return enviar.body;
 }
