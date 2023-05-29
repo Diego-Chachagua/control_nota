@@ -58,7 +58,7 @@ class _EstudianteState extends State<Estudiante> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/fondo_o.jpg'), fit: BoxFit.cover),
+            image: AssetImage('assets/01.jpg'), fit: BoxFit.cover),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,

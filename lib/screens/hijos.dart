@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(const MaterialApp(
     title: 'Navigation Basics',
-    home: Hijos(),
+    home: Hijos(duibd: '',),
   ));
 }
 
 class Hijos extends StatelessWidget{
-  const Hijos({super.key});
+  final String duibd;
+  const Hijos({super.key, required this.duibd});
 
   @override
   Widget build(BuildContext context) {
@@ -75,12 +76,12 @@ class Hijos extends StatelessWidget{
         ),
     );
   }
-}
+
 
 Widget hijos(){
   return Container(
     color: Colors.blue,
-    child:  const Center(child: Text('Hijos',style: TextStyle(fontSize: 20),))
+    child:   Center(child: Text(duibd,style: const TextStyle(fontSize: 20),))
     );
 }
 
@@ -112,4 +113,5 @@ Widget nieb(){
       ),
     ),
   );
+}
 }

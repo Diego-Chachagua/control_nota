@@ -103,16 +103,12 @@ String contrabd = "";
                         // ignore: use_build_context_synchronously
                         Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Hijos()),
+                  MaterialPageRoute(builder: (context) =>   Hijos(duibd: duibd)),
                    );
                       }
                     }
                   }
-  
 
-
-
-                   setState(() {});
                   },
                   child: const Text('Iniciar'),
   ),
