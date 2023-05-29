@@ -43,7 +43,7 @@ class _VerUsuariosState extends State<VerUsuarios> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/01.jpg'), fit: BoxFit.cover),
+            image: AssetImage('assets/fondo_o.jpg'), fit: BoxFit.cover),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -54,13 +54,13 @@ class _VerUsuariosState extends State<VerUsuarios> {
         ),
         body: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
-          children: <Widget>[Cuerpo()],
+          children: <Widget>[cuerpo()],
         ),
       ),
     );
   }
 
-  Widget Cuerpo() {
+  Widget cuerpo() {
     // ignore: avoid_unnecessary_containers
     return Container(
       child: Column(
@@ -80,14 +80,14 @@ class _VerUsuariosState extends State<VerUsuarios> {
           espacio(),
           titulo4(),
           espacio(),
-          BotonProfe(),
+          botonProfe(),
           espacio(),
           titulo5(),
           espacio(),
           boleta(),
           espacio(),
           espacio(),
-          BotonAyuda()
+          botonAyuda()
         ],
       ),
     );
@@ -193,7 +193,7 @@ class _VerUsuariosState extends State<VerUsuarios> {
                 width: 16.0), // Espacio entre los campos de texto y el botón
             ElevatedButton(
               onPressed: () {
-                // Acción del botón
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>  const VerUsuarios()));
               },
               child: Text('Ver'),
               style: ElevatedButton.styleFrom(
@@ -365,7 +365,7 @@ class _VerUsuariosState extends State<VerUsuarios> {
     );
   }
 
-  Widget BotonProfe() {
+  Widget botonProfe() {
     return Row(children: [
       ElevatedButton(
         onPressed: () {
@@ -381,7 +381,7 @@ class _VerUsuariosState extends State<VerUsuarios> {
     ]);
   }
 
-  Widget BotonAyuda() {
+  Widget botonAyuda() {
     return Row(children: [
       ElevatedButton(
         onPressed: () {

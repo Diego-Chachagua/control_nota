@@ -1,4 +1,5 @@
 import 'package:control_notas/screens/periodo.dart';
+import 'package:control_notas/screens/verUsuarios.dart';
 import 'package:flutter/material.dart';
 
 import 'RegistroAlum.dart';
@@ -99,6 +100,7 @@ class _CounterScreenState extends State<CounterScreen> {
             color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
               setState(() {});
+              Navigator.push(context, MaterialPageRoute(builder: (context) =>  const VerUsuarios()));
             },
             shape: const RoundedRectangleBorder(),
             child: const Text(
