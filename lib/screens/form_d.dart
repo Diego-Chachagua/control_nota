@@ -3,6 +3,7 @@ import 'package:control_notas/screens/periodo.dart';
 import 'package:flutter/material.dart';
 import '../developer/consultaso.dart';
 import '../main.dart';
+import 'elec_ayc.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -90,7 +91,7 @@ String contrabd = "";
                         // ignore: use_build_context_synchronously
                         Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Periodos()),
+                  MaterialPageRoute(builder: (context) => const EleccionAyC()),
                    );
                       }
                     }
