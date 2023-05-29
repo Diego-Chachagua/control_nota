@@ -1,5 +1,10 @@
+// ignore: avoid_print
+// ignore_for_file: avoid_print, unused_field, prefer_final_fields, avoid_function_literals_in_foreach_calls, sort_child_properties_last, deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:control_notas/screens/manual.dart';
+
+import '../developer/consultad.dart';
 
 
 class Registro extends StatelessWidget {
@@ -8,7 +13,7 @@ class Registro extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Estudiante());
+    return const MaterialApp(home: Estudiante());
   }
 }
 
@@ -20,10 +25,13 @@ class Estudiante extends StatefulWidget {
 }
 
 class _EstudianteState extends State<Estudiante> {
+  String grado = '' ;
+  String secciones = '' ;
+  String genero = '' ;
   String _seleccionada = 'Año';
-  List anios = ['Año', '1 año', '2 año', '1 y 2 año'];
+  List anios = ['Año', '1', '2',];
   String _seleccionada2 = 'Seccion';
-  List seccion = ['Seccion', 'A', 'B', 'f', 'G', 'H', 'K'];
+  List seccion = ['Seccion', 'A', 'F', 'E', 'H', 'G', 'D'];
   String _seleccionada3 = 'Genero';
   List gene = ['Genero', 'Masculino', 'Femenino'];
   bool? ischecked = false;
@@ -45,7 +53,38 @@ class _EstudianteState extends State<Estudiante> {
   TextEditingController _controller = TextEditingController();
   TextEditingController textField1Controller = TextEditingController();
   TextEditingController textField2Controller = TextEditingController();
-
+  TextEditingController nombre1 = TextEditingController();
+  TextEditingController apellido1 = TextEditingController();
+  TextEditingController nombre2 = TextEditingController();
+  TextEditingController apellido2 = TextEditingController();
+  String estudianten = '';
+  String estudiantea = '';
+  String padren = '';
+  String padrea = '';
+  String dui = '';
+  String nie = '';
+  String m1 = '';
+  String m2 = '';
+  String m3 = '';
+  String m4 = '';
+  String m5 = '';
+  String m6 = '';
+  String m7 = '';
+  String m8 = '';
+  String m9 = '';
+  String m10 = '';
+  String materia1 = '';
+  String materia2 = '';
+  String materia3 = '';
+  String materia4 = '';
+  String materia5 = '';
+  String materia6 = '';
+  String materia7 = '';
+  String materia8 = '';
+  String materia9 = '';
+  String materia10 = '';
+  String seccion1 = '';
+  String g = '';
   @override
   void dispose() {
     textField1Controller.dispose();
@@ -58,7 +97,7 @@ class _EstudianteState extends State<Estudiante> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/01.jpg'), fit: BoxFit.cover),
+            image: AssetImage('assets/fondo_o.jpg'), fit: BoxFit.cover),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -69,13 +108,13 @@ class _EstudianteState extends State<Estudiante> {
         ),
         body: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
-          children: <Widget>[Cuerpo()],
+          children: <Widget>[cuerpo()],
         ),
       ),
     );
   }
 
-  Widget Cuerpo() {
+  Widget cuerpo() {
     // ignore: avoid_unnecessary_containers
     return Container(
       child: Column(
@@ -87,10 +126,10 @@ class _EstudianteState extends State<Estudiante> {
           checkbox2(),
           checkbox3(),
           checkbox4(),
-          checkbox5(),
-          checkbox6(),
-          checkbox7(),
-          checkbox8(),
+          // checkbox5(),
+          // checkbox6(),
+          // checkbox7(),
+          // checkbox8(),
           espacio(),
           _createInput(),
           espacio(),
@@ -109,7 +148,7 @@ class _EstudianteState extends State<Estudiante> {
           botonGuardar(),
           espacio(),
           espacio(),
-          BotonAyuda()
+          botonAyuda()
         ],
       ),
     );
@@ -118,7 +157,7 @@ class _EstudianteState extends State<Estudiante> {
   Widget titulo1() {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      children: const [
         Text('Elija las materias que llevara el alumno',
             style: TextStyle(fontSize: 18.0, color: Colors.white)),
       ],
@@ -127,6 +166,7 @@ class _EstudianteState extends State<Estudiante> {
 
   Widget _createInput() {
     return TextField(
+      controller: nombre1,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
           fillColor: Colors.grey[200],
@@ -143,6 +183,7 @@ class _EstudianteState extends State<Estudiante> {
 
   Widget _createInput2() {
     return TextField(
+      controller: apellido1,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
           fillColor: Colors.grey[200],
@@ -159,6 +200,7 @@ class _EstudianteState extends State<Estudiante> {
 
   Widget _createInput3() {
     return TextField(
+      controller: nombre2,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
           fillColor: Colors.grey[200],
@@ -175,6 +217,7 @@ class _EstudianteState extends State<Estudiante> {
 
   Widget _createInput4() {
     return TextField(
+      controller: apellido2,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
           fillColor: Colors.grey[200],
@@ -192,7 +235,7 @@ class _EstudianteState extends State<Estudiante> {
   Widget _createInput5() {
     return Center(
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Row(
           children: [
             Expanded(
@@ -212,7 +255,7 @@ class _EstudianteState extends State<Estudiante> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
                 width:
                     140.0), // Espacio entre los campos de texto y el botón// Espacio entre los campos de texto y el botón
           ],
@@ -224,7 +267,7 @@ class _EstudianteState extends State<Estudiante> {
   Widget _createInput6() {
     return Center(
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Row(
           children: [
             Expanded(
@@ -259,7 +302,7 @@ class _EstudianteState extends State<Estudiante> {
     );
   }
 
-  List<DropdownMenuItem<String>> GetOptionsDropDownButton() {
+  List<DropdownMenuItem<String>> getOptionsDropDownButton() {
     List<DropdownMenuItem<String>> annios = [];
     anios.forEach((element) {
       annios.add(DropdownMenuItem(
@@ -270,7 +313,7 @@ class _EstudianteState extends State<Estudiante> {
     return annios;
   }
 
-  List<DropdownMenuItem<String>> GetOptionsDropDownButton2() {
+  List<DropdownMenuItem<String>> getOptionsDropDownButton2() {
     List<DropdownMenuItem<String>> secciones = [];
     seccion.forEach((element) {
       secciones.add(DropdownMenuItem(
@@ -281,7 +324,7 @@ class _EstudianteState extends State<Estudiante> {
     return secciones;
   }
 
-  List<DropdownMenuItem<String>> GetOptionsDropDownButton3() {
+  List<DropdownMenuItem<String>> getOptionsDropDownButton3() {
     List<DropdownMenuItem<String>> genero = [];
     gene.forEach((element) {
       genero.add(DropdownMenuItem(
@@ -295,33 +338,58 @@ class _EstudianteState extends State<Estudiante> {
   Widget crearDropdDownButton() {
     return Row(
       children: <Widget>[
-        SizedBox(width: 1),
+        const SizedBox(width: 1),
         DropdownButton(
           value: _seleccionada,
-          items: GetOptionsDropDownButton(),
+          items: getOptionsDropDownButton(),
           onChanged: (value) {
             setState(() {
-              _seleccionada = value.toString();
+              grado = _seleccionada = value.toString();
+
             });
           },
         ),
-        SizedBox(width: 29),
+        const SizedBox(width: 29),
         DropdownButton(
           value: _seleccionada2,
-          items: GetOptionsDropDownButton2(),
+          items: getOptionsDropDownButton2(),
           onChanged: (value) {
+            secciones = _seleccionada2 = value.toString();
+              if (secciones == 'A') {
+                seccion1 = '1';
+              }
+              if (secciones == 'F') {
+                seccion1 = '2';
+              }
+              if (secciones == 'E') {
+                seccion1 = '3';
+              }
+              if (secciones == 'H') {
+                seccion1 = '4';
+              }
+              if (secciones == 'G') {
+                seccion1 = '5';
+              }
+              if (secciones == 'D') {
+                seccion1 = '6';
+              }
             setState(() {
-              _seleccionada2 = value.toString();
+
             });
           },
         ),
-        SizedBox(width: 29),
+        const SizedBox(width: 29),
         DropdownButton(
           value: _seleccionada3,
-          items: GetOptionsDropDownButton3(),
+          items: getOptionsDropDownButton3(),
           onChanged: (value) {
             setState(() {
-              _seleccionada3 = value.toString();
+              g = _seleccionada3 = value.toString();
+              if (g == 'Masculino') {
+                genero = 'M';
+              }else{
+                genero = '';
+              }
             });
           },
         ),
@@ -339,40 +407,50 @@ class _EstudianteState extends State<Estudiante> {
           onChanged: (newBool) {
             setState(() {
               ischecked = newBool;
+              if(ischecked == true){
+                materia1 = '1';
+              }
             });
           },
         ),
-        Text(
+        const Text(
           'Lenguaje',
           style: TextStyle(fontSize: 13),
         ),
-        SizedBox(width: 15),
+        const SizedBox(width: 15),
         Checkbox(
           value: ischecked2,
           activeColor: Colors.transparent,
           tristate: true,
           onChanged: (newBool) {
+            ischecked2 = newBool;
+              if(ischecked2 == true){
+                materia2 = '2';
+              }
             setState(() {
-              ischecked2 = newBool;
+
             });
           },
         ),
-        Text(
+        const Text(
           'Sociales',
           style: TextStyle(fontSize: 13),
         ),
-        SizedBox(width: 5),
+        const SizedBox(width: 5),
         Checkbox(
           value: ischecked3,
           activeColor: Colors.transparent,
           tristate: true,
           onChanged: (newBool) {
+            ischecked3 = newBool;
+              if(ischecked3 == true){
+                materia3 = '3';
+              }
             setState(() {
-              ischecked3 = newBool;
             });
           },
         ),
-        Text(
+        const Text(
           'Ciencia',
           style: TextStyle(fontSize: 13),
         ),
@@ -388,42 +466,51 @@ class _EstudianteState extends State<Estudiante> {
           activeColor: Colors.transparent,
           tristate: true,
           onChanged: (newBool) {
+            ischecked4 = newBool;
+              if(ischecked4 == true){
+                materia4 = '4';
+              }
             setState(() {
-              ischecked4 = newBool;
             });
           },
         ),
-        Text(
+        const Text(
           'Muci',
           style: TextStyle(fontSize: 13),
         ),
-        SizedBox(width: 40),
+        const SizedBox(width: 40),
         Checkbox(
           value: ischecked5,
           activeColor: Colors.transparent,
           tristate: true,
           onChanged: (newBool) {
+            ischecked5 = newBool;
+              if(ischecked5 == true){
+                materia5 = '5';
+              }
             setState(() {
-              ischecked5 = newBool;
             });
           },
         ),
-        Text(
+        const Text(
           'Ingles',
           style: TextStyle(fontSize: 13),
         ),
-        SizedBox(width: 17),
+        const SizedBox(width: 17),
         Checkbox(
           value: ischecked6,
           activeColor: Colors.transparent,
           tristate: true,
           onChanged: (newBool) {
+            ischecked6 = newBool;
+              if(ischecked6 == true){
+                materia6 = '6';
+              }
             setState(() {
-              ischecked6 = newBool;
             });
           },
         ),
-        Text(
+        const Text(
           'Matematica',
           style: TextStyle(fontSize: 13),
         ),
@@ -439,42 +526,51 @@ class _EstudianteState extends State<Estudiante> {
           activeColor: Colors.transparent,
           tristate: true,
           onChanged: (newBool) {
+            ischecked7 = newBool;
+              if(ischecked7 == true){
+                materia7 = '7';
+              }
             setState(() {
-              ischecked7 = newBool;
             });
           },
         ),
-        Text(
+        const Text(
           'Informatica',
           style: TextStyle(fontSize: 13),
         ),
-        SizedBox(width: 5),
+        const SizedBox(width: 5),
         Checkbox(
           value: ischecked8,
           activeColor: Colors.transparent,
           tristate: true,
           onChanged: (newBool) {
+            ischecked8 = newBool;
+              if(ischecked8 == true){
+                materia8 = '8';
+              }
             setState(() {
-              ischecked8 = newBool;
             });
           },
         ),
-        Text(
+        const Text(
           'OPLV',
           style: TextStyle(fontSize: 13),
         ),
-        SizedBox(width: 15),
+        const SizedBox(width: 15),
         Checkbox(
           value: ischecked9,
           activeColor: Colors.transparent,
           tristate: true,
           onChanged: (newBool) {
+            ischecked9 = newBool;
+              if(ischecked9 == true){
+                materia9 = '9';
+              }
             setState(() {
-              ischecked9 = newBool;
             });
           },
         ),
-        Text(
+        const Text(
           'Seminario',
           style: TextStyle(fontSize: 13),
         ),
@@ -490,12 +586,15 @@ class _EstudianteState extends State<Estudiante> {
           activeColor: Colors.transparent,
           tristate: true,
           onChanged: (newBool) {
+            ischecked10 = newBool;
+              if(ischecked10 == true){
+                materia10 = '10';
+              }
             setState(() {
-              ischecked10 = newBool;
             });
           },
         ),
-        Text(
+        const Text(
           'Curso de habilitacion para la vida',
           style: TextStyle(fontSize: 13),
         ),
@@ -503,114 +602,172 @@ class _EstudianteState extends State<Estudiante> {
     );
   }
 
-  Widget checkbox5() {
-    return Row(
-      children: [
-        Checkbox(
-          value: ischecked11,
-          activeColor: Colors.transparent,
-          tristate: true,
-          onChanged: (newBool) {
-            setState(() {
-              ischecked11 = newBool;
-            });
-          },
-        ),
-        Text(
-          'Evidencia actitudes favorables para la convivencia',
-          style: TextStyle(fontSize: 13),
-        ),
-      ],
-    );
-  }
+  // Widget checkbox5() {
+  //   return Row(
+  //     children: [
+  //       Checkbox(
+  //         value: ischecked11,
+  //         activeColor: Colors.transparent,
+  //         tristate: true,
+  //         onChanged: (newBool) {
+  //           setState(() {
+  //             ischecked11 = newBool;
+  //           });
+  //         },
+  //       ),
+  //       const Text(
+  //         'Evidencia actitudes favorables para la convivencia',
+  //         style: TextStyle(fontSize: 13),
+  //       ),
+  //     ],
+  //   );
+  // }
 
-  Widget checkbox6() {
-    return Row(
-      children: [
-        Checkbox(
-          value: ischecked12,
-          activeColor: Colors.transparent,
-          tristate: true,
-          onChanged: (newBool) {
-            setState(() {
-              ischecked12 = newBool;
-            });
-          },
-        ),
-        Text(
-          'Toma desiciones de forma autonoma y responsable',
-          style: TextStyle(fontSize: 12),
-        ),
-      ],
-    );
-  }
+  // Widget checkbox6() {
+  //   return Row(
+  //     children: [
+  //       Checkbox(
+  //         value: ischecked12,
+  //         activeColor: Colors.transparent,
+  //         tristate: true,
+  //         onChanged: (newBool) {
+  //           setState(() {
+  //             ischecked12 = newBool;
+  //           });
+  //         },
+  //       ),
+  //       const Text(
+  //         'Toma desiciones de forma autonoma y responsable',
+  //         style: TextStyle(fontSize: 12),
+  //       ),
+  //     ],
+  //   );
+  // }
 
-  Widget checkbox7() {
-    return Row(
-      children: [
-        Checkbox(
-          value: ischecked13,
-          activeColor: Colors.transparent,
-          tristate: true,
-          onChanged: (newBool) {
-            setState(() {
-              ischecked13 = newBool;
-            });
-          },
-        ),
-        Text(
-          'Se expresa y participa con respeto',
-          style: TextStyle(fontSize: 12),
-        ),
-      ],
-    );
-  }
+  // Widget checkbox7() {
+  //   return Row(
+  //     children: [
+  //       Checkbox(
+  //         value: ischecked13,
+  //         activeColor: Colors.transparent,
+  //         tristate: true,
+  //         onChanged: (newBool) {
+  //           setState(() {
+  //             ischecked13 = newBool;
+  //           });
+  //         },
+  //       ),
+  //       const Text(
+  //         'Se expresa y participa con respeto',
+  //         style: TextStyle(fontSize: 12),
+  //       ),
+  //     ],
+  //   );
+  // }
 
-  Widget checkbox8() {
-    return Row(
-      children: [
-        Checkbox(
-          value: ischecked14,
-          activeColor: Colors.transparent,
-          tristate: true,
-          onChanged: (newBool) {
-            setState(() {
-              ischecked14 = newBool;
-            });
-          },
-        ),
-        Text(
-          'Muestra sentido de pertencia y respeto por nuestra cultura',
-          style: TextStyle(fontSize: 11),
-        ),
-      ],
-    );
-  }
+  // Widget checkbox8() {
+  //   return Row(
+  //     children: [
+  //       Checkbox(
+  //         value: ischecked14,
+  //         activeColor: Colors.transparent,
+  //         tristate: true,
+  //         onChanged: (newBool) {
+  //           setState(() {
+  //             ischecked14 = newBool;
+  //           });
+  //         },
+  //       ),
+  //       const Text(
+  //         'Muestra sentido de pertencia y respeto por nuestra cultura',
+  //         style: TextStyle(fontSize: 11),
+  //       ),
+  //     ],
+  //   );
+  // }
 
   Widget botonGuardar() {
     return Row(
       children: [
         ElevatedButton(
-          onPressed: () {
+          onPressed: () async {
             // Lógica que se ejecutará cuando se presione el botón "Guardar"
+            grado;
+            seccion1;
+            genero;
+            m1 = materia1;
+            m2 = materia2;
+            m3 = materia3;
+            m4 = materia4;
+            m5 = materia5;
+            m6 = materia6;
+            m7 = materia7;
+            m8 = materia8;
+            m9 = materia9;
+            m10 = materia10;
+            estudianten = nombre1.text;
+            estudiantea = apellido1.text;
+            padren = nombre2.text;
+            padrea = apellido2.text;
+            dui = textField1Controller.text;
+            nie = textField2Controller.text;
+            _seleccionada = 'Año';
+            _seleccionada2 = 'Seccion';
+            _seleccionada3 = 'Genero';
+            ischecked = false;
+            ischecked2 = false;
+            ischecked3 = false;
+            ischecked4 = false;
+            ischecked5 = false;
+            ischecked6 = false;
+            ischecked7 = false;
+            ischecked8 = false;
+            ischecked9 = false;
+            ischecked10 = false;
+            nombre1.text = '';
+            apellido1.text = '';
+            nombre2.text = '';
+            apellido2.text = '';
+            textField1Controller.text = '';
+            textField2Controller.text = '';
+            await registroAlumno(grado, seccion1, genero, estudianten, estudiantea, padren, padrea, dui,  nie,  m1,  m2,  m3,  m4,  m5,  m6,  m7,  m8,  m9,  m10);
             setState(() {
               informacionGuardada = 'Datos guardados';
             });
           },
-          child: Text('Guardar'),
+          child: const Text('Guardar'),
           style: ElevatedButton.styleFrom(
             primary: Colors.green, // Cambia el color de fondo del botón a rojo
           ),
         ),
-        SizedBox(width: 5),
+        const SizedBox(width: 5),
         ElevatedButton(
           onPressed: () {
             // Lógica que se ejecutará cuando se presione el botón "Cancelar"
             setState(() {
+              _seleccionada = 'Año';
+              _seleccionada2 = 'Seccion';
+              _seleccionada3 = 'Genero';
+              ischecked = false;
+              ischecked2 = false;
+              ischecked3 = false;
+              ischecked4 = false;
+              ischecked5 = false;
+              ischecked6 = false;
+              ischecked7 = false;
+              ischecked8 = false;
+              ischecked9 = false;
+              ischecked10 = false;
+              nombre1.text = '';
+              apellido1.text = '';
+              nombre2.text = '';
+              apellido2.text = '';
+              textField1Controller.text = '';
+              textField2Controller.text = '';
               informacionCancelada = 'Informacion calcelada';
             });
           },
-          child: Text('Cancelar'),
+          child: const Text('Cancelar'),
           style: ElevatedButton.styleFrom(
             primary: Colors.red, // Cambia el color de fondo del botón a rojo
           ),
@@ -619,16 +776,16 @@ class _EstudianteState extends State<Estudiante> {
     );
   }
 
-  Widget BotonAyuda() {
+  Widget botonAyuda() {
     return Row(children: [
       ElevatedButton(
         onPressed: () {
           // Lógica que se ejecutará cuando se presione el botón "Guardar"
-          Navigator.push(context,MaterialPageRoute(builder: (context) => Manual()), );
+          Navigator.push(context,MaterialPageRoute(builder: (context) => const Manual()), );
         },
-        child: Text('Ayuda'),
+        child: const Text('Ayuda'),
         style: ElevatedButton.styleFrom(
-          primary: Color.fromARGB(
+          primary: const Color.fromARGB(
               255, 64, 65, 66), // Cambia el color de fondo del botón a rojo
         ),
       ),
