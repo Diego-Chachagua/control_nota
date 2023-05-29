@@ -72,7 +72,7 @@ String contrabd = "";
                   MaterialButton(
                   color: const Color.fromARGB(255, 20, 250, 28),
                   onPressed: () async{
-                     usuariobd = usuariob.text;
+                    usuariobd = usuariob.text;
                     contrabd = contrab.text;
                     if (usuariobd.isNotEmpty || contrabd.isNotEmpty) {
                     dynamic respuesta = await comprobara(usuariobd,contrabd);

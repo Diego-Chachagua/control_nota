@@ -1,15 +1,63 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+//Libreria que nos permitira usar funciones async
+import 'dart:async';
+//Libreria que nos permitira decodificar los archivos JSON
+import 'dart:convert';
+import 'dart:collection';
+
+// ignore: unused_import
+import 'dart:io';
+import '../developer/consultaso.dart';
 
 void main() {
   runApp(const MaterialApp(
     title: 'Navigation Basics',
-    home: Hijos(duibd: '',),
+    home: Hijos(duibd1: '',),
   ));
 }
 
-class Hijos extends StatelessWidget{
-  final String duibd;
-  const Hijos({super.key, required this.duibd});
+class Hijos extends StatefulWidget{
+  final String duibd1;
+  const Hijos({super.key, required this.duibd1});
+
+  @override
+  State<Hijos> createState() => _HijosState();
+}
+
+class _HijosState extends State<Hijos> {
+
+var nombre = [];
+var nie3= [];
+@override
+void initState(){
+  super.initState();
+  getData();
+}
+
+Future getData() async{
+  String url = 'https://notasincas.000webhostapp.com/hijos1.php';
+
+  http.Response response = await http.get(Uri.parse(url));
+  var resultado = jsonDecode(response.body);
+
+  for (var i = 0; i < resultado.length; i++){
+    var dato =resultado[i];
+    print(dato["nombre_estudiante"]);
+    print(dato["nie"]);
+
+  // ignore: non_constant_identifier_names
+          var nom_tem = dato["nombre_estudiante"];
+          nombre.add(nom_tem);
+
+          // ignore: non_constant_identifier_names
+          var id_tem = dato["nie"];
+          nie3.add(id_tem);
+
+  }
+}
+
+//-----------codigo pantalla 
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +115,8 @@ class Hijos extends StatelessWidget{
               
                   MaterialButton(
                   color: const Color.fromARGB(255, 107, 107, 107),
-                  onPressed: (){},
+                  onPressed: (){
+                  },
                   child: const Text('Ver boleta', style: TextStyle(fontSize: 20,color: Colors.white),),
                   ),
           ],
@@ -77,11 +126,10 @@ class Hijos extends StatelessWidget{
     );
   }
 
-
 Widget hijos(){
   return Container(
     color: Colors.blue,
-    child:   Center(child: Text(duibd,style: const TextStyle(fontSize: 20),))
+    child:   Center(child: Text(widget.duibd1,style: const TextStyle(fontSize: 20),))
     );
 }
 
@@ -93,7 +141,9 @@ Widget nie(){
 }
 
 Widget hijo1(){
-  return const Center(child: Text('Chepito Tobar Menguez monroy',style: TextStyle(fontSize: 20),));
+  return Column(
+    
+  );
 }
 
 Widget nie1(){
@@ -114,4 +164,6 @@ Widget nieb(){
     ),
   );
 }
+
+
 }
