@@ -49,7 +49,7 @@ class _ProfesorState extends State<Profesor> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/01.jpg'), fit: BoxFit.cover),
+            image: AssetImage('assets/fondo_12.jpg'), fit: BoxFit.cover),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
