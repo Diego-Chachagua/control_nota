@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: Profesor());
+    return const MaterialApp(debugShowCheckedModeBanner: false, home: Profesor());
   }
 }
 
@@ -22,6 +22,9 @@ class Profesor extends StatefulWidget {
 }
 
 class _ProfesorState extends State<Profesor> {
+    String grado = '' ;
+  String secciones = '' ;
+  String genero = '' ;
   String _seleccionada = 'Año';
   List anios = ['Año', '1 año', '2 año', '1 y 2 año'];
   String _seleccionada2 = 'Seccion';
@@ -44,6 +47,9 @@ class _ProfesorState extends State<Profesor> {
   bool? ischecked14 = false;
   String informacionGuardada = '';
   String informacionCancelada = '';
+  TextEditingController nombre1 = TextEditingController();
+  String nombre = '';
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -109,6 +115,7 @@ class _ProfesorState extends State<Profesor> {
 
   Widget _createInput() {
     return TextField(
+      controller: nombre1,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
           fillColor: Colors.grey[200],
@@ -186,6 +193,7 @@ class _ProfesorState extends State<Profesor> {
           value: _seleccionada,
           items: GetOptionsDropDownButton(),
           onChanged: (value) {
+            
             setState(() {
               _seleccionada = value.toString();
             });
@@ -479,8 +487,10 @@ class _ProfesorState extends State<Profesor> {
         ElevatedButton(
           onPressed: () {
             // Lógica que se ejecutará cuando se presione el botón "Guardar"
+            nombre = nombre1.text;
             setState(() {
               informacionGuardada = 'Datos guardados';
+              grado = _seleccionada;
             });
           },
           child: Text('Guardar'),
