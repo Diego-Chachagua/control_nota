@@ -94,7 +94,7 @@ setState(() {
                 columnWidths: const {0: FractionColumnWidth(0.5)},
                 border: TableBorder.all(),
                 children: [
-                 
+
                   TableRow(
                     children: [
                       hijos(),
