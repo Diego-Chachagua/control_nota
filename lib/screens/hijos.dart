@@ -8,7 +8,10 @@ import 'dart:collection';
 
 // ignore: unused_import
 import 'dart:io';
+
 import '../developer/consultaso.dart';
+
+
 
 void main() {
   runApp(const MaterialApp(
@@ -20,42 +23,46 @@ void main() {
 class Hijos extends StatefulWidget{
   final String duibd1;
   const Hijos({super.key, required this.duibd1});
-
   @override
   State<Hijos> createState() => _HijosState();
 }
 
 class _HijosState extends State<Hijos> {
 
-var nombre = [];
-var nie3= [];
+List<String> nombre = [];
+List<String> nie3 = [];
+var reslt;
+
 @override
 void initState(){
   super.initState();
-  getData();
-}
-
-Future getData() async{
-  String url = 'https://notasincas.000webhostapp.com/hijos1.php';
-
-  http.Response response = await http.get(Uri.parse(url));
-  var resultado = jsonDecode(response.body);
-
-  for (var i = 0; i < resultado.length; i++){
-    var dato =resultado[i];
+  (() async{
+    reslt = await enviardui(widget.duibd1);
+    if (reslt!="noExisten"){
+      for (var i = 0; i < reslt.length; i++){
+    var dato =reslt[i];
     print(dato["nombre_estudiante"]);
     print(dato["nie"]);
 
   // ignore: non_constant_identifier_names
           var nom_tem = dato["nombre_estudiante"];
-          nombre.add(nom_tem);
+     
 
           // ignore: non_constant_identifier_names
           var id_tem = dato["nie"];
-          nie3.add(id_tem);
+         
 
+setState(() {
+  // Actualizar las listas con los datos obtenidos
+  nombre.add(nom_tem);
+  nie3.add(id_tem);
+});
   }
+    }
+  })();
 }
+
+
 
 //-----------codigo pantalla 
 
@@ -94,9 +101,6 @@ Future getData() async{
                   ),
             
                   TableRow(
-                    decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 255, 255, 255)
-                    ),
                     children: [
                       hijo1(),
                       nie1(),
@@ -140,15 +144,31 @@ Widget nie(){
     );
 }
 
-Widget hijo1(){
-  return Column(
-    
+Widget hijo1() {
+  return Container(
+    color: Colors.white,
+    child: Column(
+      children: [
+        
+        for (var i = 0; i < nombre.length; i++)
+          Text(nombre[i], style: const TextStyle(fontSize: 20)),
+      ],
+    ),
   );
 }
 
-Widget nie1(){
-  return const Center(child:  Text('01828733-1',style: TextStyle(fontSize: 20),));
+Widget nie1() {
+  return Container(
+    color: Colors.white,
+    child: Column(
+      children: [
+        for (var i = 0; i < nie3.length; i++)
+          Text(nie3[i], style: const TextStyle(fontSize: 20)),
+      ],
+    ),
+  );
 }
+
 
 Widget nieb(){
   return  Padding(
