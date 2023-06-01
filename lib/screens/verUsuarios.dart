@@ -173,6 +173,8 @@ class _VerUsuariosState extends State<VerUsuarios> {
             Expanded(
               flex: 2,
               child: TextField(
+                maxLength: 1,
+                textAlign: TextAlign.center,
                 controller: textField1Controller,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
@@ -192,6 +194,9 @@ class _VerUsuariosState extends State<VerUsuarios> {
             Expanded(
               flex: 2,
               child: TextField(
+                maxLength: 1,
+                textAlign: TextAlign.center,
+                textCapitalization: TextCapitalization.characters,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
@@ -234,6 +239,8 @@ class _VerUsuariosState extends State<VerUsuarios> {
             Expanded(
               flex: 2,
               child: TextField(
+                maxLength: 1,
+                textAlign: TextAlign.center,
                 controller: textField2Controller,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
@@ -253,6 +260,9 @@ class _VerUsuariosState extends State<VerUsuarios> {
             Expanded(
               flex: 2,
               child: TextField(
+                maxLength: 1,
+                textAlign: TextAlign.center,
+                textCapitalization: TextCapitalization.characters,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
@@ -292,6 +302,8 @@ class _VerUsuariosState extends State<VerUsuarios> {
             Expanded(
               flex: 2,
               child: TextField(
+                maxLength: 1,
+                textAlign: TextAlign.center,
                 controller: textField3Controller,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
@@ -311,6 +323,9 @@ class _VerUsuariosState extends State<VerUsuarios> {
             Expanded(
               flex: 2,
               child: TextField(
+                maxLength: 1,
+                textAlign: TextAlign.center,
+                textCapitalization: TextCapitalization.characters,
                 controller: textField5Controller,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
