@@ -31,7 +31,6 @@ class Hijos extends StatefulWidget {
 }
 
 class _HijosState extends State<Hijos> {
-<<<<<<< HEAD
 
 List<String> nombre = [];
 List<String> nie3 = [];
@@ -67,41 +66,7 @@ setState(() {
 }
 
 
-
-//-----------codigo pantalla 
-=======
-  var nombre = [];
-  var nie3 = [];
-  @override
-  void initState() {
-    super.initState();
-    getData();
-  }
-
-  Future getData() async {
-    String url = 'https://notasincas.000webhostapp.com/hijos1.php';
-
-    http.Response response = await http.get(Uri.parse(url));
-    var resultado = jsonDecode(response.body);
-
-    for (var i = 0; i < resultado.length; i++) {
-      var dato = resultado[i];
-      print(dato["nombre_estudiante"]);
-      print(dato["nie"]);
-
-      // ignore: non_constant_identifier_names
-      var nom_tem = dato["nombre_estudiante"];
-      nombre.add(nom_tem);
-
-      // ignore: non_constant_identifier_names
-      var id_tem = dato["nie"];
-      nie3.add(id_tem);
-    }
-  }
-
 //-----------codigo pantalla
->>>>>>> 985c864c427ed8a21dbaaa093ff49e6ce640486e
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -134,7 +99,6 @@ setState(() {
                     nie(),
                   ]),
                   TableRow(
-<<<<<<< HEAD
                     children: [
                       hijos(),
                       nie(),
@@ -147,14 +111,6 @@ setState(() {
                       nie1(),
                     ]
                   ),
-
-                      decoration: const BoxDecoration(
-                          color: Color.fromARGB(255, 255, 255, 255)),
-                      children: [
-                        hijo1(),
-                        nie1(),
-                      ]),
->>>>>>> 985c864c427ed8a21dbaaa093ff49e6ce640486e
                 ],
               ),
             ),
@@ -201,7 +157,6 @@ setState(() {
         )));
   }
 
-<<<<<<< HEAD
 Widget hijo1() {
   return Container(
     color: Colors.white,
@@ -237,32 +192,9 @@ Widget nieb(){
         decoration: InputDecoration(
           counterStyle: TextStyle(color: Colors.white),
           hintText: "Nie del alumno a ver boleta",
-=======
-  Widget hijo1() {
-    return Column();
-  }
-
-  Widget nie1() {
-    return const Center(
-        child: Text(
-      '01828733-1',
-      style: TextStyle(fontSize: 20),
-    ));
-  }
-
-  Widget nieb() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 90, vertical: 5),
-      child: Container(
-        color: Colors.white,
-        child: const TextField(
-          decoration: InputDecoration(
-            counterStyle: TextStyle(color: Colors.white),
-            hintText: "Nie del alumno a ver boleta",
-          ),
->>>>>>> 985c864c427ed8a21dbaaa093ff49e6ce640486e
-        ),
       ),
-    );
+    ),
+   ) );
   }
-}
+  }
+
