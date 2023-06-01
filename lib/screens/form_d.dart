@@ -1,6 +1,7 @@
 // ignore: file_names
 import 'package:control_notas/screens/materias.dart';
 import 'package:flutter/material.dart';
+import '../developer/consultasf.dart';
 import '../developer/consultaso.dart';
 import '../main.dart';
 import 'elec_ayc.dart';
@@ -91,8 +92,9 @@ String contrabd = "";
                         // ignore: use_build_context_synchronously
                         Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Materia()),
+                  MaterialPageRoute(builder: (context) => Materias()),
                    );
+                    dynamic respuesta = await buscarCode(usuariobd,contrabd);
                       }
                     }
                     }
