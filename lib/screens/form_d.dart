@@ -1,5 +1,5 @@
 // ignore: file_names
-import 'package:control_notas/screens/periodo.dart';
+import 'package:control_notas/screens/materias.dart';
 import 'package:flutter/material.dart';
 import '../developer/consultaso.dart';
 import '../main.dart';
@@ -91,7 +91,7 @@ String contrabd = "";
                         // ignore: use_build_context_synchronously
                         Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const EleccionAyC()),
+                  MaterialPageRoute(builder: (context) => Materia()),
                    );
                       }
                     }

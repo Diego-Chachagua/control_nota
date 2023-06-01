@@ -115,8 +115,8 @@ class _CounterScreenState extends State<CounterScreen> {
             padding:const  EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
             color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
-
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const Periodos()));
+              
+              //Navigator.push(context, MaterialPageRoute(builder: (context) =>  Periodos()));
             },
             shape: const RoundedRectangleBorder(),
             child: const Text(
