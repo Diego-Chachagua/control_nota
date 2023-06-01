@@ -1,448 +1,12 @@
-// ignore_for_file: sort_child_properties_last, deprecated_member_use
-
-import 'package:flutter/material.dart';
-import 'package:control_notas/screens/manual.dart';
-import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'dart:typed_data';
 import 'package:flutter/services.dart' show rootBundle;
 
-import '../developer/consultad.dart';
-import 'consultaprofe.dart';
+import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_pdf/pdf.dart';
+
 import 'guardarbol.dart';
 
-import 'boleta1.dart';
-import 'padre.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: VerUsuarios(),
-    );
-  }
-}
-
-class VerUsuarios extends StatefulWidget {
-  const VerUsuarios({super.key});
-
-  @override
-  State<VerUsuarios> createState() => _VerUsuariosState();
-}
-
-class _VerUsuariosState extends State<VerUsuarios> {
-  TextEditingController textField1Controller = TextEditingController();
-  TextEditingController textField2Controller = TextEditingController();
-  TextEditingController textField3Controller = TextEditingController();
-  TextEditingController textField4Controller = TextEditingController();
-  TextEditingController textField5Controller = TextEditingController();
-  String seccionprofe = '';
-  String gradoprofe = '';
-
-  @override
-  void dispose() {
-    textField1Controller.dispose();
-    textField2Controller.dispose();
-    super.dispose();
-  }
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage('assets/fondo_o.jpg'), fit: BoxFit.cover),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          elevation: 0,
-          title: const Text('Consultas'),
-          backgroundColor: const Color(0x00E8E2E2),
-        ),
-        body: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
-          children: <Widget>[cuerpo()],
-        ),
-      ),
-    );
-  }
-
-  Widget cuerpo() {
-    // ignore: avoid_unnecessary_containers
-    return Container(
-      child: Column(
-        children: <Widget>[
-          espacio(),
-          titulo1(),
-          espacio(),
-          usuarios(),
-          espacio(),
-          titulo2(),
-          espacio(),
-          estudiantes(),
-          espacio(),
-          titulo3(),
-          espacio(),
-          padres(),
-          espacio(),
-          titulo4(),
-          espacio(),
-          botonProfe(),
-          espacio(),
-          titulo5(),
-          espacio(),
-          boleta(),
-          espacio(),
-          espacio(),
-          botonAyuda()
-        ],
-      ),
-    );
-  }
-
-  Widget espacio() {
-    return const SizedBox(
-      height: 20,
-    );
-  }
-
-  Widget titulo1() {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
-        Text('Ver Usuarios',
-            style: TextStyle(fontSize: 18.0, color: Colors.white)),
-      ],
-    );
-  }
-
-  Widget titulo2() {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
-        Text('Ver Estudiantes',
-            style: TextStyle(fontSize: 18.0, color: Colors.white)),
-      ],
-    );
-  }
-
-  Widget titulo3() {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
-        Text('Ver Padres',
-            style: TextStyle(fontSize: 18.0, color: Colors.white)),
-      ],
-    );
-  }
-
-  Widget titulo4() {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
-        Text('Ver Profesores',
-            style: TextStyle(fontSize: 18.0, color: Colors.white)),
-      ],
-    );
-  }
-
-  Widget titulo5() {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
-        Text('Ver Boleta',
-            style: TextStyle(fontSize: 18.0, color: Colors.white)),
-      ],
-    );
-  }
-
-  Widget usuarios() {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          children: [
-            Expanded(
-              flex: 2,
-              child: TextField(
-                controller: textField1Controller,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  fillColor: Colors.grey[200],
-                  filled: true,
-                  hintText: 'Año',
-                  labelText: 'Grado',
-                  helperText: 'solo el año',
-                ),
-              ),
-            ),
-            const SizedBox(
-                width: 16.0), // Espacio entre los campos de texto y el botón
-            Expanded(
-              flex: 2,
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  fillColor: Colors.grey[200],
-                  filled: true,
-                  hintText: 'Seccion',
-                  labelText: 'Seccion',
-                  helperText: 'solo la seccion',
-                ),
-              ),
-            ),
-            const SizedBox(
-                width: 16.0), // Espacio entre los campos de texto y el botón
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const VerUsuarios()));
-              },
-              child: const Text('Ver'),
-              style: ElevatedButton.styleFrom(
-                primary: const Color.fromARGB(255, 64, 65,
-                    66), // Cambia el color de fondo del botón a rojo
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget estudiantes() {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          children: [
-            Expanded(
-              flex: 2,
-              child: TextField(
-                controller: textField2Controller,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  fillColor: Colors.grey[200],
-                  filled: true,
-                  hintText: 'Año',
-                  labelText: 'Grado',
-                  helperText: 'solo el año',
-                ),
-              ),
-            ),
-            const SizedBox(
-                width: 16.0), // Espacio entre los campos de texto y el botón
-            Expanded(
-              flex: 2,
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  fillColor: Colors.grey[200],
-                  filled: true,
-                  hintText: 'Seccion',
-                  labelText: 'Seccion',
-                  helperText: 'solo la seccion',
-                ),
-              ),
-            ),
-            const SizedBox(
-                width: 16.0), // Espacio entre los campos de texto y el botón
-            ElevatedButton(
-              onPressed: () {
-                // Acción del botón
-              },
-              child: const Text('Ver'),
-              style: ElevatedButton.styleFrom(
-                primary: const Color.fromARGB(255, 64, 65,
-                    66), // Cambia el color de fondo del botón a rojo
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget padres() {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          children: [
-            Expanded(
-              flex: 2,
-              child: TextField(
-                controller: textField3Controller,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  fillColor: Colors.grey[200],
-                  filled: true,
-                  hintText: 'Año',
-                  labelText: 'Grado',
-                  helperText: 'solo el año',
-                ),
-              ),
-            ),
-            const SizedBox(
-                width: 16.0), // Espacio entre los campos de texto y el botón
-            Expanded(
-              flex: 2,
-              child: TextField(
-                controller: textField5Controller,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  fillColor: Colors.grey[200],
-                  filled: true,
-                  hintText: 'Seccion',
-                  labelText: 'Seccion',
-                  helperText: 'solo la seccion',
-                ),
-              ),
-            ),
-            const SizedBox(
-                width: 16.0), // Espacio entre los campos de texto y el botón
-            ElevatedButton(
-             onPressed: () async{
-                if (textField5Controller == 'A' || textField5Controller == 'a') {
-                seccionprofe = '1';
-                }
-                if (textField5Controller == 'F' || textField5Controller == 'f') {
-                  seccionprofe = '2';
-                }
-                if (textField5Controller == 'E' || textField5Controller == 'e') {
-                  seccionprofe = '3';
-                }
-                if (textField5Controller == 'H' || textField5Controller == 'h') {
-                  seccionprofe = '4';
-                }
-                if (textField5Controller == 'G' || textField5Controller == 'g') {
-                  seccionprofe = '5';
-                }
-                if (textField5Controller == 'D' || textField5Controller == 'd') {
-                  seccionprofe = '6';
-                }
-                seccionprofe;
-                gradoprofe = textField3Controller.text;
-                await consultap(gradoprofe, seccionprofe);
-                
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>const Padre()));
-              },
-              child: const Text('Ver'),
-              style: ElevatedButton.styleFrom(
-                primary: const Color.fromARGB(255, 64, 65,
-                    66), // Cambia el color de fondo del botón a rojo
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget boleta() {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          children: [
-            Expanded(
-              flex: 2,
-              child: TextField(
-                controller: textField4Controller,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  fillColor: Colors.grey[200],
-                  filled: true,
-                  hintText: 'nie',
-                  labelText: 'NIE',
-                  helperText: 'solo el nie',
-                ),
-              ),
-            ),
-            const SizedBox(
-                width:
-                    126.0), // Espacio entre los campos de texto y el botón// Espacio entre los campos de texto y el botón
-            ElevatedButton(
-              onPressed: () {
-                // Acción del botón
-                generatePdf();
-              },
-              child: const Text('Ver'),
-              style: ElevatedButton.styleFrom(
-                primary: const Color.fromARGB(255, 64, 65,
-                    66), // Cambia el color de fondo del botón a rojo
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget botonProfe() {
-    return Row(children: [
-      ElevatedButton(
-        onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>const Datos()));
-          setState(() {});
-        },
-        child: const Text('Ver'),
-        style: ElevatedButton.styleFrom(
-          primary: const Color.fromARGB(
-              255, 64, 65, 66), // Cambia el color de fondo del botón a rojo
-        ),
-      ),
-    ]);
-  }
-
-  Widget botonAyuda() {
-    return Row(children: [
-      ElevatedButton(
-        onPressed: () {
-          // Lógica que se ejecutará cuando se presione el botón "Guardar"
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const Manual()),
-          );
-        },
-        child: const Text('Ayuda'),
-        style: ElevatedButton.styleFrom(
-          primary: const Color.fromARGB(
-              255, 64, 65, 66), // Cambia el color de fondo del botón a rojo
-        ),
-      ),
-    ]);
-  }
-
-  void generatePdf() async {
+ void generatePdf() async {
     final pdfDocument = PdfDocument();
     final page = pdfDocument.pages.add();
 
@@ -516,7 +80,8 @@ class _VerUsuariosState extends State<VerUsuarios> {
 
     PdfGridRow header = grid.headers[0];
     header.cells[0].value = 'Sede Educativa';
-    header.cells[1].value = '10073-INSTITUTO NACIONAL "CORNELIO AZENÓN SIERRA"';
+    header.cells[1].value =
+        '10073-INSTITUTO NACIONAL "CORNELIO AZENÓN SIERRA"';
     header.cells[2].value = '';
     header.cells[3].value = '';
     header.cells[4].value = '';
@@ -543,58 +108,59 @@ class _VerUsuariosState extends State<VerUsuarios> {
     // Combinar celdas
     grid.rows[1].cells[1].columnSpan = 5;
 
-    //centrar texto de la primera tabla
+    
+    //centrar texto de la primera tabla 
     final PdfGridCellStyle cellStyle = PdfGridCellStyle();
-    cellStyle.stringFormat = PdfStringFormat();
-    cellStyle.stringFormat.alignment = PdfTextAlignment.center;
+cellStyle.stringFormat = PdfStringFormat();
+cellStyle.stringFormat.alignment = PdfTextAlignment.center;
 
-    for (int i = 0; i < grid.headers[0].cells.count; i++) {
-      final PdfGridCell cell = grid.headers[0].cells[i];
-      cell.style = cellStyle;
-    }
+for (int i = 0; i < grid.headers[0].cells.count; i++) {
+  final PdfGridCell cell = grid.headers[0].cells[i];
+  cell.style = cellStyle;
+}
 
-    for (int i = 0; i < grid.rows.count; i++) {
-      final PdfGridRow row = grid.rows[i];
-      for (int j = 0; j < row.cells.count; j++) {
-        final PdfGridCell cell = row.cells[j];
-        cell.style = cellStyle;
-      }
-    }
+for (int i = 0; i < grid.rows.count; i++) {
+  final PdfGridRow row = grid.rows[i];
+  for (int j = 0; j < row.cells.count; j++) {
+    final PdfGridCell cell = row.cells[j];
+    cell.style = cellStyle;
+  }
+}
 
 // Establecer la altura de las celdas
-    const double cellHeight = 15; // Establecer la altura deseada de las celdas
+const double cellHeight = 15; // Establecer la altura deseada de las celdas
 
-    for (int i = 0; i < grid.headers[0].cells.count; i++) {
-      final PdfGridCell cell = grid.headers[0].cells[i];
-      cell.style.stringFormat.alignment = PdfTextAlignment.center;
-    }
+for (int i = 0; i < grid.headers[0].cells.count; i++) {
+  final PdfGridCell cell = grid.headers[0].cells[i];
+  cell.style.stringFormat.alignment = PdfTextAlignment.center;
+}
 
-    for (int i = 0; i < grid.rows.count; i++) {
-      final PdfGridRow row = grid.rows[i];
-      row.height = cellHeight;
-      for (int j = 0; j < row.cells.count; j++) {
-        final PdfGridCell cell = row.cells[j];
-        cell.style.stringFormat.alignment = PdfTextAlignment.center;
-      }
-    }
-    // Cambiar el ancho de la primera columna
-    grid.columns[0].width = 70; // Establecer el ancho deseado de la columna
+for (int i = 0; i < grid.rows.count; i++) {
+  final PdfGridRow row = grid.rows[i];
+  row.height = cellHeight;
+  for (int j = 0; j < row.cells.count; j++) {
+    final PdfGridCell cell = row.cells[j];
+    cell.style.stringFormat.alignment = PdfTextAlignment.center;
+  }
+}
+  // Cambiar el ancho de la primera columna
+grid.columns[0].width = 70; // Establecer el ancho deseado de la columna
 
-    cellStyle.stringFormat = PdfStringFormat();
-    cellStyle.stringFormat.alignment = PdfTextAlignment.center;
+cellStyle.stringFormat = PdfStringFormat();
+cellStyle.stringFormat.alignment = PdfTextAlignment.center;
 
-    for (int i = 0; i < grid.headers[0].cells.count; i++) {
-      final PdfGridCell cell = grid.headers[0].cells[i];
-      cell.style = cellStyle;
-    }
+for (int i = 0; i < grid.headers[0].cells.count; i++) {
+  final PdfGridCell cell = grid.headers[0].cells[i];
+  cell.style = cellStyle;
+}
 
-    for (int i = 0; i < grid.rows.count; i++) {
-      final PdfGridRow row = grid.rows[i];
-      for (int j = 0; j < row.cells.count; j++) {
-        final PdfGridCell cell = row.cells[j];
-        cell.style = cellStyle;
-      }
-    }
+for (int i = 0; i < grid.rows.count; i++) {
+  final PdfGridRow row = grid.rows[i];
+  for (int j = 0; j < row.cells.count; j++) {
+    final PdfGridCell cell = row.cells[j];
+    cell.style = cellStyle;
+  }
+}
 
     // Dibujar la primera tabla en la página
     grid.draw(page: page, bounds: const Rect.fromLTWH(50, 90, 450, 170));
@@ -622,6 +188,7 @@ class _VerUsuariosState extends State<VerUsuarios> {
     grid2.headers[0].cells[14].value = 'Resultado';
     grid2.headers[0].cells[15].value = '';
     grid2.headers[0].cells[16].value = '';
+    
 
     PdfGridRow rows2 = grid2.rows.add();
     grid2.rows[0].cells[0].value = 'LENGUAJE Y LITERATURA';
@@ -879,6 +446,7 @@ class _VerUsuariosState extends State<VerUsuarios> {
     grid2.rows[13].cells[15].value = '';
     grid2.rows[13].cells[16].value = '';
 
+
     // Combina las celdas de la segunda tabla
     //Primera fila
     grid2.rows[0].cells[0].columnSpan = 5;
@@ -926,73 +494,74 @@ class _VerUsuariosState extends State<VerUsuarios> {
     grid2.headers[0].cells[0].columnSpan = 5;
     grid2.headers[0].cells[14].columnSpan = 3;
 
+    
     // Establecer el color de fondo de las celdas de la cabecera
-    final PdfColor grayColor = PdfColor(128, 128, 128); // Color gris
+final PdfColor grayColor = PdfColor(128, 128, 128); // Color gris
 
-    grid2.headers[0].cells[0].style.backgroundBrush = PdfSolidBrush(grayColor);
-    grid2.headers[0].cells[5].style.backgroundBrush = PdfSolidBrush(grayColor);
-    grid2.headers[0].cells[6].style.backgroundBrush = PdfSolidBrush(grayColor);
-    grid2.headers[0].cells[7].style.backgroundBrush = PdfSolidBrush(grayColor);
-    grid2.headers[0].cells[8].style.backgroundBrush = PdfSolidBrush(grayColor);
-    grid2.headers[0].cells[9].style.backgroundBrush = PdfSolidBrush(grayColor);
-    grid2.headers[0].cells[10].style.backgroundBrush = PdfSolidBrush(grayColor);
-    grid2.headers[0].cells[11].style.backgroundBrush = PdfSolidBrush(grayColor);
-    grid2.headers[0].cells[12].style.backgroundBrush = PdfSolidBrush(grayColor);
-    grid2.headers[0].cells[13].style.backgroundBrush = PdfSolidBrush(grayColor);
-    grid2.headers[0].cells[14].style.backgroundBrush = PdfSolidBrush(grayColor);
+grid2.headers[0].cells[0].style.backgroundBrush = PdfSolidBrush(grayColor);
+grid2.headers[0].cells[5].style.backgroundBrush = PdfSolidBrush(grayColor);
+grid2.headers[0].cells[6].style.backgroundBrush = PdfSolidBrush(grayColor);
+grid2.headers[0].cells[7].style.backgroundBrush = PdfSolidBrush(grayColor);
+grid2.headers[0].cells[8].style.backgroundBrush = PdfSolidBrush(grayColor);
+grid2.headers[0].cells[9].style.backgroundBrush = PdfSolidBrush(grayColor);
+grid2.headers[0].cells[10].style.backgroundBrush = PdfSolidBrush(grayColor);
+grid2.headers[0].cells[11].style.backgroundBrush = PdfSolidBrush(grayColor);
+grid2.headers[0].cells[12].style.backgroundBrush = PdfSolidBrush(grayColor);
+grid2.headers[0].cells[13].style.backgroundBrush = PdfSolidBrush(grayColor);
+grid2.headers[0].cells[14].style.backgroundBrush = PdfSolidBrush(grayColor);
 
-    // Establecer el color de fondo de las celdas de las filas
-    for (int i = 0; i < grid2.rows.count; i++) {
-      final PdfGridRow row = grid2.rows[i];
-      for (int j = 0; j < row.cells.count; j++) {
-        final PdfGridCell cell = row.cells[j];
-        if (j == 0 || j == 14) {
-          cell.style.backgroundBrush = PdfSolidBrush(grayColor);
-        }
-      }
+        // Establecer el color de fondo de las celdas de las filas
+for (int i = 0; i < grid2.rows.count; i++) {
+  final PdfGridRow row = grid2.rows[i];
+  for (int j = 0; j < row.cells.count; j++) {
+    final PdfGridCell cell = row.cells[j];
+    if (j == 0 || j == 14) {
+      cell.style.backgroundBrush = PdfSolidBrush(grayColor);
     }
+  }
+}
 
 // Restablecer el color de fondo en las celdas combinadas de las otras filas
-    for (int i = 0; i < grid2.rows.count; i++) {
-      for (int j = 0; j < grid2.rows[i].cells.count; j++) {
-        grid2.rows[i].cells[j].style.backgroundBrush =
-            PdfSolidBrush(PdfColor.empty);
-      }
-    }
+for (int i = 0; i < grid2.rows.count; i++) {
+  for (int j = 0; j < grid2.rows[i].cells.count; j++) {
+    grid2.rows[i].cells[j].style.backgroundBrush = PdfSolidBrush(PdfColor.empty);
+  }
+}
 
-    // Establecer el formato de alineación del texto
-    final PdfStringFormat headerFormat = PdfStringFormat(
-      alignment: PdfTextAlignment.center,
-      lineAlignment: PdfVerticalAlignment.middle,
-    );
+        // Establecer el formato de alineación del texto
+final PdfStringFormat headerFormat = PdfStringFormat(
+  alignment: PdfTextAlignment.center,
+  lineAlignment: PdfVerticalAlignment.middle,
+);
 
-    // Establecer el formato de alineación del texto
+  // Establecer el formato de alineación del texto
 // Establecer el formato de alineación del texto
-    final PdfStringFormat headerFormat2 = PdfStringFormat(
-      alignment: PdfTextAlignment.center,
-      lineAlignment: PdfVerticalAlignment.middle,
-    );
+final PdfStringFormat headerFormat2 = PdfStringFormat(
+  alignment: PdfTextAlignment.center,
+  lineAlignment: PdfVerticalAlignment.middle,
+);
 
 // Aplicar el formato de alineación del texto a las celdas de la cabecera
-    for (int i = 0; i < grid2.headers[0].cells.count; i++) {
-      final PdfGridCell cell = grid2.headers[0].cells[i];
-      cell.style.stringFormat = headerFormat;
-    }
+for (int i = 0; i < grid2.headers[0].cells.count; i++) {
+  final PdfGridCell cell = grid2.headers[0].cells[i];
+  cell.style.stringFormat = headerFormat;
+}
 
 // Aplicar el formato de alineación del texto a las celdas de las filas
-    for (int i = 0; i < grid2.rows.count; i++) {
-      final PdfGridRow row = grid2.rows[i];
-      for (int j = 0; j < row.cells.count; j++) {
-        final PdfGridCell cell = row.cells[j];
-        cell.style.stringFormat = headerFormat;
-      }
-    }
+for (int i = 0; i < grid2.rows.count; i++) {
+  final PdfGridRow row = grid2.rows[i];
+  for (int j = 0; j < row.cells.count; j++) {
+    final PdfGridCell cell = row.cells[j];
+    cell.style.stringFormat = headerFormat;
+  }
+}
 
+  
     //Dibujar la segunda tabla
     grid2.draw(page: page, bounds: const Rect.fromLTWH(50, 150, 450, 460));
 
     final PdfLayoutResult textLayoutResult3 =
-        textElement3.draw(page: page, bounds: const Rect.fromLTWH(50, 480, 500, 50));
+        textElement3.draw(page: page, bounds: Rect.fromLTWH(50, 480, 500, 50));
 
     //Crear tercera tabla
     final PdfGrid grid3 = PdfGrid();
@@ -1071,44 +640,43 @@ class _VerUsuariosState extends State<VerUsuarios> {
     grid3.headers[0].cells[5].style.backgroundBrush = PdfSolidBrush(grayColor1);
 
     // Establecer el color de fondo de las celdas de las filas
-    for (int i = 0; i < grid3.rows.count; i++) {
-      final PdfGridRow row = grid3.rows[i];
-      for (int j = 0; j < row.cells.count; j++) {
-        final PdfGridCell cell = row.cells[j];
-        if (j == 0 || j == 14) {
-          cell.style.backgroundBrush = PdfSolidBrush(grayColor1);
-        }
-      }
+for (int i = 0; i < grid3.rows.count; i++) {
+  final PdfGridRow row = grid3.rows[i];
+  for (int j = 0; j < row.cells.count; j++) {
+    final PdfGridCell cell = row.cells[j];
+    if (j == 0 || j == 14) {
+      cell.style.backgroundBrush = PdfSolidBrush(grayColor1);
     }
+  }
+}
 
 // Restablecer el color de fondo en las celdas combinadas de las otras filas
-    for (int i = 0; i < grid3.rows.count; i++) {
-      for (int j = 0; j < grid3.rows[i].cells.count; j++) {
-        grid3.rows[i].cells[j].style.backgroundBrush =
-            PdfSolidBrush(PdfColor.empty);
-      }
-    }
-    // Establecer el formato de alineación del texto
+for (int i = 0; i < grid3.rows.count; i++) {
+  for (int j = 0; j < grid3.rows[i].cells.count; j++) {
+    grid3.rows[i].cells[j].style.backgroundBrush = PdfSolidBrush(PdfColor.empty);
+  }
+}
+  // Establecer el formato de alineación del texto
 // Establecer el formato de alineación del texto
-    final PdfStringFormat headerFormat3 = PdfStringFormat(
-      alignment: PdfTextAlignment.center,
-      lineAlignment: PdfVerticalAlignment.middle,
-    );
+final PdfStringFormat headerFormat3 = PdfStringFormat(
+  alignment: PdfTextAlignment.center,
+  lineAlignment: PdfVerticalAlignment.middle,
+);
 
 // Aplicar el formato de alineación del texto a las celdas de la cabecera
-    for (int i = 0; i < grid3.headers[0].cells.count; i++) {
-      final PdfGridCell cell = grid3.headers[0].cells[i];
-      cell.style.stringFormat = headerFormat;
-    }
+for (int i = 0; i < grid3.headers[0].cells.count; i++) {
+  final PdfGridCell cell = grid3.headers[0].cells[i];
+  cell.style.stringFormat = headerFormat;
+}
 
 // Aplicar el formato de alineación del texto a las celdas de las filas
-    for (int i = 0; i < grid3.rows.count; i++) {
-      final PdfGridRow row = grid3.rows[i];
-      for (int j = 0; j < row.cells.count; j++) {
-        final PdfGridCell cell = row.cells[j];
-        cell.style.stringFormat = headerFormat;
-      }
-    }
+for (int i = 0; i < grid3.rows.count; i++) {
+  final PdfGridRow row = grid3.rows[i];
+  for (int j = 0; j < row.cells.count; j++) {
+    final PdfGridCell cell = row.cells[j];
+    cell.style.stringFormat = headerFormat;
+  }
+}
 
     //Dibujar tercera tabla
     grid3.draw(page: page, bounds: const Rect.fromLTWH(50, 510, 450, 720));
@@ -1118,4 +686,3 @@ class _VerUsuariosState extends State<VerUsuarios> {
 
     saveLaunchFile(bytes, 'Boleta de notas.pdf');
   }
-}

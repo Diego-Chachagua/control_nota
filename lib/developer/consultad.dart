@@ -20,13 +20,13 @@ Future<dynamic> eliminarUsu(var usu ,String usu2) async{
     );
 }
 
-Future<dynamic> registroAlumno(String grado, String seccion1, String genero, String estudianten, String estudiantea, String padren, 
+Future<dynamic> registroAlumno(String gradoprofe, String seccionprofe1, String genero, String estudianten, String estudiantea, String padren, 
 String padrea, String dui, String nie, var m1, var m2, var m3, var m4, var m5, var m6, var m7, var m8, var m9, var m10) async{
   http.Response guardar = await http.post(
   Uri.parse('https://notasincas.000webhostapp.com/guardaralumn.php'),
   body: <String, dynamic>{
-    "grado": grado,
-    "secciones": seccion1,
+    "gradoprofe": gradoprofe,
+    "seccionprofees": seccionprofe1,
     "genero": genero,
     "estudianten": estudianten,
     "estudiantea": estudiantea,
@@ -47,23 +47,30 @@ String padrea, String dui, String nie, var m1, var m2, var m3, var m4, var m5, v
     
   }
   );
-  print(grado);
-  print(seccion1);
-  print(genero);
-  print(estudianten);
-  print(estudiantea);
-  print(padren);
-  print(padrea);
-  print(dui);
-  print(nie);
-  print(m1);
-  print(m2);
-  print(m3);
-  print(m4);
-  print(m5);
-  print(m6);
-  print(m7);
-  print(m8);
-  print(m9);
-  print(m10);
+}
+
+Future<dynamic> consultap(var gradoprofe ,String seccionprofe) async{
+  http.Response enviar1 = await http.post(
+    Uri.parse("https://notasincas.000webhostapp.com/consultap.php"),
+    body: <String, String>{
+      "gradoprofe": gradoprofe,
+      "r": seccionprofe,
+    },
+    );
+}
+
+Future<List<Map<String, dynamic>>> getData() async {
+  String url = 'https://notasincas.000webhostapp.com/consultap.php';
+
+  http.Response response = await http.get(Uri.parse(url));
+  List<dynamic> jsonResponse = jsonDecode(response.body);
+
+  List<Map<String, dynamic>> data = jsonResponse
+      .map((item) => {
+            'nombre_padre': item['nombre_padre'],
+            'dui': item['dui'],
+          })
+      .toList();
+
+  return data;
 }

@@ -388,7 +388,7 @@ class _EstudianteState extends State<Estudiante> {
               if (g == 'Masculino') {
                 genero = 'M';
               }else{
-                genero = '';
+                genero = 'F';
               }
             });
           },

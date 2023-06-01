@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:control_notas/screens/manual.dart';
+
+import 'manual.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,12 +23,10 @@ class Profesor extends StatefulWidget {
 }
 
 class _ProfesorState extends State<Profesor> {
-  String _seleccionada = 'Año';
-  List anios = ['Año', '1 año', '2 año', '1 y 2 año'];
-  String _seleccionada2 = 'Seccion';
-  List seccion = ['Seccion', 'A', 'B', 'f', 'G', 'H', 'K'];
-  String _seleccionada3 = 'Genero';
-  List gene = ['Genero', 'Masculino', 'Femenino'];
+  String _seleccionada = 'Seleccione el Año';
+  List anios = ['Seleccione el Año', '1 año', '2 año', '1 y 2 año'];
+  String _seleccionada3 = 'Seleccione el genero';
+  List gene = ['Seleccione el genero', 'Masculino', 'Femenino'];
   bool? ischecked = false;
   bool? ischecked2 = false;
   bool? ischecked3 = false;
@@ -44,6 +43,17 @@ class _ProfesorState extends State<Profesor> {
   bool? ischecked14 = false;
   String informacionGuardada = '';
   String informacionCancelada = '';
+  List<String> menuItems = ['A', 'B', 'G', 'F', 'H', 'K', 'L', 'O'];
+  List<bool> isCheckedList = [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -57,6 +67,43 @@ class _ProfesorState extends State<Profesor> {
           elevation: 0,
           title: const Text('Registro de Profesor'),
           backgroundColor: const Color(0x00E8E2E2),
+        ),
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              const DrawerHeader(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/01.jpg'), fit: BoxFit.cover),
+                ),
+                child: Text(
+                  'Secciones que dara el docente',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+              ListView.builder(
+                shrinkWrap: true,
+                itemCount: menuItems.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(menuItems[index]),
+                    leading: Checkbox(
+                      value: isCheckedList[index],
+                      onChanged: (value) {
+                        setState(() {
+                          isCheckedList[index] = value!;
+                        });
+                      },
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
         body: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
@@ -156,17 +203,6 @@ class _ProfesorState extends State<Profesor> {
     return annios;
   }
 
-  List<DropdownMenuItem<String>> GetOptionsDropDownButton2() {
-    List<DropdownMenuItem<String>> secciones = [];
-    seccion.forEach((element) {
-      secciones.add(DropdownMenuItem(
-        child: Text(element),
-        value: element,
-      ));
-    });
-    return secciones;
-  }
-
   List<DropdownMenuItem<String>> GetOptionsDropDownButton3() {
     List<DropdownMenuItem<String>> genero = [];
     gene.forEach((element) {
@@ -181,35 +217,34 @@ class _ProfesorState extends State<Profesor> {
   Widget crearDropdDownButton() {
     return Row(
       children: <Widget>[
-        const SizedBox(width: 1),
-        DropdownButton(
-          value: _seleccionada,
-          items: GetOptionsDropDownButton(),
-          onChanged: (value) {
-            setState(() {
-              _seleccionada = value.toString();
-            });
-          },
+        Expanded(
+          child: Container(
+            width: 40,
+            child: DropdownButton(
+              value: _seleccionada,
+              items: GetOptionsDropDownButton(),
+              onChanged: (value) {
+                setState(() {
+                  _seleccionada = value.toString();
+                });
+              },
+            ),
+          ),
         ),
-        const SizedBox(width: 29),
-        DropdownButton(
-          value: _seleccionada2,
-          items: GetOptionsDropDownButton2(),
-          onChanged: (value) {
-            setState(() {
-              _seleccionada2 = value.toString();
-            });
-          },
-        ),
-        const SizedBox(width: 29),
-        DropdownButton(
-          value: _seleccionada3,
-          items: GetOptionsDropDownButton3(),
-          onChanged: (value) {
-            setState(() {
-              _seleccionada3 = value.toString();
-            });
-          },
+        const SizedBox(width: 5),
+        Expanded(
+          child: Container(
+            width: 20,
+            child: DropdownButton(
+              value: _seleccionada3,
+              items: GetOptionsDropDownButton3(),
+              onChanged: (value) {
+                setState(() {
+                  _seleccionada3 = value.toString();
+                });
+              },
+            ),
+          ),
         ),
       ],
     );
@@ -247,7 +282,7 @@ class _ProfesorState extends State<Profesor> {
           'Sociales',
           style: TextStyle(fontSize: 13),
         ),
-        const SizedBox(width: 5),
+        const SizedBox(width: 10),
         Checkbox(
           value: ischecked3,
           activeColor: Colors.transparent,
@@ -283,7 +318,7 @@ class _ProfesorState extends State<Profesor> {
           'Muci',
           style: TextStyle(fontSize: 13),
         ),
-        const SizedBox(width: 40),
+        const SizedBox(width: 35),
         Checkbox(
           value: ischecked5,
           activeColor: Colors.transparent,
@@ -298,7 +333,7 @@ class _ProfesorState extends State<Profesor> {
           'Ingles',
           style: TextStyle(fontSize: 13),
         ),
-        const SizedBox(width: 17),
+        const SizedBox(width: 20),
         Checkbox(
           value: ischecked6,
           activeColor: Colors.transparent,
@@ -349,7 +384,7 @@ class _ProfesorState extends State<Profesor> {
           'OPLV',
           style: TextStyle(fontSize: 13),
         ),
-        const SizedBox(width: 15),
+        const SizedBox(width: 22),
         Checkbox(
           value: ischecked9,
           activeColor: Colors.transparent,
@@ -511,7 +546,10 @@ class _ProfesorState extends State<Profesor> {
         onPressed: () {
           // Lógica que se ejecutará cuando se presione el botón "Guardar"
 
-          Navigator.push(context,MaterialPageRoute(builder: (context) => Manual()), );
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Manual()),
+          );
         },
         child: Text('Ayuda'),
         style: ElevatedButton.styleFrom(

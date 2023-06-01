@@ -6,7 +6,11 @@ import '../main.dart';
 import '../developer/consultasf.dart';
 
 class CuadroN1 extends StatelessWidget {
-  CuadroN1({super.key});
+  String? anio;
+  String? seccion;
+   
+  CuadroN1(this.anio, this.seccion, {super.key});
+   
   final nieEstu = TextEditingController();
   final a1 = TextEditingController();
   final a2 = TextEditingController();
@@ -26,26 +30,28 @@ class CuadroN1 extends StatelessWidget {
           child: Scaffold(
             backgroundColor: Colors.transparent,
             body: Container(
+              
               child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.end,
-                    children: const [
-                      SizedBox(
+                    children:   [
+                     const  SizedBox(
                         height: 100,
                         width: 50,
                       ),
                       Text(
-                        'GRADO: "1°"',
-                        style: TextStyle(fontSize: 25, color: Colors.white),
+                        'GRADO: "$anio°"',
+                        style: const TextStyle(fontSize: 25, color: Colors.white),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 30,
                       ),
+                      
                       Text(
-                        'SECCION: "H"',
-                        style: TextStyle(fontSize: 25, color: Colors.white),
+                        'SECCION: "$seccion"',
+                        style: const TextStyle(fontSize: 25, color: Colors.white),
                       ),
                     ],
                   ),
@@ -64,7 +70,7 @@ class CuadroN1 extends StatelessWidget {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
+                    children: const  [
                       SizedBox(
                         width: 50,
                       ),
@@ -72,6 +78,7 @@ class CuadroN1 extends StatelessWidget {
                         'PERIODO: 1',
                         style: TextStyle(fontSize: 25, color: Colors.white),
                       ),
+                     
                     ],
                   ),
                   const SizedBox(height: 10),
@@ -351,7 +358,7 @@ Table(
                                 ),
                                 ElevatedButton(
                                   onPressed: () {
-                                    a1.text="";
+                                   a1.text="";
                                     a2.text="";
                                     po.text="";
                                     nieEstu.text="";
@@ -365,7 +372,9 @@ Table(
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> const Periodos()));
+                          String? anio;
+                          String? seccion;
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> Periodos(anio,seccion)));
                         },
                         child: const Center(child: Text('Regresar')),
                       ),
