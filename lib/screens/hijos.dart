@@ -147,7 +147,7 @@ setState(() {
                       nie1(),
                     ]
                   ),
-=======
+
                       decoration: const BoxDecoration(
                           color: Color.fromARGB(255, 255, 255, 255)),
                       children: [
