@@ -328,29 +328,12 @@ class _VerUsuariosState extends State<VerUsuarios> {
                 width: 16.0), // Espacio entre los campos de texto y el botón
             ElevatedButton(
              onPressed: () async{
-                if (textField5Controller == 'A' || textField5Controller == 'a') {
-                seccionprofe = '1';
-                }
-                if (textField5Controller == 'F' || textField5Controller == 'f') {
-                  seccionprofe = '2';
-                }
-                if (textField5Controller == 'E' || textField5Controller == 'e') {
-                  seccionprofe = '3';
-                }
-                if (textField5Controller == 'H' || textField5Controller == 'h') {
-                  seccionprofe = '4';
-                }
-                if (textField5Controller == 'G' || textField5Controller == 'g') {
-                  seccionprofe = '5';
-                }
-                if (textField5Controller == 'D' || textField5Controller == 'd') {
-                  seccionprofe = '6';
-                }
-                seccionprofe;
+                seccionprofe = textField5Controller.text;
                 gradoprofe = textField3Controller.text;
-                await consultap(gradoprofe, seccionprofe);
-                
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>const Padre()));
+                 Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>   Padre(seccionp: seccionprofe, gradop: gradoprofe)),
+                   );
               },
               child: const Text('Ver'),
               style: ElevatedButton.styleFrom(
