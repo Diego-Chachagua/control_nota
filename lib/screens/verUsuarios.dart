@@ -1,12 +1,17 @@
+// ignore_for_file: sort_child_properties_last, deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:control_notas/screens/manual.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'dart:typed_data';
 import 'package:flutter/services.dart' show rootBundle;
 
+import '../developer/consultad.dart';
+import 'consultaprofe.dart';
 import 'guardarbol.dart';
 
 import 'boleta1.dart';
+import 'padre.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +23,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: VerUsuarios(),
     );
   }
@@ -36,6 +41,9 @@ class _VerUsuariosState extends State<VerUsuarios> {
   TextEditingController textField2Controller = TextEditingController();
   TextEditingController textField3Controller = TextEditingController();
   TextEditingController textField4Controller = TextEditingController();
+  TextEditingController textField5Controller = TextEditingController();
+  String seccionprofe = '';
+  String gradoprofe = '';
 
   @override
   void dispose() {
@@ -205,9 +213,9 @@ class _VerUsuariosState extends State<VerUsuarios> {
                     MaterialPageRoute(
                         builder: (context) => const VerUsuarios()));
               },
-              child: Text('Ver'),
+              child: const Text('Ver'),
               style: ElevatedButton.styleFrom(
-                primary: Color.fromARGB(255, 64, 65,
+                primary: const Color.fromARGB(255, 64, 65,
                     66), // Cambia el color de fondo del botón a rojo
               ),
             ),
@@ -263,9 +271,9 @@ class _VerUsuariosState extends State<VerUsuarios> {
               onPressed: () {
                 // Acción del botón
               },
-              child: Text('Ver'),
+              child: const Text('Ver'),
               style: ElevatedButton.styleFrom(
-                primary: Color.fromARGB(255, 64, 65,
+                primary: const Color.fromARGB(255, 64, 65,
                     66), // Cambia el color de fondo del botón a rojo
               ),
             ),
@@ -303,6 +311,7 @@ class _VerUsuariosState extends State<VerUsuarios> {
             Expanded(
               flex: 2,
               child: TextField(
+                controller: textField5Controller,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
@@ -318,12 +327,34 @@ class _VerUsuariosState extends State<VerUsuarios> {
             const SizedBox(
                 width: 16.0), // Espacio entre los campos de texto y el botón
             ElevatedButton(
-              onPressed: () {
-                // Acción del botón
+             onPressed: () async{
+                if (textField5Controller == 'A' || textField5Controller == 'a') {
+                seccionprofe = '1';
+                }
+                if (textField5Controller == 'F' || textField5Controller == 'f') {
+                  seccionprofe = '2';
+                }
+                if (textField5Controller == 'E' || textField5Controller == 'e') {
+                  seccionprofe = '3';
+                }
+                if (textField5Controller == 'H' || textField5Controller == 'h') {
+                  seccionprofe = '4';
+                }
+                if (textField5Controller == 'G' || textField5Controller == 'g') {
+                  seccionprofe = '5';
+                }
+                if (textField5Controller == 'D' || textField5Controller == 'd') {
+                  seccionprofe = '6';
+                }
+                seccionprofe;
+                gradoprofe = textField3Controller.text;
+                await consultap(gradoprofe, seccionprofe);
+                
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>const Padre()));
               },
-              child: Text('Ver'),
+              child: const Text('Ver'),
               style: ElevatedButton.styleFrom(
-                primary: Color.fromARGB(255, 64, 65,
+                primary: const Color.fromARGB(255, 64, 65,
                     66), // Cambia el color de fondo del botón a rojo
               ),
             ),
@@ -364,9 +395,9 @@ class _VerUsuariosState extends State<VerUsuarios> {
                 // Acción del botón
                 generatePdf();
               },
-              child: Text('Ver'),
+              child: const Text('Ver'),
               style: ElevatedButton.styleFrom(
-                primary: Color.fromARGB(255, 64, 65,
+                primary: const Color.fromARGB(255, 64, 65,
                     66), // Cambia el color de fondo del botón a rojo
               ),
             ),
@@ -380,12 +411,12 @@ class _VerUsuariosState extends State<VerUsuarios> {
     return Row(children: [
       ElevatedButton(
         onPressed: () {
-          // Lógica que se ejecutará cuando se presione el botón "Guardar"
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>const Datos()));
           setState(() {});
         },
-        child: Text('Ver'),
+        child: const Text('Ver'),
         style: ElevatedButton.styleFrom(
-          primary: Color.fromARGB(
+          primary: const Color.fromARGB(
               255, 64, 65, 66), // Cambia el color de fondo del botón a rojo
         ),
       ),
@@ -399,12 +430,12 @@ class _VerUsuariosState extends State<VerUsuarios> {
           // Lógica que se ejecutará cuando se presione el botón "Guardar"
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Manual()),
+            MaterialPageRoute(builder: (context) => const Manual()),
           );
         },
-        child: Text('Ayuda'),
+        child: const Text('Ayuda'),
         style: ElevatedButton.styleFrom(
-          primary: Color.fromARGB(
+          primary: const Color.fromARGB(
               255, 64, 65, 66), // Cambia el color de fondo del botón a rojo
         ),
       ),
@@ -961,7 +992,7 @@ class _VerUsuariosState extends State<VerUsuarios> {
     grid2.draw(page: page, bounds: const Rect.fromLTWH(50, 150, 450, 460));
 
     final PdfLayoutResult textLayoutResult3 =
-        textElement3.draw(page: page, bounds: Rect.fromLTWH(50, 480, 500, 50));
+        textElement3.draw(page: page, bounds: const Rect.fromLTWH(50, 480, 500, 50));
 
     //Crear tercera tabla
     final PdfGrid grid3 = PdfGrid();

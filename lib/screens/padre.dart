@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:async';
-import 'dart:convert';
-import 'package:flutter/services.dart';
+import '../developer/consultad.dart';
+
 
 void main() {
   runApp(const Padre());
@@ -10,12 +8,11 @@ void main() {
 
 class Padre extends StatelessWidget {
   const Padre({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Usuarios',
-      home:  MyHomePage(title: 'Lista de profesores'),
+      home: MyHomePage(title: 'Lista de Padres'),
     );
   }
 }
@@ -29,29 +26,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Future<List<Map<String, dynamic>>> getData() async {
-    String url = 'https://notasincas.000webhostapp.com/consultapradre.php';
+  late Future<List<Map<String, dynamic>>> getDataFuture; // Variable para almacenar el Future
 
-    http.Response response = await http.get(Uri.parse(url));
-    List<dynamic> jsonResponse = jsonDecode(response.body);
-
-    List<Map<String, dynamic>> data = jsonResponse
-        .map((item) => {
-              'primer_nombre': item['primer_nombre'],
-              'primer_apellido': item['primer_apellido'],
-              'usuario_profe': item['usuario_profe'],
-              'contrasena_profe': item['contrasena_profe'],
-            })
-        .toList();
-
-    return data;
-  }
-
-  void copyToClipboard(String data) {
-    Clipboard.setData(ClipboardData(text: data));
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Datos copiados al portapapeles')),
-    );
+  @override
+  void initState() {
+    super.initState();
+    getDataFuture = getData(); // Asigna el Future a la variable getDataFuture
   }
 
   @override
@@ -64,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       backgroundColor: Color.fromARGB(255, 30, 75, 52), // Color de fondo de la pantalla
       body: FutureBuilder<List<Map<String, dynamic>>>(
-        future: getData(),
+        future: getDataFuture, // Utiliza la variable getDataFuture que almacena el Future
         builder: (BuildContext context,
             AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -79,19 +59,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 columns: const [
                   DataColumn(
                     label: Text(
-                      'Nombre',
+                      'Nombre_padre',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
                   DataColumn(
                     label: Text(
-                      'Apellido',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                  DataColumn(
-                    label: Text(
-                      'Usuario y\nContraseña',
+                      'DUI',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
@@ -101,28 +75,26 @@ class _MyHomePageState extends State<MyHomePage> {
                       (item) => DataRow(
                         cells: [
                           DataCell(
-                            Text(
-                              item['primer_nombre'].toString(),
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
-                          DataCell(
-                            Text(
-                              item['primer_apellido'].toString(),
-                              style: TextStyle(color: Colors.white),
+                            Container(
+                              alignment: Alignment.center,
+                              child: Text(
+                                item['nombre_padre'].toString(),
+                                style: TextStyle(color: Colors.white),
+                              ),
                             ),
                           ),
                           DataCell(
                             InkWell(
                               onTap: () {
-                                String userData =
-                                    '${item['usuario_profe']}\n${item['contrasena_profe']}';
-                                copyToClipboard(userData);
+                                (item['dui'].toString());
                               },
-                              child: Text(
-                                '${item['usuario_profe']}\n${item['contrasena_profe']}',
-                                style: TextStyle(color: Colors.white),
-                                textAlign: TextAlign.center,
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  item['dui'].toString(),
+                                  style: TextStyle(color: Colors.white),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
                           ),

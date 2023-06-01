@@ -50,11 +50,27 @@ String padrea, String dui, String nie, var m1, var m2, var m3, var m4, var m5, v
 }
 
 Future<dynamic> consultap(var gradoprofe ,String seccionprofe) async{
-  http.Response enviar = await http.post(
-    Uri.parse('https://notasincas.000webhostapp.com/consultap.php'),
-    body: <String, dynamic>{
+  http.Response enviar1 = await http.post(
+    Uri.parse("https://notasincas.000webhostapp.com/consultap.php"),
+    body: <String, String>{
       "gradoprofe": gradoprofe,
-      "seccionprofe": seccionprofe,
+      "r": seccionprofe,
     },
     );
+}
+
+Future<List<Map<String, dynamic>>> getData() async {
+  String url = 'https://notasincas.000webhostapp.com/consultap.php';
+
+  http.Response response = await http.get(Uri.parse(url));
+  List<dynamic> jsonResponse = jsonDecode(response.body);
+
+  List<Map<String, dynamic>> data = jsonResponse
+      .map((item) => {
+            'nombre_padre': item['nombre_padre'],
+            'dui': item['dui'],
+          })
+      .toList();
+
+  return data;
 }
