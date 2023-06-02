@@ -76,7 +76,7 @@ setState(() {
         body: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(7.0),
             child: Table(
               columnWidths: const {0: FractionColumnWidth(0.5)},
               border: TableBorder.all(),
