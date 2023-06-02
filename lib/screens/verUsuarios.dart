@@ -8,6 +8,7 @@ import 'package:flutter/services.dart' show rootBundle;
 
 import '../developer/consultad.dart';
 import 'consultaprofe.dart';
+import 'estudiantes.dart';
 import 'guardarbol.dart';
 
 import 'boleta1.dart';
@@ -42,8 +43,11 @@ class _VerUsuariosState extends State<VerUsuarios> {
   TextEditingController textField3Controller = TextEditingController();
   TextEditingController textField4Controller = TextEditingController();
   TextEditingController textField5Controller = TextEditingController();
+  TextEditingController textField6Controller = TextEditingController();
   String seccionprofe = '';
   String gradoprofe = '';
+  String seccione = '';
+  String gradoe = '';
 
   @override
   void dispose() {
@@ -241,7 +245,7 @@ class _VerUsuariosState extends State<VerUsuarios> {
               child: TextField(
                 maxLength: 1,
                 textAlign: TextAlign.center,
-                controller: textField2Controller,
+                controller: textField6Controller,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -260,6 +264,7 @@ class _VerUsuariosState extends State<VerUsuarios> {
             Expanded(
               flex: 2,
               child: TextField(
+                controller: textField2Controller,
                 maxLength: 1,
                 textAlign: TextAlign.center,
                 textCapitalization: TextCapitalization.characters,
@@ -278,8 +283,13 @@ class _VerUsuariosState extends State<VerUsuarios> {
             const SizedBox(
                 width: 16.0), // Espacio entre los campos de texto y el botón
             ElevatedButton(
-              onPressed: () {
-                // Acción del botón
+              onPressed: () async{
+                seccione = textField2Controller.text;
+                gradoe = textField6Controller.text;
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>   Estudiantes(seccione1: seccione, gradoe1: gradoe)),
+                   );
               },
               child: const Text('Ver'),
               style: ElevatedButton.styleFrom(
