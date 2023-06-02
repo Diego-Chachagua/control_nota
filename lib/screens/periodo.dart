@@ -4,7 +4,9 @@ import 'package:control_notas/screens/usuarios.dart';
 import 'cuadro.dart';
 
 class Periodos extends StatefulWidget {
-  const Periodos({Key? key}) : super(key: key);
+   String? anios;
+   String? seccion;
+  Periodos( this.anios, this.seccion, {super.key});
 
   @override
   State<Periodos> createState() => _PeriodosState();
@@ -41,7 +43,9 @@ class _PeriodosState extends State<Periodos> {
             color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
               setState(() {
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>   CuadroN1()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>   CuadroN1(widget.anios,widget.seccion)));
+                print(widget.anios);
+                print(widget.seccion);
               });
             },
             shape: const RoundedRectangleBorder(),

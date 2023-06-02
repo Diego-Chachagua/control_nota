@@ -1,35 +1,25 @@
-import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-//Libreria que nos permitira usar funciones async
-import 'dart:async';
-//Libreria que nos permitira decodificar los archivos JSON
 import 'dart:convert';
-import 'dart:collection';
-
-// ignore: unused_import
-import 'dart:io';
-
+import 'package:http/http.dart' as http;
+import 'package:flutter/material.dart';
 import '../developer/consultaso.dart';
-import 'boleta2.dart';
-
-
+import '../main.dart';
+import 'hijos.dart';
+import 'manual.dart';
 
 void main() {
-  runApp(const MaterialApp(
-    title: 'Navigation Basics',
-    home: Hijos(duibd1: '',),
-  ));
+  runApp(const MyApp());
+  home: const Estudiantes(seccione1: '',gradoe1: '',);
 }
 
-class Hijos extends StatefulWidget {
-  final String duibd1;
-  const Hijos({super.key, required this.duibd1});
+class Estudiantes extends StatefulWidget{
+  final String seccione1;
+  final String gradoe1;
+  const Estudiantes({super.key, required this.seccione1, required this.gradoe1});
   @override
-  State<Hijos> createState() => _HijosState();
+  State<Estudiantes> createState() => _EstudiantesState();
 }
 
-class _HijosState extends State<Hijos> {
-
+class _EstudiantesState extends State<Estudiantes> {
 List<String> nombre = [];
 List<String> nie3 = [];
 var reslt;
@@ -38,7 +28,7 @@ var reslt;
 void initState(){
   super.initState();
   (() async{
-    reslt = await enviardui(widget.duibd1);
+    reslt = await enviare(widget.seccione1,widget.gradoe1);
     if (reslt!="noExisten"){
       for (var i = 0; i < reslt.length; i++){
     var dato =reslt[i];
@@ -64,11 +54,10 @@ setState(() {
 }
 
 
-//-----------codigo pantalla
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+       decoration: const BoxDecoration(
         image: DecorationImage(
             image: AssetImage('assets/imagen1.jpeg'), fit: BoxFit.cover),
       ),
@@ -87,47 +76,29 @@ setState(() {
         body: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Table(
-                columnWidths: const {0: FractionColumnWidth(0.5)},
-                border: TableBorder.all(),
-                children: [
+              padding: const EdgeInsets.all(7.0),
+            child: Table(
+              columnWidths: const {0: FractionColumnWidth(0.5)},
+              border: TableBorder.all(),
+              children:  [
+                TableRow(
+                  children: [
+                    nie(),
+                    hijos(),
+                  ]
+                ),
 
                   TableRow(
                     children: [
-                      hijos(),
-                      nie(),
-                    ]
-                  ),
-            
-                  TableRow(
-                    children: [
-                      hijo1(),
                       nie1(),
+                      hijo1(),
                     ]
                   ),
-                ],
-              ),
+              ],
             ),
-            const SizedBox(
-              height: 40,
-            ),
-            nieb(),
-            const SizedBox(
-              height: 20,
-            ),
-            MaterialButton(
-              color: const Color.fromARGB(255, 107, 107, 107),
-              onPressed: () {
-                generatePdf;
-              },
-              child: const Text(
-                'Ver boleta',
-                style: TextStyle(fontSize: 20, color: Colors.white),
-              ),
-            ),
+            )
           ],
-        ),
+        )
       ),
     );
   }
@@ -140,7 +111,7 @@ setState(() {
         )));
   }
 
-  Widget nie() {
+   Widget nie() {
     return Container(
         color: Colors.blue,
         child: const Center(
@@ -150,7 +121,7 @@ setState(() {
         )));
   }
 
-Widget hijo1() {
+  Widget hijo1() {
   return Container(
     color: Colors.white,
     child: Column(
@@ -175,19 +146,4 @@ Widget nie1() {
   );
 }
 
-
-Widget nieb(){
-  return  Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 90,vertical: 5),
-    child: Container(
-      color: Colors.white,
-      child: const TextField(
-        decoration: InputDecoration(
-          counterStyle: TextStyle(color: Colors.white),
-          hintText: "Nie del alumno a ver boleta",
-      ),
-    ),
-   ) );
-  }
-  }
-
+}

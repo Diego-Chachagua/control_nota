@@ -34,3 +34,14 @@ Future<dynamic> insertNP1(String nieEstu,String a1, String a2 , String po) async
   );
     return enviar.body;
 }
+
+Future<dynamic> buscarCode(String usuariobd,String contrabd) async{
+  http.Response enviar = await http.post(
+    Uri.parse('https://notasincas.000webhostapp.com/nieestu.php'),
+    body: <String, dynamic>{
+      "usuariobd":usuariobd ,  
+      "contrabd":contrabd,
+    },
+  );
+    return enviar.body;
+}

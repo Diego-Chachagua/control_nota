@@ -13,7 +13,7 @@ class Materias extends StatelessWidget {
 }
 
 class Materia extends StatefulWidget {
-  const Materia({super.key});
+   Materia({super.key});
 
   @override
   State<Materia> createState() => _MateriaState();

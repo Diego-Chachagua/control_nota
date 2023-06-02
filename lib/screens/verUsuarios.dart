@@ -1,12 +1,19 @@
+// ignore_for_file: sort_child_properties_last, deprecated_member_use
+
+import 'package:control_notas/screens/usuycontra.dart';
 import 'package:flutter/material.dart';
 import 'package:control_notas/screens/manual.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'dart:typed_data';
 import 'package:flutter/services.dart' show rootBundle;
 
+import '../developer/consultad.dart';
+import 'consultaprofe.dart';
+import 'estudiantes.dart';
 import 'guardarbol.dart';
 
 import 'boleta1.dart';
+import 'padre.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +25,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: VerUsuarios(),
     );
   }
@@ -36,6 +43,15 @@ class _VerUsuariosState extends State<VerUsuarios> {
   TextEditingController textField2Controller = TextEditingController();
   TextEditingController textField3Controller = TextEditingController();
   TextEditingController textField4Controller = TextEditingController();
+  TextEditingController textField5Controller = TextEditingController();
+  TextEditingController textField6Controller = TextEditingController();
+  TextEditingController textField7Controller = TextEditingController();
+  String seccionprofe = '';
+  String gradoprofe = '';
+  String seccione = '';
+  String gradoe = '';
+  String seccionu = '';
+  String gradou = '';
 
   @override
   void dispose() {
@@ -165,6 +181,8 @@ class _VerUsuariosState extends State<VerUsuarios> {
             Expanded(
               flex: 2,
               child: TextField(
+                maxLength: 1,
+                textAlign: TextAlign.center,
                 controller: textField1Controller,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
@@ -184,6 +202,10 @@ class _VerUsuariosState extends State<VerUsuarios> {
             Expanded(
               flex: 2,
               child: TextField(
+                controller: textField7Controller,
+                maxLength: 1,
+                textAlign: TextAlign.center,
+                textCapitalization: TextCapitalization.characters,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
@@ -199,15 +221,17 @@ class _VerUsuariosState extends State<VerUsuarios> {
             const SizedBox(
                 width: 16.0), // Espacio entre los campos de texto y el botón
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async{
+                seccionu = textField7Controller.text;
+                gradou = textField1Controller.text;
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const VerUsuarios()));
+                  context,
+                  MaterialPageRoute(builder: (context) =>   Usuycontra(seccione2: seccionu, gradoe2: gradou)),
+                   );
               },
-              child: Text('Ver'),
+              child: const Text('Ver'),
               style: ElevatedButton.styleFrom(
-                primary: Color.fromARGB(255, 64, 65,
+                primary: const Color.fromARGB(255, 64, 65,
                     66), // Cambia el color de fondo del botón a rojo
               ),
             ),
@@ -226,7 +250,9 @@ class _VerUsuariosState extends State<VerUsuarios> {
             Expanded(
               flex: 2,
               child: TextField(
-                controller: textField2Controller,
+                maxLength: 1,
+                textAlign: TextAlign.center,
+                controller: textField6Controller,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -245,6 +271,10 @@ class _VerUsuariosState extends State<VerUsuarios> {
             Expanded(
               flex: 2,
               child: TextField(
+                controller: textField2Controller,
+                maxLength: 1,
+                textAlign: TextAlign.center,
+                textCapitalization: TextCapitalization.characters,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
@@ -260,12 +290,17 @@ class _VerUsuariosState extends State<VerUsuarios> {
             const SizedBox(
                 width: 16.0), // Espacio entre los campos de texto y el botón
             ElevatedButton(
-              onPressed: () {
-                // Acción del botón
+              onPressed: () async{
+                seccione = textField2Controller.text;
+                gradoe = textField6Controller.text;
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>   Estudiantes(seccione1: seccione, gradoe1: gradoe)),
+                   );
               },
-              child: Text('Ver'),
+              child: const Text('Ver'),
               style: ElevatedButton.styleFrom(
-                primary: Color.fromARGB(255, 64, 65,
+                primary: const Color.fromARGB(255, 64, 65,
                     66), // Cambia el color de fondo del botón a rojo
               ),
             ),
@@ -284,6 +319,8 @@ class _VerUsuariosState extends State<VerUsuarios> {
             Expanded(
               flex: 2,
               child: TextField(
+                maxLength: 1,
+                textAlign: TextAlign.center,
                 controller: textField3Controller,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
@@ -303,6 +340,10 @@ class _VerUsuariosState extends State<VerUsuarios> {
             Expanded(
               flex: 2,
               child: TextField(
+                maxLength: 1,
+                textAlign: TextAlign.center,
+                textCapitalization: TextCapitalization.characters,
+                controller: textField5Controller,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
@@ -318,12 +359,17 @@ class _VerUsuariosState extends State<VerUsuarios> {
             const SizedBox(
                 width: 16.0), // Espacio entre los campos de texto y el botón
             ElevatedButton(
-              onPressed: () {
-                // Acción del botón
+             onPressed: () async{
+                seccionprofe = textField5Controller.text;
+                gradoprofe = textField3Controller.text;
+                 Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>   Padre(seccionp: seccionprofe, gradop: gradoprofe)),
+                   );
               },
-              child: Text('Ver'),
+              child: const Text('Ver'),
               style: ElevatedButton.styleFrom(
-                primary: Color.fromARGB(255, 64, 65,
+                primary: const Color.fromARGB(255, 64, 65,
                     66), // Cambia el color de fondo del botón a rojo
               ),
             ),
@@ -364,9 +410,9 @@ class _VerUsuariosState extends State<VerUsuarios> {
                 // Acción del botón
                 generatePdf();
               },
-              child: Text('Ver'),
+              child: const Text('Ver'),
               style: ElevatedButton.styleFrom(
-                primary: Color.fromARGB(255, 64, 65,
+                primary: const Color.fromARGB(255, 64, 65,
                     66), // Cambia el color de fondo del botón a rojo
               ),
             ),
@@ -380,12 +426,12 @@ class _VerUsuariosState extends State<VerUsuarios> {
     return Row(children: [
       ElevatedButton(
         onPressed: () {
-          // Lógica que se ejecutará cuando se presione el botón "Guardar"
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>const Datos()));
           setState(() {});
         },
-        child: Text('Ver'),
+        child: const Text('Ver'),
         style: ElevatedButton.styleFrom(
-          primary: Color.fromARGB(
+          primary: const Color.fromARGB(
               255, 64, 65, 66), // Cambia el color de fondo del botón a rojo
         ),
       ),
@@ -399,12 +445,12 @@ class _VerUsuariosState extends State<VerUsuarios> {
           // Lógica que se ejecutará cuando se presione el botón "Guardar"
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Manual()),
+            MaterialPageRoute(builder: (context) => const Manual()),
           );
         },
-        child: Text('Ayuda'),
+        child: const Text('Ayuda'),
         style: ElevatedButton.styleFrom(
-          primary: Color.fromARGB(
+          primary: const Color.fromARGB(
               255, 64, 65, 66), // Cambia el color de fondo del botón a rojo
         ),
       ),
@@ -961,7 +1007,7 @@ class _VerUsuariosState extends State<VerUsuarios> {
     grid2.draw(page: page, bounds: const Rect.fromLTWH(50, 150, 450, 460));
 
     final PdfLayoutResult textLayoutResult3 =
-        textElement3.draw(page: page, bounds: Rect.fromLTWH(50, 480, 500, 50));
+        textElement3.draw(page: page, bounds: const Rect.fromLTWH(50, 480, 500, 50));
 
     //Crear tercera tabla
     final PdfGrid grid3 = PdfGrid();

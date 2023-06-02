@@ -45,6 +45,7 @@ Future<dynamic> comprobard(String usuariobd, String contrabd) async{
   }
 }
 
+
 Future<dynamic> comprobara(String usuariobd, String contrabd) async{
   http.Response enviar = await http.post(
     Uri.parse('https://notasincas.000webhostapp.com/forma.php'),
@@ -73,5 +74,55 @@ Future<dynamic> hijos(String duibd1) async{
   } else {
 
     return enviar.body;
+  }
+}
+
+Future<dynamic> enviardui(duibd1) async{
+  http.Response enviar = await http.post(
+    Uri.parse('https://notasincas.000webhostapp.com/hijos1.php'),
+    body: <String, dynamic>{
+      "dui": duibd1,
+    },
+  );
+  var resultado = jsonDecode(enviar.body);
+   if (enviar.statusCode == 201) {
+    return "error";
+  } else {
+
+    return resultado;
+  }
+}
+
+Future<dynamic> enviare(String seccione1,String gradoe1) async{
+  http.Response enviar = await http.post(
+    Uri.parse('https://notasincas.000webhostapp.com/estudiantesa.php'),
+    body: <String, dynamic>{
+      "seccion": seccione1,
+      "grado": gradoe1,
+    },
+  );
+  var resultado = jsonDecode(enviar.body);
+   if (enviar.statusCode == 201) {
+    return "error";
+  } else {
+
+    return resultado;
+  }
+}
+
+Future<dynamic> enviarp(String seccione2,String gradoe2) async{
+  http.Response enviar = await http.post(
+    Uri.parse('https://notasincas.000webhostapp.com/usuycontra.php'),
+    body: <String, dynamic>{
+      "seccion": seccione2,
+      "grado": gradoe2,
+    },
+  );
+  var resultado = jsonDecode(enviar.body);
+   if (enviar.statusCode == 201) {
+    return "error";
+  } else {
+
+    return resultado;
   }
 }
