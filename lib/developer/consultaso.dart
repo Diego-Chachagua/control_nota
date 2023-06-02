@@ -109,3 +109,20 @@ Future<dynamic> enviare(String seccione1,String gradoe1) async{
     return resultado;
   }
 }
+
+Future<dynamic> enviarp(String seccione2,String gradoe2) async{
+  http.Response enviar = await http.post(
+    Uri.parse('https://notasincas.000webhostapp.com/usuycontra.php'),
+    body: <String, dynamic>{
+      "seccion": seccione2,
+      "grado": gradoe2,
+    },
+  );
+  var resultado = jsonDecode(enviar.body);
+   if (enviar.statusCode == 201) {
+    return "error";
+  } else {
+
+    return resultado;
+  }
+}
