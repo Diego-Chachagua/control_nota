@@ -1,5 +1,6 @@
 // ignore_for_file: sort_child_properties_last, deprecated_member_use
 
+import 'package:control_notas/screens/usuycontra.dart';
 import 'package:flutter/material.dart';
 import 'package:control_notas/screens/manual.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
@@ -44,10 +45,13 @@ class _VerUsuariosState extends State<VerUsuarios> {
   TextEditingController textField4Controller = TextEditingController();
   TextEditingController textField5Controller = TextEditingController();
   TextEditingController textField6Controller = TextEditingController();
+  TextEditingController textField7Controller = TextEditingController();
   String seccionprofe = '';
   String gradoprofe = '';
   String seccione = '';
   String gradoe = '';
+  String seccionu = '';
+  String gradou = '';
 
   @override
   void dispose() {
@@ -198,6 +202,7 @@ class _VerUsuariosState extends State<VerUsuarios> {
             Expanded(
               flex: 2,
               child: TextField(
+                controller: textField7Controller,
                 maxLength: 1,
                 textAlign: TextAlign.center,
                 textCapitalization: TextCapitalization.characters,
@@ -216,11 +221,13 @@ class _VerUsuariosState extends State<VerUsuarios> {
             const SizedBox(
                 width: 16.0), // Espacio entre los campos de texto y el botón
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async{
+                seccionu = textField7Controller.text;
+                gradou = textField1Controller.text;
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const VerUsuarios()));
+                  context,
+                  MaterialPageRoute(builder: (context) =>   Usuycontra(seccione2: seccionu, gradoe2: gradou)),
+                   );
               },
               child: const Text('Ver'),
               style: ElevatedButton.styleFrom(
