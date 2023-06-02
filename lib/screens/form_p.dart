@@ -95,14 +95,14 @@ class _FormpState extends State<Formp> {
                         } else {
                           if (respuesta == "hijo") {
                             // ignore: use_build_context_synchronously
+                            generatePdf();
+                          } else if (respuesta == "hijos") {
+                            // ignore: use_build_context_synchronously
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Manual()),
+                                  builder: (context) => Hijos(duibd1: duibd)),
                             );
-                          } else if (respuesta == "hijos") {
-                            // ignore: use_build_context_synchronously
-                            generatePdf();
                           }
                         }
                       }
