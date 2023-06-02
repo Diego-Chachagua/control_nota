@@ -59,18 +59,35 @@ Future<dynamic> consultap(var gradoprofe ,String seccionprofe) async{
     );
 }
 
-Future<List<Map<String, dynamic>>> getData() async {
-  String url = 'https://notasincas.000webhostapp.com/consultap.php';
+// Future<List<Map<String, dynamic>>> getData(String seccionp, String gradop) async {
+//   String url = 'https://notasincas.000webhostapp.com/consultap.php';
 
-  http.Response response = await http.get(Uri.parse(url));
-  List<dynamic> jsonResponse = jsonDecode(response.body);
+//   http.Response response = await http.get(Uri.parse(url));
+//   List<dynamic> jsonResponse = jsonDecode(response.body);
 
-  List<Map<String, dynamic>> data = jsonResponse
-      .map((item) => {
-            'nombre_padre': item['nombre_padre'],
-            'dui': item['dui'],
-          })
-      .toList();
+//   List<Map<String, dynamic>> data = jsonResponse
+//       .map((item) => {
+//             'nombre_padre': item['nombre_padre'],
+//             'dui': item['dui'],
+//           })
+//       .toList();
 
-  return data;
+//   return data;
+// }
+
+Future<dynamic> getData(String seccionp, String gradop) async{
+  http.Response enviar = await http.post(
+    Uri.parse('https://notasincas.000webhostapp.com/consultap.php'),
+    body: <String, dynamic>{
+      "gradoprofe": gradop,
+      "seccionprofe": seccionp,
+    },
+  );
+  var resultado = jsonDecode(enviar.body);
+   if (enviar.statusCode == 201) {
+    return "error";
+  } else {
+
+    return resultado;
+  }
 }
