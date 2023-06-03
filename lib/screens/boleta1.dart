@@ -89,15 +89,15 @@ import 'guardarbol.dart';
 
     PdfGridRow row1 = grid.rows.add();
     grid.rows[0].cells[0].value = 'Grado';
-    grid.rows[0].cells[1].value = '';
+    grid.rows[0].cells[1].value = '1';
     grid.rows[0].cells[2].value = 'Seccion';
-    grid.rows[0].cells[3].value = '';
+    grid.rows[0].cells[3].value = 'A';
     grid.rows[0].cells[4].value = 'Año';
-    grid.rows[0].cells[5].value = '';
+    grid.rows[0].cells[5].value = '2023';
 
     row1 = grid.rows.add();
     grid.rows[1].cells[0].value = 'Estudiante';
-    grid.rows[1].cells[1].value = '';
+    grid.rows[1].cells[1].value = 'Diego Armando Maradona  Nie:123456788';
     grid.rows[1].cells[2].value = '';
     grid.rows[1].cells[3].value = '';
     grid.rows[1].cells[4].value = '';
@@ -114,19 +114,26 @@ import 'guardarbol.dart';
 cellStyle.stringFormat = PdfStringFormat();
 cellStyle.stringFormat.alignment = PdfTextAlignment.center;
 
+    // Establecer el formato de alineación del texto
+final PdfStringFormat headerFormat = PdfStringFormat(
+  alignment: PdfTextAlignment.center,
+  lineAlignment: PdfVerticalAlignment.middle,
+);
+
+// Aplicar el formato de alineación del texto a las celdas de la cabecera
 for (int i = 0; i < grid.headers[0].cells.count; i++) {
   final PdfGridCell cell = grid.headers[0].cells[i];
-  cell.style = cellStyle;
+  cell.style.stringFormat = headerFormat;
 }
 
+// Aplicar el formato de alineación del texto a las celdas de las filas
 for (int i = 0; i < grid.rows.count; i++) {
   final PdfGridRow row = grid.rows[i];
   for (int j = 0; j < row.cells.count; j++) {
     final PdfGridCell cell = row.cells[j];
-    cell.style = cellStyle;
+    cell.style.stringFormat = headerFormat;
   }
 }
-
 // Establecer la altura de las celdas
 const double cellHeight = 15; // Establecer la altura deseada de las celdas
 
@@ -163,7 +170,7 @@ for (int i = 0; i < grid.rows.count; i++) {
 }
 
     // Dibujar la primera tabla en la página
-    grid.draw(page: page, bounds: const Rect.fromLTWH(50, 90, 450, 170));
+    grid.draw(page: page, bounds: const Rect.fromLTWH(50, 90, 470, 170));
 
     //Crear segunda tabla
     final PdfGrid grid2 = PdfGrid();
@@ -196,16 +203,16 @@ for (int i = 0; i < grid.rows.count; i++) {
     grid2.rows[0].cells[2].value = '';
     grid2.rows[0].cells[3].value = '';
     grid2.rows[0].cells[4].value = '';
-    grid2.rows[0].cells[5].value = '';
-    grid2.rows[0].cells[6].value = '';
-    grid2.rows[0].cells[7].value = '';
-    grid2.rows[0].cells[8].value = '';
-    grid2.rows[0].cells[9].value = '';
+    grid2.rows[0].cells[5].value = '10';
+    grid2.rows[0].cells[6].value = '10';
+    grid2.rows[0].cells[7].value = '10';
+    grid2.rows[0].cells[8].value = '10';
+    grid2.rows[0].cells[9].value = '10';
     grid2.rows[0].cells[10].value = '';
     grid2.rows[0].cells[11].value = '';
     grid2.rows[0].cells[12].value = '';
-    grid2.rows[0].cells[13].value = '';
-    grid2.rows[0].cells[14].value = 'REPROBADO';
+    grid2.rows[0].cells[13].value = '10';
+    grid2.rows[0].cells[14].value = 'APROBADO';
     grid2.rows[0].cells[15].value = '';
     grid2.rows[0].cells[16].value = '';
     grid2.rows.add();
@@ -214,15 +221,15 @@ for (int i = 0; i < grid.rows.count; i++) {
     grid2.rows[1].cells[2].value = '';
     grid2.rows[1].cells[3].value = '';
     grid2.rows[1].cells[4].value = '';
-    grid2.rows[1].cells[5].value = '';
-    grid2.rows[1].cells[6].value = '';
-    grid2.rows[1].cells[7].value = '';
-    grid2.rows[1].cells[8].value = '';
-    grid2.rows[1].cells[9].value = '';
+    grid2.rows[1].cells[5].value = '10';
+    grid2.rows[1].cells[6].value = '10';
+    grid2.rows[1].cells[7].value = '10';
+    grid2.rows[1].cells[8].value = '10';
+    grid2.rows[1].cells[9].value = '10';
     grid2.rows[1].cells[10].value = '';
     grid2.rows[1].cells[11].value = '';
     grid2.rows[1].cells[12].value = '';
-    grid2.rows[1].cells[13].value = '';
+    grid2.rows[1].cells[13].value = '10';
     grid2.rows[1].cells[14].value = 'APROBADO';
     grid2.rows[1].cells[15].value = '';
     grid2.rows[1].cells[16].value = '';
@@ -232,15 +239,15 @@ for (int i = 0; i < grid.rows.count; i++) {
     grid2.rows[2].cells[2].value = '';
     grid2.rows[2].cells[3].value = '';
     grid2.rows[2].cells[4].value = '';
-    grid2.rows[2].cells[5].value = '';
-    grid2.rows[2].cells[6].value = '';
-    grid2.rows[2].cells[7].value = '';
-    grid2.rows[2].cells[8].value = '';
-    grid2.rows[2].cells[9].value = '';
+    grid2.rows[2].cells[5].value = '10';
+    grid2.rows[2].cells[6].value = '10';
+    grid2.rows[2].cells[7].value = '10';
+    grid2.rows[2].cells[8].value = '10';
+    grid2.rows[2].cells[9].value = '10';
     grid2.rows[2].cells[10].value = '';
     grid2.rows[2].cells[11].value = '';
     grid2.rows[2].cells[12].value = '';
-    grid2.rows[2].cells[13].value = '';
+    grid2.rows[2].cells[13].value = '10';
     grid2.rows[2].cells[14].value = 'APROBADO';
     grid2.rows[2].cells[15].value = '';
     grid2.rows[2].cells[16].value = '';
@@ -250,15 +257,15 @@ for (int i = 0; i < grid.rows.count; i++) {
     grid2.rows[3].cells[2].value = '';
     grid2.rows[3].cells[3].value = '';
     grid2.rows[3].cells[4].value = '';
-    grid2.rows[3].cells[5].value = '';
-    grid2.rows[3].cells[6].value = '';
-    grid2.rows[3].cells[7].value = '';
-    grid2.rows[3].cells[8].value = '';
-    grid2.rows[3].cells[9].value = '';
+    grid2.rows[3].cells[5].value = '10';
+    grid2.rows[3].cells[6].value = '10';
+    grid2.rows[3].cells[7].value = '10';
+    grid2.rows[3].cells[8].value = '10';
+    grid2.rows[3].cells[9].value = '10';
     grid2.rows[3].cells[10].value = '';
     grid2.rows[3].cells[11].value = '';
     grid2.rows[3].cells[12].value = '';
-    grid2.rows[3].cells[13].value = '';
+    grid2.rows[3].cells[13].value = '10';
     grid2.rows[3].cells[14].value = 'APROBADO';
     grid2.rows[3].cells[15].value = '';
     grid2.rows[3].cells[16].value = '';
@@ -268,15 +275,15 @@ for (int i = 0; i < grid.rows.count; i++) {
     grid2.rows[4].cells[2].value = '';
     grid2.rows[4].cells[3].value = '';
     grid2.rows[4].cells[4].value = '';
-    grid2.rows[4].cells[5].value = '';
-    grid2.rows[4].cells[6].value = '';
-    grid2.rows[4].cells[7].value = '';
-    grid2.rows[4].cells[8].value = '';
-    grid2.rows[4].cells[9].value = '';
+    grid2.rows[4].cells[5].value = '10';
+    grid2.rows[4].cells[6].value = '10';
+    grid2.rows[4].cells[7].value = '10';
+    grid2.rows[4].cells[8].value = '10';
+    grid2.rows[4].cells[9].value = '10';
     grid2.rows[4].cells[10].value = '';
     grid2.rows[4].cells[11].value = '';
     grid2.rows[4].cells[12].value = '';
-    grid2.rows[4].cells[13].value = '';
+    grid2.rows[4].cells[13].value = '10';
     grid2.rows[4].cells[14].value = 'APROBADO';
     grid2.rows[4].cells[15].value = '';
     grid2.rows[4].cells[16].value = '';
@@ -286,15 +293,15 @@ for (int i = 0; i < grid.rows.count; i++) {
     grid2.rows[5].cells[2].value = '';
     grid2.rows[5].cells[3].value = '';
     grid2.rows[5].cells[4].value = '';
-    grid2.rows[5].cells[5].value = '';
-    grid2.rows[5].cells[6].value = '';
-    grid2.rows[5].cells[7].value = '';
-    grid2.rows[5].cells[8].value = '';
-    grid2.rows[5].cells[9].value = '';
+    grid2.rows[5].cells[5].value = '10';
+    grid2.rows[5].cells[6].value = '10';
+    grid2.rows[5].cells[7].value = '10';
+    grid2.rows[5].cells[8].value = '10';
+    grid2.rows[5].cells[9].value = '10';
     grid2.rows[5].cells[10].value = '';
     grid2.rows[5].cells[11].value = '';
     grid2.rows[5].cells[12].value = '';
-    grid2.rows[5].cells[13].value = '';
+    grid2.rows[5].cells[13].value = '10';
     grid2.rows[5].cells[14].value = 'APROBADO';
     grid2.rows[5].cells[15].value = '';
     grid2.rows[5].cells[16].value = '';
@@ -304,15 +311,15 @@ for (int i = 0; i < grid.rows.count; i++) {
     grid2.rows[6].cells[2].value = '';
     grid2.rows[6].cells[3].value = '';
     grid2.rows[6].cells[4].value = '';
-    grid2.rows[6].cells[5].value = '';
-    grid2.rows[6].cells[6].value = '';
-    grid2.rows[6].cells[7].value = '';
-    grid2.rows[6].cells[8].value = '';
-    grid2.rows[6].cells[9].value = '';
+    grid2.rows[6].cells[5].value = '10';
+    grid2.rows[6].cells[6].value = '10';
+    grid2.rows[6].cells[7].value = '10';
+    grid2.rows[6].cells[8].value = '10';
+    grid2.rows[6].cells[9].value = '10';
     grid2.rows[6].cells[10].value = '';
     grid2.rows[6].cells[11].value = '';
     grid2.rows[6].cells[12].value = '';
-    grid2.rows[6].cells[13].value = '';
+    grid2.rows[6].cells[13].value = '10';
     grid2.rows[6].cells[14].value = 'APROBADO';
     grid2.rows[6].cells[15].value = '';
     grid2.rows[6].cells[16].value = '';
@@ -322,15 +329,15 @@ for (int i = 0; i < grid.rows.count; i++) {
     grid2.rows[7].cells[2].value = '';
     grid2.rows[7].cells[3].value = '';
     grid2.rows[7].cells[4].value = '';
-    grid2.rows[7].cells[5].value = '';
-    grid2.rows[7].cells[6].value = '';
-    grid2.rows[7].cells[7].value = '';
-    grid2.rows[7].cells[8].value = '';
-    grid2.rows[7].cells[9].value = '';
+    grid2.rows[7].cells[5].value = 'M';
+    grid2.rows[7].cells[6].value = 'M';
+    grid2.rows[7].cells[7].value = 'B';
+    grid2.rows[7].cells[8].value = 'E';
+    grid2.rows[7].cells[9].value = 'E';
     grid2.rows[7].cells[10].value = '';
     grid2.rows[7].cells[11].value = '';
     grid2.rows[7].cells[12].value = '';
-    grid2.rows[7].cells[13].value = '';
+    grid2.rows[7].cells[13].value = 'E';
     grid2.rows[7].cells[14].value = 'APROBADO';
     grid2.rows[7].cells[15].value = '';
     grid2.rows[7].cells[16].value = '';
@@ -340,15 +347,15 @@ for (int i = 0; i < grid.rows.count; i++) {
     grid2.rows[8].cells[2].value = '';
     grid2.rows[8].cells[3].value = '';
     grid2.rows[8].cells[4].value = '';
-    grid2.rows[8].cells[5].value = '';
-    grid2.rows[8].cells[6].value = '';
-    grid2.rows[8].cells[7].value = '';
-    grid2.rows[8].cells[8].value = '';
-    grid2.rows[8].cells[9].value = '';
+    grid2.rows[8].cells[5].value = 'E';
+    grid2.rows[8].cells[6].value = 'E';
+    grid2.rows[8].cells[7].value = 'M';
+    grid2.rows[8].cells[8].value = 'B';
+    grid2.rows[8].cells[9].value = 'E';
     grid2.rows[8].cells[10].value = '';
     grid2.rows[8].cells[11].value = '';
     grid2.rows[8].cells[12].value = '';
-    grid2.rows[8].cells[13].value = '';
+    grid2.rows[8].cells[13].value = 'E';
     grid2.rows[8].cells[14].value = 'APROBADO';
     grid2.rows[8].cells[15].value = '';
     grid2.rows[8].cells[16].value = '';
@@ -358,15 +365,15 @@ for (int i = 0; i < grid.rows.count; i++) {
     grid2.rows[9].cells[2].value = '';
     grid2.rows[9].cells[3].value = '';
     grid2.rows[9].cells[4].value = '';
-    grid2.rows[9].cells[5].value = '';
-    grid2.rows[9].cells[6].value = '';
-    grid2.rows[9].cells[7].value = '';
-    grid2.rows[9].cells[8].value = '';
-    grid2.rows[9].cells[9].value = '';
+    grid2.rows[9].cells[5].value = 'E';
+    grid2.rows[9].cells[6].value = 'E';
+    grid2.rows[9].cells[7].value = 'E';
+    grid2.rows[9].cells[8].value = 'E';
+    grid2.rows[9].cells[9].value = 'E';
     grid2.rows[9].cells[10].value = '';
     grid2.rows[9].cells[11].value = '';
     grid2.rows[9].cells[12].value = '';
-    grid2.rows[9].cells[13].value = '';
+    grid2.rows[9].cells[13].value = 'E';
     grid2.rows[9].cells[14].value = 'APROBADO';
     grid2.rows[9].cells[15].value = '';
     grid2.rows[9].cells[16].value = '';
@@ -377,15 +384,15 @@ for (int i = 0; i < grid.rows.count; i++) {
     grid2.rows[10].cells[2].value = '';
     grid2.rows[10].cells[3].value = '';
     grid2.rows[10].cells[4].value = '';
-    grid2.rows[10].cells[5].value = '';
-    grid2.rows[10].cells[6].value = '';
-    grid2.rows[10].cells[7].value = '';
-    grid2.rows[10].cells[8].value = '';
-    grid2.rows[10].cells[9].value = '';
+    grid2.rows[10].cells[5].value = 'E';
+    grid2.rows[10].cells[6].value = 'E';
+    grid2.rows[10].cells[7].value = 'E';
+    grid2.rows[10].cells[8].value = 'B';
+    grid2.rows[10].cells[9].value = 'E';
     grid2.rows[10].cells[10].value = '';
     grid2.rows[10].cells[11].value = '';
     grid2.rows[10].cells[12].value = '';
-    grid2.rows[10].cells[13].value = '';
+    grid2.rows[10].cells[13].value = 'E';
     grid2.rows[10].cells[14].value = 'APROBADO';
     grid2.rows[10].cells[15].value = '';
     grid2.rows[10].cells[16].value = '';
@@ -396,15 +403,15 @@ for (int i = 0; i < grid.rows.count; i++) {
     grid2.rows[11].cells[2].value = '';
     grid2.rows[11].cells[3].value = '';
     grid2.rows[11].cells[4].value = '';
-    grid2.rows[11].cells[5].value = '';
-    grid2.rows[11].cells[6].value = '';
-    grid2.rows[11].cells[7].value = '';
-    grid2.rows[11].cells[8].value = '';
-    grid2.rows[11].cells[9].value = '';
+    grid2.rows[11].cells[5].value = 'E';
+    grid2.rows[11].cells[6].value = 'E';
+    grid2.rows[11].cells[7].value = 'E';
+    grid2.rows[11].cells[8].value = 'E';
+    grid2.rows[11].cells[9].value = 'MB';
     grid2.rows[11].cells[10].value = '';
     grid2.rows[11].cells[11].value = '';
     grid2.rows[11].cells[12].value = '';
-    grid2.rows[11].cells[13].value = '';
+    grid2.rows[11].cells[13].value = 'E';
     grid2.rows[11].cells[14].value = 'APROBADO';
     grid2.rows[11].cells[15].value = '';
     grid2.rows[11].cells[16].value = '';
@@ -414,15 +421,15 @@ for (int i = 0; i < grid.rows.count; i++) {
     grid2.rows[12].cells[2].value = '';
     grid2.rows[12].cells[3].value = '';
     grid2.rows[12].cells[4].value = '';
-    grid2.rows[12].cells[5].value = '';
-    grid2.rows[12].cells[6].value = '';
-    grid2.rows[12].cells[7].value = '';
-    grid2.rows[12].cells[8].value = '';
-    grid2.rows[12].cells[9].value = '';
+    grid2.rows[12].cells[5].value = 'E';
+    grid2.rows[12].cells[6].value = 'E';
+    grid2.rows[12].cells[7].value = 'E';
+    grid2.rows[12].cells[8].value = 'E';
+    grid2.rows[12].cells[9].value = 'E';
     grid2.rows[12].cells[10].value = '';
     grid2.rows[12].cells[11].value = '';
     grid2.rows[12].cells[12].value = '';
-    grid2.rows[12].cells[13].value = '';
+    grid2.rows[12].cells[13].value = 'E';
     grid2.rows[12].cells[14].value = 'APROBADO';
     grid2.rows[12].cells[15].value = '';
     grid2.rows[12].cells[16].value = '';
@@ -433,15 +440,15 @@ for (int i = 0; i < grid.rows.count; i++) {
     grid2.rows[13].cells[2].value = '';
     grid2.rows[13].cells[3].value = '';
     grid2.rows[13].cells[4].value = '';
-    grid2.rows[13].cells[5].value = '';
-    grid2.rows[13].cells[6].value = '';
-    grid2.rows[13].cells[7].value = '';
-    grid2.rows[13].cells[8].value = '';
-    grid2.rows[13].cells[9].value = '';
+    grid2.rows[13].cells[5].value = 'E';
+    grid2.rows[13].cells[6].value = 'E';
+    grid2.rows[13].cells[7].value = 'E';
+    grid2.rows[13].cells[8].value = 'E';
+    grid2.rows[13].cells[9].value = 'E';
     grid2.rows[13].cells[10].value = '';
     grid2.rows[13].cells[11].value = '';
     grid2.rows[13].cells[12].value = '';
-    grid2.rows[13].cells[13].value = '';
+    grid2.rows[13].cells[13].value = 'E';
     grid2.rows[13].cells[14].value = 'APROBADO';
     grid2.rows[13].cells[15].value = '';
     grid2.rows[13].cells[16].value = '';
@@ -529,10 +536,7 @@ for (int i = 0; i < grid2.rows.count; i++) {
 }
 
         // Establecer el formato de alineación del texto
-final PdfStringFormat headerFormat = PdfStringFormat(
-  alignment: PdfTextAlignment.center,
-  lineAlignment: PdfVerticalAlignment.middle,
-);
+
 
   // Establecer el formato de alineación del texto
 // Establecer el formato de alineación del texto
@@ -558,7 +562,7 @@ for (int i = 0; i < grid2.rows.count; i++) {
 
   
     //Dibujar la segunda tabla
-    grid2.draw(page: page, bounds: const Rect.fromLTWH(50, 150, 450, 460));
+    grid2.draw(page: page, bounds: const Rect.fromLTWH(50, 150, 470, 460));
 
     final PdfLayoutResult textLayoutResult3 =
         textElement3.draw(page: page, bounds: Rect.fromLTWH(50, 480, 500, 50));
@@ -583,8 +587,8 @@ for (int i = 0; i < grid2.rows.count; i++) {
     grid3.rows[0].cells[1].value = '';
     grid3.rows[0].cells[2].value = '';
     grid3.rows[0].cells[3].value = '';
-    grid3.rows[0].cells[4].value = '';
-    grid3.rows[0].cells[5].value = '';
+    grid3.rows[0].cells[4].value = '10';
+    grid3.rows[0].cells[5].value = 'APROBADO';
     grid3.rows[0].cells[6].value = '';
     grid3.rows[0].cells[7].value = '';
     grid3.rows.add();
@@ -592,8 +596,8 @@ for (int i = 0; i < grid2.rows.count; i++) {
     grid3.rows[1].cells[1].value = '';
     grid3.rows[1].cells[2].value = '';
     grid3.rows[1].cells[3].value = '';
-    grid3.rows[1].cells[4].value = '';
-    grid3.rows[1].cells[5].value = '';
+    grid3.rows[1].cells[4].value = '10';
+    grid3.rows[1].cells[5].value = 'APROBADO';
     grid3.rows[1].cells[6].value = '';
     grid3.rows[1].cells[7].value = '';
     grid3.rows.add();
@@ -601,8 +605,8 @@ for (int i = 0; i < grid2.rows.count; i++) {
     grid3.rows[2].cells[1].value = '';
     grid3.rows[2].cells[2].value = '';
     grid3.rows[2].cells[3].value = '';
-    grid3.rows[2].cells[4].value = '';
-    grid3.rows[2].cells[5].value = '';
+    grid3.rows[2].cells[4].value = '10';
+    grid3.rows[2].cells[5].value = 'APROBADO';
     grid3.rows[2].cells[6].value = '';
     grid3.rows[2].cells[7].value = '';
     grid3.rows.add();
@@ -610,8 +614,8 @@ for (int i = 0; i < grid2.rows.count; i++) {
     grid3.rows[3].cells[1].value = '';
     grid3.rows[3].cells[2].value = '';
     grid3.rows[3].cells[3].value = '';
-    grid3.rows[3].cells[4].value = '';
-    grid3.rows[3].cells[5].value = '';
+    grid3.rows[3].cells[4].value = '10';
+    grid3.rows[3].cells[5].value = 'APROBADO';
     grid3.rows[3].cells[6].value = '';
     grid3.rows[3].cells[7].value = '';
 
@@ -679,7 +683,7 @@ for (int i = 0; i < grid3.rows.count; i++) {
 }
 
     //Dibujar tercera tabla
-    grid3.draw(page: page, bounds: const Rect.fromLTWH(50, 510, 450, 720));
+    grid3.draw(page: page, bounds: const Rect.fromLTWH(50, 510, 470, 720));
 
     final bytes = await pdfDocument.save();
     pdfDocument.dispose();
