@@ -92,7 +92,7 @@ String contrabd = "";
                         // ignore: use_build_context_synchronously
                         Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Materia(usuariobd1: usuariobd,contrabd1: contrabd,)
+                  MaterialPageRoute(builder: (context) => Materia(usuariobd1: usuariobd,contrabd1: contrabd)
                    )
                         );
                     
