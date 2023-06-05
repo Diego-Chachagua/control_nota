@@ -37,11 +37,12 @@ Future<dynamic> insertNP1(String nieEstu,String a1, String a2 , String po) async
 
 Future<dynamic> buscarCode(String usuariobd,String contrabd) async{
   http.Response enviar = await http.post(
-    Uri.parse('https://notasincas.000webhostapp.com/nieestu.php'),
+    Uri.parse('https://notasincas.000webhostapp.com/codeprofe.php'),
     body: <String, dynamic>{
       "usuariobd":usuariobd ,  
       "contrabd":contrabd,
     },
   );
-    return enviar.body;
+    var resultado = jsonDecode(enviar.body);
+    return resultado;
 }

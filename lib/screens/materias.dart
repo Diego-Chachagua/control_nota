@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../developer/consultasf.dart';
+
 class Materias extends StatelessWidget {
   const Materias({super.key});
 
@@ -7,13 +9,18 @@ class Materias extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Materia(),
+      home: Materia(
+        usuariobd1: '',
+        contrabd1: '',
+      ),
     );
   }
 }
 
 class Materia extends StatefulWidget {
-   Materia({super.key});
+  String usuariobd1;
+  String  contrabd1;
+   Materia({super.key,required this.usuariobd1,required this.contrabd1});
 
   @override
   State<Materia> createState() => _MateriaState();
@@ -105,7 +112,11 @@ class _MateriaState extends State<Materia> {
             IconButton(
               iconSize: 94,
               icon: Image.asset('assets/quimica1.png'),
-              onPressed: () {
+              onPressed: () async{
+                print(widget.usuariobd1);
+                print(widget.contrabd1);
+                dynamic respuesta = await buscarCode(widget.usuariobd1,widget.contrabd1);
+                print(respuesta);
                 // Lógica cuando se presiona el primer botón
               },
             ),
