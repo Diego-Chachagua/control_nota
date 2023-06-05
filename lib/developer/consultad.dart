@@ -20,13 +20,13 @@ Future<dynamic> eliminarUsu(var usu ,String usu2) async{
     );
 }
 
-Future<dynamic> registroAlumno(String gradoprofe, String seccionprofe1, String genero, String estudianten, String estudiantea, String padren, 
+Future<dynamic> registroAlumno(String grado, String secciones, String genero, String estudianten, String estudiantea, String padren, 
 String padrea, String dui, String nie, var m1, var m2, var m3, var m4, var m5, var m6, var m7, var m8, var m9, var m10) async{
   http.Response guardar = await http.post(
   Uri.parse('https://notasincas.000webhostapp.com/guardaralumn.php'),
   body: <String, dynamic>{
-    "gradoprofe": gradoprofe,
-    "seccionprofees": seccionprofe1,
+    "grado": grado,
+    "secciones": secciones,
     "genero": genero,
     "estudianten": estudianten,
     "estudiantea": estudiantea,
