@@ -80,10 +80,7 @@ setState(() {
         backgroundColor: Colors.transparent,
         body: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(7.0),
-            child: Table(
-              columnWidths: const {0: FractionColumnWidth(0.5)},
+            Table(
               border: TableBorder.all(),
               children:  [
                 TableRow(
@@ -102,7 +99,6 @@ setState(() {
                     ]
                   ),
               ],
-            ),
             )
           ],
         )
@@ -120,7 +116,7 @@ setState(() {
 
    Widget contrasenap() {
     return Container(
-        color: const Color.fromARGB(255, 172, 187, 199),
+        color:  Colors.blue,
         child:  const Center(
             child: Text(
           'Contraseña',
@@ -130,7 +126,7 @@ setState(() {
 
    Widget padre() {
     return Container(
-        color: const Color.fromARGB(255, 172, 187, 199),
+        color: Colors.blue,
         child:  const Center(
             child: Text(
           'Padres',
