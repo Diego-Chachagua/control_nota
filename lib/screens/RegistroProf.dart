@@ -30,7 +30,7 @@ class _ProfesorState extends State<Profesor> {
   String genero1 = '';
   String g = '';
   String _seleccionada = 'Seleccione el Año';
-  List anios = ['Seleccione el Año', '1 año', '2 año', '1 y 2 año'];
+  List anios = ['Seleccione el Año', '1', '2', '1 y 2'];
   String _seleccionada3 = 'Seleccione el genero';
   List gene = ['Seleccione el genero', 'Masculino', 'Femenino'];
   bool? ischecked = false;
@@ -587,6 +587,8 @@ class _ProfesorState extends State<Profesor> {
         ElevatedButton(
           onPressed: () async {
             print(_seleccionada);
+            print(nombre1);
+            print(_seleccionada3);
             nombre1;
             apellido1;
             m1 = materia1;

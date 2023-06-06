@@ -30,7 +30,20 @@ Future<dynamic> registroProfesor(String nombre1, String apellido1, String anio, 
     
   }
   );
-  return Guardar.body;
   
+  print(nombre1);
+  print(apellido1);
+  print(anio);
+  print(genero1);
+  print(m1);
+  print(m2);
+  print(m3);
+  print(m4);
+  print(m5);
+  print(m6);
+  print(m7);
+  print(m8);
+  print(m9);
+  print(m10);
 }
 
