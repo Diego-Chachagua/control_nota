@@ -22,13 +22,14 @@ class FirstRoute extends StatelessWidget {
       decoration:  const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/fondo_o.jpg'),
-            fit: BoxFit.cover
+            fit: BoxFit.fill
           ),
         ),
       child: Scaffold(
          appBar: AppBar(
             
-            backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
             title:  const Center(child:  Text('BIENVENIDOS',style: TextStyle(color: Color.fromARGB(255, 255, 255, 255),fontSize: 55),)),
           ),
         backgroundColor: Colors.transparent,
@@ -109,7 +110,7 @@ class FirstRoute extends StatelessWidget {
 
 Widget inicio(){
   return Container(
-    color: Colors.black,
+    color: Colors.transparent,
     child: const Text('----¿Como desea iniciar sesion?----', style: TextStyle(fontSize: 25, color: Color.fromARGB(236, 255, 255, 255)),)
     );
 }
