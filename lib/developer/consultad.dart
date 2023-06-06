@@ -20,13 +20,13 @@ Future<dynamic> eliminarUsu(var usu ,String usu2) async{
     );
 }
 
-Future<dynamic> registroAlumno(String gradoprofe, String seccionprofe1, String genero, String estudianten, String estudiantea, String padren, 
+Future<dynamic> registroAlumno(String grado, String secciones, String genero, String estudianten, String estudiantea, String padren, 
 String padrea, String dui, String nie, var m1, var m2, var m3, var m4, var m5, var m6, var m7, var m8, var m9, var m10) async{
   http.Response guardar = await http.post(
   Uri.parse('https://notasincas.000webhostapp.com/guardaralumn.php'),
   body: <String, dynamic>{
-    "gradoprofe": gradoprofe,
-    "seccionprofees": seccionprofe1,
+    "grado": grado,
+    "secciones": secciones,
     "genero": genero,
     "estudianten": estudianten,
     "estudiantea": estudiantea,
@@ -59,18 +59,35 @@ Future<dynamic> consultap(var gradoprofe ,String seccionprofe) async{
     );
 }
 
-Future<List<Map<String, dynamic>>> getData() async {
-  String url = 'https://notasincas.000webhostapp.com/consultap.php';
+// Future<List<Map<String, dynamic>>> getData(String seccionp, String gradop) async {
+//   String url = 'https://notasincas.000webhostapp.com/consultap.php';
 
-  http.Response response = await http.get(Uri.parse(url));
-  List<dynamic> jsonResponse = jsonDecode(response.body);
+//   http.Response response = await http.get(Uri.parse(url));
+//   List<dynamic> jsonResponse = jsonDecode(response.body);
 
-  List<Map<String, dynamic>> data = jsonResponse
-      .map((item) => {
-            'nombre_padre': item['nombre_padre'],
-            'dui': item['dui'],
-          })
-      .toList();
+//   List<Map<String, dynamic>> data = jsonResponse
+//       .map((item) => {
+//             'nombre_padre': item['nombre_padre'],
+//             'dui': item['dui'],
+//           })
+//       .toList();
 
-  return data;
+//   return data;
+// }
+
+Future<dynamic> getData(String seccionp, String gradop) async{
+  http.Response enviar = await http.post(
+    Uri.parse('https://notasincas.000webhostapp.com/consultap.php'),
+    body: <String, dynamic>{
+      "gradoprofe": gradop,
+      "seccionprofe": seccionp,
+    },
+  );
+  var resultado = jsonDecode(enviar.body);
+   if (enviar.statusCode == 201) {
+    return "error";
+  } else {
+
+    return resultado;
+  }
 }
