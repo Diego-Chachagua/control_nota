@@ -13,8 +13,8 @@ class EleccionAyC extends StatefulWidget {
 }
 
 class _EleccionAyCState extends State<EleccionAyC> {
-  String? anio;
-  String? seccionS;
+  String anio="";
+  String seccionS="";
   String _seleccionada = 'Año';
   List anios = ['Año', '1 año', '2 año', '1 y 2 año'];
   String _seleccionada2 = 'Seccion';
