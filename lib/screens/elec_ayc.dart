@@ -6,7 +6,7 @@ import 'form_d.dart';
 import 'periodo.dart';
 
 class EleccionAyC extends StatefulWidget {
-  EleccionAyC({super.key});
+  EleccionAyC({super.key, required materia1});
 
   @override
   State<EleccionAyC> createState() => _EleccionAyCState();
