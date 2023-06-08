@@ -730,7 +730,16 @@ class _EstudianteState extends State<Estudiante> {
             apellido2.text = '';
             textField1Controller.text = '';
             textField2Controller.text = '';
-            await registroAlumno(grado, seccion1, genero, estudianten, estudiantea, padren, padrea, dui,  nie,  m1,  m2,  m3,  m4,  m5,  m6,  m7,  m8,  m9,  m10);
+            dynamic respuesta = await registroAlumno(grado, seccion1, genero, estudianten, estudiantea, padren, padrea, dui,  nie,  m1,  m2,  m3,  m4,  m5,  m6,  m7,  m8,  m9,  m10);
+            if (respuesta == "noexistente") {
+                        _mensaje(context);
+                      //se produjo un error
+                    }
+            if (respuesta == "exito") {
+                        _mensaje(context);
+                      //se produjo un error
+                    }
+
             setState(() {
               informacionGuardada = 'Datos guardados';
             });
@@ -791,4 +800,89 @@ class _EstudianteState extends State<Estudiante> {
       ),
     ]);
   }
+
+void _mensaje(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("Error al ingresar alumno"),
+            content:
+                const Text('Registro fallido'),
+            actions: [
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    setState(() {
+                      Navigator.pop(context);
+                    _seleccionada = 'Año';
+            _seleccionada2 = 'Seccion';
+            _seleccionada3 = 'Genero';
+            ischecked = false;
+            ischecked2 = false;
+            ischecked3 = false;
+            ischecked4 = false;
+            ischecked5 = false;
+            ischecked6 = false;
+            ischecked7 = false;
+            ischecked8 = false;
+            ischecked9 = false;
+            ischecked10 = false;
+            nombre1.text = '';
+            apellido1.text = '';
+            nombre2.text = '';
+            apellido2.text = '';
+            textField1Controller.text = '';
+            textField2Controller.text = '';
+                    });
+                  },
+                  child: const Text('Aceptar'),
+                ),
+              )
+            ],
+          );
+        });
+  }
+
+  void _mensajeUsu(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("Guardo"),
+            content: const Text(
+                'Los datos ingresados se guardaron exitosamente'),
+            actions: [
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    _seleccionada = 'Año';
+            _seleccionada2 = 'Seccion';
+            _seleccionada3 = 'Genero';
+            ischecked = false;
+            ischecked2 = false;
+            ischecked3 = false;
+            ischecked4 = false;
+            ischecked5 = false;
+            ischecked6 = false;
+            ischecked7 = false;
+            ischecked8 = false;
+            ischecked9 = false;
+            ischecked10 = false;
+            nombre1.text = '';
+            apellido1.text = '';
+            nombre2.text = '';
+            apellido2.text = '';
+            textField1Controller.text = '';
+            textField2Controller.text = '';
+                  },
+                  child: const Text('Aceptar'),
+                ),
+              )
+            ],
+          );
+        });
+  }
+
 }

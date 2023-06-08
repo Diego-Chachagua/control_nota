@@ -46,7 +46,12 @@ String padrea, String dui, String nie, var m1, var m2, var m3, var m4, var m5, v
     "m10": m10,
     
   }
-  );
+ );
+ if (guardar.statusCode == 201) {
+    return "error";
+  } else {
+    return guardar.body;
+  }
 }
 
 Future<dynamic> consultap(var gradoprofe ,String seccionprofe) async{
