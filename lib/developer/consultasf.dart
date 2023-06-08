@@ -46,3 +46,15 @@ Future<dynamic> buscarCode(String usuariobd,String contrabd) async{
     var resultado = jsonDecode(enviar.body);
     return resultado;
 }
+
+Future<dynamic> mostrarP1(String anio,String seccion) async{
+  http.Response enviar = await http.post(
+    Uri.parse('https://notasincas.000webhostapp.com/notasp1.php'),
+    body: <String, dynamic>{
+      "usuariobd":anio ,  
+      "contrabd":seccion,
+    },
+  );
+    var resultado = jsonDecode(enviar.body);
+    return resultado;
+}

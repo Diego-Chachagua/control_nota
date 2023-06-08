@@ -1,4 +1,6 @@
 // ignore: file_names
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:control_notas/screens/materias.dart';
 import 'package:flutter/material.dart';
 import '../developer/consultasf.dart';
@@ -90,12 +92,18 @@ String contrabd = "";
                     } else {
                          if(respuesta == "profe"){
                         // ignore: use_build_context_synchronously
-                        Navigator.push(
+                      //  Navigator.push(
+                  //context,
+                  //MaterialPageRoute(builder: (context) => Materia(usuariobd1: usuariobd,contrabd1: contrabd)
+                  // )
+                      //  );
+                      var materia=2;
+                       Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Materia(usuariobd1: usuariobd,contrabd1: contrabd)
-                   )
-                        );
-                    
+                  MaterialPageRoute(builder: (context) => EleccionAyC(materia1: materia,),
+                  )
+                       );
+                  
                       }
                     }
                     }

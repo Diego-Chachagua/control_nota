@@ -6,15 +6,15 @@ import 'form_d.dart';
 import 'periodo.dart';
 
 class EleccionAyC extends StatefulWidget {
-  EleccionAyC({super.key});
+  EleccionAyC({super.key, required materia1});
 
   @override
   State<EleccionAyC> createState() => _EleccionAyCState();
 }
 
 class _EleccionAyCState extends State<EleccionAyC> {
-  String? anio;
-  String? seccionS;
+  String anio="";
+  String seccionS="";
   String _seleccionada = 'Año';
   List anios = ['Año', '1 año', '2 año', '1 y 2 año'];
   String _seleccionada2 = 'Seccion';
