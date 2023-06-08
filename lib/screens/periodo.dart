@@ -4,8 +4,8 @@ import 'package:control_notas/screens/usuarios.dart';
 import 'cuadro.dart';
 
 class Periodos extends StatefulWidget {
-   String? anios;
-   String? seccion;
+   String anios;
+   String seccion;
   Periodos( this.anios, this.seccion, {super.key});
 
   @override
