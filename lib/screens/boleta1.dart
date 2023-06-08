@@ -87,21 +87,27 @@ void generatePdf() async {
   header.cells[4].value = '';
   header.cells[5].value = '';
 
+  for (final data in userData) {
     PdfGridRow row1 = grid.rows.add();
     grid.rows[0].cells[0].value = 'Grado';
-    grid.rows[0].cells[1].value = ['cod_grado'].toString();
+    grid.rows[0].cells[1].value = data['cod_grado'].toString();
     grid.rows[0].cells[2].value = 'Seccion';
-    grid.rows[0].cells[3].value = ['seccion'];
+    grid.rows[0].cells[3].value = data['seccion'];
     grid.rows[0].cells[4].value = 'Año';
-    grid.rows[0].cells[5].value = ['anio'].toString();
-
+    grid.rows[0].cells[5].value = data['anio'].toString();
+  
+ 
     row1 = grid.rows.add();
     grid.rows[1].cells[0].value = 'Estudiante';
-    grid.rows[1].cells[1].value = ['nombre_estudiante']; ['apellido_estudiante']; 'Nie:';['nie'].toString();
+    grid.rows[1].cells[1].value = data['nombre_estudiante'];
+    data['apellido_estudiante'];
+    'Nie:';
+    data['nie'].toString();
     grid.rows[1].cells[2].value = '';
     grid.rows[1].cells[3].value = '';
     grid.rows[1].cells[4].value = '';
     grid.rows[1].cells[5].value = '';
+  }
 
   // Combinar celdas en la cabecera
   grid.headers[0].cells[1].columnSpan = 5;
