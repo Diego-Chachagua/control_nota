@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/fondo_12.jpg'),
+            image: AssetImage('assets/fondo_13.jpg'),
             fit: BoxFit.fill
           ),
         ),
