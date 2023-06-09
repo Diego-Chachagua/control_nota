@@ -13,9 +13,8 @@ import 'dart:io';
 Future<List<dynamic>> fetchUserData() async {
   final response = await http.get(Uri.parse('https://notasincas.000webhostapp.com/llamarduidatosestu.php'));
   if (response.statusCode == 200) {
-    // Decodificar la respuesta JSON
     final jsonData = json.decode(response.body);
-    return jsonData;
+    return jsonData as List<dynamic>;
   } else {
     throw Exception('Error al cargar los datos');
   }
