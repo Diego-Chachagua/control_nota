@@ -95,7 +95,7 @@ class _FormpState extends State<Formp> {
                         } else {
                           if (respuesta == "hijo") {
                             // ignore: use_build_context_synchronously
-                            generatePdf();
+                            generatePdf(duibd);
                           } else if (respuesta == "hijos") {
                             // ignore: use_build_context_synchronously
                             Navigator.push(

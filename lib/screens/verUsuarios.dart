@@ -405,7 +405,8 @@ class _VerUsuariosState extends State<VerUsuarios> {
             ElevatedButton(
               onPressed: () {
                 // Acción del botón
-                generatePdf();
+                String duibd = '';
+                generatePdf(duibd);
               },
               child: const Text('Ver'),
               style: ElevatedButton.styleFrom(

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, unused_local_variable
+
 import 'dart:typed_data';
 import 'package:flutter/services.dart' show rootBundle;
 
@@ -7,9 +9,10 @@ import 'package:syncfusion_flutter_pdf/pdf.dart';
 import '../developer/consultasj.dart';
 import 'guardarbol.dart';
 
-void generatePdf() async {
+void generatePdf(String duibd) async {
   // Obtener los datos desde PHP
-  List<dynamic> userData = await fetchUserData();
+  print(duibd);
+  List<dynamic> userData = await fetchUserData(duibd);
   final pdfDocument = PdfDocument();
   final page = pdfDocument.pages.add();
 
@@ -87,22 +90,18 @@ void generatePdf() async {
   header.cells[4].value = '';
   header.cells[5].value = '';
 
-  for (final data in userData) {
+  for(var data in userData){
     PdfGridRow row1 = grid.rows.add();
     grid.rows[0].cells[0].value = 'Grado';
-    grid.rows[0].cells[1].value = data['cod_grado'].toString();
+    grid.rows[0].cells[1].value = data['cod_grado'];
     grid.rows[0].cells[2].value = 'Seccion';
     grid.rows[0].cells[3].value = data['seccion'];
     grid.rows[0].cells[4].value = 'Año';
     grid.rows[0].cells[5].value = data['anio'].toString();
-  
- 
+
     row1 = grid.rows.add();
     grid.rows[1].cells[0].value = 'Estudiante';
-    grid.rows[1].cells[1].value = data['nombre_estudiante'];
-    data['apellido_estudiante'];
-    'Nie:';
-    data['nie'].toString();
+    grid.rows[1].cells[1].value = ['nombre_estudiante']; ['apellido_estudiante']; 'Nie:';['nie'].toString();
     grid.rows[1].cells[2].value = '';
     grid.rows[1].cells[3].value = '';
     grid.rows[1].cells[4].value = '';
