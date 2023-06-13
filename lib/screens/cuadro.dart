@@ -28,6 +28,11 @@ class _CuadroN1State extends State<CuadroN1> {
 
   List<String> nombre = [];
 List<String> nie3 = [];
+List<String> apellido = [];
+List<String> act1_p1 = [];
+List<String> act2_p1 = [];
+List<String> po_p1 = [];
+List<String> promedio_p1 = [];
 var reslt;
 
 @override
@@ -40,10 +45,19 @@ void initState(){
     var dato =reslt[i];
     print(dato["nombre_estudiante"]);
     print(dato["nie"]);
+    print(dato["apellido_estudiante"]);
+    print(dato["act1_p1"]);
+    print(dato["act2_p1"]);
+    print(dato["po_p1"]);
+    
 
   // ignore: non_constant_identifier_names
           var nom_tem = dato["nombre_estudiante"];
-     
+          var ape_tem = dato["apellido_estudiante"];
+          var act1_p1n = dato["act1_p1"];
+          var act2_p1n = dato["act2_p1"];
+          var po_p1n = dato["po_p1"];
+          
 
           // ignore: non_constant_identifier_names
           var id_tem = dato["nie"];
@@ -53,6 +67,11 @@ setState(() {
   // Actualizar las listas con los datos obtenidos
   nombre.add(nom_tem);
   nie3.add(id_tem);
+  apellido.add(ape_tem);
+  act1_p1.add(act1_p1n);
+  act2_p1.add(act2_p1n);
+  po_p1.add(po_p1n);
+  
 });
   }
     }
@@ -202,44 +221,88 @@ setState(() {
               Container(
                   height: 20,
                   color: Colors.white,
-                  child: const Center(
-                    child: Text('1'),
+                  child:  Center(
+                    child: Column(
+                      children: [
+                        Text('1'),
+                      ],
+                    ),
                   )),
               Container(
                   height: 20,
                   color: Colors.white,
-                  child: const Center(
-                    child: Text('123456789'),
+                  child:  Center(
+                    child: Column(
+                      children: [
+                        for (var i = 0; i < nie3.length; i++)
+          Text(nie3[i], style: const TextStyle(fontSize: 15)),
+                      ],
+                    ),
                   )),
               Container(
                   height: 20,
                   color: Colors.white,
-                  child: const Center(
-                    child: Text('Name And Last Name'),
+                  child:  Center(
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            SizedBox(width: 5,),
+                            for (var i = 0; i < nombre.length; i++)
+          Text(nombre[i], style: const TextStyle(fontSize: 15)),
+          SizedBox(width: 5,),
+
+          for (var i = 0; i < apellido.length; i++)
+          Text(apellido[i], style: const TextStyle(fontSize: 15)),
+                          ],
+                        )
+                        
+                      ],
+                    ),
                   )),
               Container(
                   height: 20,
                   color: Colors.white,
-                  child: const Center(
-                    child: Text('0'),
+                  child:  Center(
+                    child: Column(
+                      children: [
+                        for (var i = 0; i < act1_p1.length; i++)
+          Text(act1_p1[i], style: const TextStyle(fontSize: 15)),
+                      ],
+                    ),
                   )),
               Container(
                   height: 20,
                   color: Colors.white,
-                  child: const Center(
-                    child: Text('0'),
+                  child:  Center(
+                    child: Column(
+                      children: [
+                        for (var i = 0; i < act2_p1.length; i++)
+          Text(act2_p1[i], style: const TextStyle(fontSize: 15)),
+                      ],
+                    ),
                   )),
               Container(
                   height: 20,
                   color: Colors.white,
-                  child: const Center(
-                    child: Text('0'),
+                  child:  Center(
+                    child: Column(
+                      children: [
+                       for (var i = 0; i < po_p1.length; i++)
+          Text(po_p1[i], style: const TextStyle(fontSize: 15)),
+                      ],
+                    ),
                   )),
               Container(
                   height: 20,
                   color: Colors.white,
-                  child: const Center(
-                    child: Text('0'),
+                  child:  Center(
+                    child: Column(
+                      children: [
+                        for (var i = 0; i < promedio_p1.length; i++)
+          Text(promedio_p1[i], style: const TextStyle(fontSize: 15)),
+                      ],
+                    ),
                   )),
                       ])
                     ]),
@@ -385,6 +448,7 @@ setState(() {
                                           //insercion de datos en la base
                                            dynamic respuesta = await insertNP1(nie,act1,act2,pruO);
                                            if(respuesta == "noEncontrado"){
+                                            _notifyM(context);
                                            
                                         }else{
                                           //mensaje de confirmacion
@@ -438,6 +502,27 @@ setState(() {
             title: const Text("OPPS!\nNIE no encontrado"),
             content:  Text(
                 'Ningun NIE coincide con el ingresado : $nie '),
+            actions: [
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);      
+                  },
+                  child: const Text('Aceptar'),
+                ),
+              )
+            ],
+          );
+        });
+  }
+  void _notifyM(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("Algo salio mal"),
+            content:  Text(
+                '!OPPS  ALGO SALIO MAL EN LA INSERCION '),
             actions: [
               Center(
                 child: TextButton(
