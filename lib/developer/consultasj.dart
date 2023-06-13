@@ -125,3 +125,47 @@ Future<List<dynamic>> hpp(String duibd) async {
     throw Exception('Error al cargar los datos');
   }
 }
+
+Future<List<dynamic>> avanLL(String duibd) async {
+  final response = await http.get(Uri.parse('https://notasincas.000webhostapp.com/avanzoLL.php?dui=$duibd'));
+  
+  if (response.statusCode == 200) {
+    final jsonData = json.decode(response.body);
+    return jsonData;
+  } else {
+    throw Exception('Error al cargar los datos');
+  }
+}
+
+Future<List<dynamic>> avanCC(String duibd) async {
+  final response = await http.get(Uri.parse('https://notasincas.000webhostapp.com/avanzoCC.php?dui=$duibd'));
+  
+  if (response.statusCode == 200) {
+    final jsonData = json.decode(response.body);
+    return jsonData;
+  } else {
+    throw Exception('Error al cargar los datos');
+  }
+}
+
+Future<List<dynamic>> avanES(String duibd) async {
+  final response = await http.get(Uri.parse('https://notasincas.000webhostapp.com/avanzoES.php?dui=$duibd'));
+  
+  if (response.statusCode == 200) {
+    final jsonData = json.decode(response.body);
+    return jsonData;
+  } else {
+    throw Exception('Error al cargar los datos');
+  }
+}
+
+Future<List<dynamic>> avanMM(String duibd) async {
+  final response = await http.get(Uri.parse('https://notasincas.000webhostapp.com/avanzoMM.php?dui=$duibd'));
+  
+  if (response.statusCode == 200) {
+    final jsonData = json.decode(response.body);
+    return jsonData;
+  } else {
+    throw Exception('Error al cargar los datos');
+  }
+}
