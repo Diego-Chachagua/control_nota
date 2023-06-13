@@ -126,7 +126,7 @@ void generatePdf(String duibd) async {
   //centrar texto de la primera tabla
   final PdfGridCellStyle cellStyle = PdfGridCellStyle();
   cellStyle.stringFormat = PdfStringFormat();
-  cellStyle.stringFormat.alignment = PdfTextAlignment.center;
+  cellStyle.stringFormat?.alignment = PdfTextAlignment.center;
 
   // Establecer el formato de alineación del texto
   final PdfStringFormat headerFormat = PdfStringFormat(
@@ -153,7 +153,7 @@ void generatePdf(String duibd) async {
 
   for (int i = 0; i < grid.headers[0].cells.count; i++) {
     final PdfGridCell cell = grid.headers[0].cells[i];
-    cell.style.stringFormat.alignment = PdfTextAlignment.center;
+    cell.style.stringFormat?.alignment = PdfTextAlignment.center;
   }
 
   for (int i = 0; i < grid.rows.count; i++) {
@@ -161,14 +161,14 @@ void generatePdf(String duibd) async {
     row.height = cellHeight;
     for (int j = 0; j < row.cells.count; j++) {
       final PdfGridCell cell = row.cells[j];
-      cell.style.stringFormat.alignment = PdfTextAlignment.center;
+      cell.style.stringFormat?.alignment = PdfTextAlignment.center;
     }
   }
   // Cambiar el ancho de la primera columna
   grid.columns[0].width = 70; // Establecer el ancho deseado de la columna
 
   cellStyle.stringFormat = PdfStringFormat();
-  cellStyle.stringFormat.alignment = PdfTextAlignment.center;
+  cellStyle.stringFormat?.alignment = PdfTextAlignment.center;
 
   for (int i = 0; i < grid.headers[0].cells.count; i++) {
     final PdfGridCell cell = grid.headers[0].cells[i];
@@ -594,7 +594,7 @@ for (var data2 in userData11){
   //Dibujar la segunda tabla
   grid2.draw(page: page, bounds: const Rect.fromLTWH(50, 150, 470, 460));
 
-  final PdfLayoutResult textLayoutResult3 =
+  final PdfLayoutResult? textLayoutResult3 =
       textElement3.draw(page: page, bounds: Rect.fromLTWH(50, 480, 500, 50));
 
   //Crear tercera tabla
