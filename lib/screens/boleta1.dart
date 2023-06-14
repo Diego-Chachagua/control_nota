@@ -23,6 +23,10 @@ void generatePdf(String duibd) async {
   List<dynamic> userData9 = await oplv(duibd);
   List<dynamic> userData10 = await seminario(duibd);
   List<dynamic> userData11 = await hpp(duibd);
+  List<dynamic> avanLl = await avanLL(duibd);
+  List<dynamic> avanCc = await avanCC(duibd);
+  List<dynamic> avanEs = await avanES(duibd);
+  List<dynamic> avanMm = await avanMM(duibd);
   final pdfDocument = PdfDocument();
   final page = pdfDocument.pages.add();
 
@@ -226,7 +230,7 @@ void generatePdf(String duibd) async {
   grid2.rows[0].cells[11].value = '';
   grid2.rows[0].cells[12].value = '';
   grid2.rows[0].cells[13].value = data2['promedio_t'];
-  grid2.rows[0].cells[14].value = 'APROBADO';
+  grid2.rows[0].cells[14].value = data2['resultado'];
   grid2.rows[0].cells[15].value = '';
   grid2.rows[0].cells[16].value = '';
   }
@@ -246,7 +250,7 @@ void generatePdf(String duibd) async {
   grid2.rows[1].cells[11].value = '';
   grid2.rows[1].cells[12].value = '';
   grid2.rows[1].cells[13].value = data2['promedio_t'];
-  grid2.rows[1].cells[14].value = 'APROBADO';
+  grid2.rows[1].cells[14].value = data2['resultado'];
   grid2.rows[1].cells[15].value = '';
   grid2.rows[1].cells[16].value = '';
   }
@@ -266,7 +270,7 @@ void generatePdf(String duibd) async {
   grid2.rows[2].cells[11].value = '';
   grid2.rows[2].cells[12].value = '';
   grid2.rows[2].cells[13].value = data2['promedio_t'];
-  grid2.rows[2].cells[14].value = 'APROBADO';
+  grid2.rows[2].cells[14].value = data2['resultado'];
   grid2.rows[2].cells[15].value = '';
   grid2.rows[2].cells[16].value = '';
   }
@@ -286,7 +290,7 @@ for (var data2 in userData5){
   grid2.rows[3].cells[11].value = '';
   grid2.rows[3].cells[12].value = '';
   grid2.rows[3].cells[13].value = data2['promedio_t'];
-  grid2.rows[3].cells[14].value = 'APROBADO';
+  grid2.rows[3].cells[14].value = data2['resultado'];
   grid2.rows[3].cells[15].value = '';
   grid2.rows[3].cells[16].value = '';
 }
@@ -306,7 +310,7 @@ for (var data2 in userData6){
   grid2.rows[4].cells[11].value = '';
   grid2.rows[4].cells[12].value = '';
   grid2.rows[4].cells[13].value = data2['promedio_t'];
-  grid2.rows[4].cells[14].value = 'APROBADO';
+  grid2.rows[4].cells[14].value = data2['resultado'];
   grid2.rows[4].cells[15].value = '';
   grid2.rows[4].cells[16].value = '';
 }
@@ -326,7 +330,7 @@ for (var data2 in userData7){
   grid2.rows[5].cells[11].value = '';
   grid2.rows[5].cells[12].value = '';
   grid2.rows[5].cells[13].value = data2['promedio_t'];
-  grid2.rows[5].cells[14].value = 'APROBADO';
+  grid2.rows[5].cells[14].value = data2['resultado'];
   grid2.rows[5].cells[15].value = '';
   grid2.rows[5].cells[16].value = '';
 }
@@ -346,7 +350,7 @@ for (var data2 in userData8){
   grid2.rows[6].cells[11].value = '';
   grid2.rows[6].cells[12].value = '';
   grid2.rows[6].cells[13].value = data2['promedio_t'];
-  grid2.rows[6].cells[14].value = 'APROBADO';
+  grid2.rows[6].cells[14].value = data2['resultado'];
   grid2.rows[6].cells[15].value = '';
   grid2.rows[6].cells[16].value = '';
 }
@@ -366,7 +370,7 @@ for (var data2 in userData9){
   grid2.rows[7].cells[11].value = '';
   grid2.rows[7].cells[12].value = '';
   grid2.rows[7].cells[13].value = data2['promedio_t'];
-  grid2.rows[7].cells[14].value = 'APROBADO';
+  grid2.rows[7].cells[14].value = data2['resultado'];
   grid2.rows[7].cells[15].value = '';
   grid2.rows[7].cells[16].value = '';
 }
@@ -386,7 +390,7 @@ for (var data2 in userData10){
   grid2.rows[8].cells[11].value = '';
   grid2.rows[8].cells[12].value = '';
   grid2.rows[8].cells[13].value = data2['promedio_t'];
-  grid2.rows[8].cells[14].value = 'APROBADO';
+  grid2.rows[8].cells[14].value = data2['resultado'];
   grid2.rows[8].cells[15].value = '';
   grid2.rows[8].cells[16].value = '';
 }
@@ -406,7 +410,7 @@ for (var data2 in userData11){
   grid2.rows[9].cells[11].value = '';
   grid2.rows[9].cells[12].value = '';
   grid2.rows[9].cells[13].value = data2['promedio_t'];
-  grid2.rows[9].cells[14].value = 'APROBADO';
+  grid2.rows[9].cells[14].value = data2['resultado'];
   grid2.rows[9].cells[15].value = '';
   grid2.rows[9].cells[16].value = '';
 }
@@ -426,7 +430,7 @@ for (var data2 in userData11){
   grid2.rows[10].cells[11].value = 'E';
   grid2.rows[10].cells[12].value = 'E';
   grid2.rows[10].cells[13].value = 'E';
-  grid2.rows[10].cells[14].value = 'APROBADO';
+  grid2.rows[10].cells[14].value = 'Aprobado';
   grid2.rows[10].cells[15].value = 'E';
   grid2.rows[10].cells[16].value = 'E';
   grid2.rows.add();
@@ -445,7 +449,7 @@ for (var data2 in userData11){
   grid2.rows[11].cells[11].value = 'MB';
   grid2.rows[11].cells[12].value = 'MB';
   grid2.rows[11].cells[13].value = 'MB';
-  grid2.rows[11].cells[14].value = 'APROBADO';
+  grid2.rows[11].cells[14].value = 'Aprobado';
   grid2.rows[11].cells[15].value = 'MB';
   grid2.rows[11].cells[16].value = 'MB';
   grid2.rows.add();
@@ -463,7 +467,7 @@ for (var data2 in userData11){
   grid2.rows[12].cells[11].value = 'E';
   grid2.rows[12].cells[12].value = 'E';
   grid2.rows[12].cells[13].value = 'E';
-  grid2.rows[12].cells[14].value = 'APROBADO';
+  grid2.rows[12].cells[14].value = 'Aprobado';
   grid2.rows[12].cells[15].value = 'E';
   grid2.rows[12].cells[16].value = 'E';
   grid2.rows.add();
@@ -482,7 +486,7 @@ for (var data2 in userData11){
   grid2.rows[13].cells[11].value = 'B';
   grid2.rows[13].cells[12].value = 'B';
   grid2.rows[13].cells[13].value = 'B';
-  grid2.rows[13].cells[14].value = 'APROBADO';
+  grid2.rows[13].cells[14].value = 'Aprobado';
   grid2.rows[13].cells[15].value = 'B';
   grid2.rows[13].cells[16].value = 'B';
 
@@ -611,44 +615,50 @@ for (var data2 in userData11){
   grid3.headers[0].cells[5].value = 'Resultado';
   grid3.headers[0].cells[6].value = '';
   grid3.headers[0].cells[7].value = '';
-
+for (var avan in avanLl) {
   PdfGridRow rows3 = grid3.rows.add();
   grid3.rows[0].cells[0].value = 'LENGUAJE Y LITERATURA PRUEBA AVANZO';
   grid3.rows[0].cells[1].value = '';
   grid3.rows[0].cells[2].value = '';
   grid3.rows[0].cells[3].value = '';
-  grid3.rows[0].cells[4].value = '';
-  grid3.rows[0].cells[5].value = 'APROBADO';
+  grid3.rows[0].cells[4].value = avan['avanzo'];
+  grid3.rows[0].cells[5].value = avan['resultado'];
   grid3.rows[0].cells[6].value = '';
   grid3.rows[0].cells[7].value = '';
+}
+for (var avan in avanCc) {
   grid3.rows.add();
   grid3.rows[1].cells[0].value = 'CIENCIAS NATURALES PRUEBA AVANZO';
   grid3.rows[1].cells[1].value = '';
   grid3.rows[1].cells[2].value = '';
   grid3.rows[1].cells[3].value = '';
-  grid3.rows[1].cells[4].value = '';
-  grid3.rows[1].cells[5].value = 'APROBADO';
+  grid3.rows[1].cells[4].value = avan['avanzo'];
+  grid3.rows[1].cells[5].value = avan['resultado'];
   grid3.rows[1].cells[6].value = '';
   grid3.rows[1].cells[7].value = '';
+}
+for (var avan in avanEs) {
   grid3.rows.add();
   grid3.rows[2].cells[0].value = 'ESTUDIOS SOCIALES Y CIVICA PRUEBA AVANZO';
   grid3.rows[2].cells[1].value = '';
   grid3.rows[2].cells[2].value = '';
   grid3.rows[2].cells[3].value = '';
-  grid3.rows[2].cells[4].value = '';
-  grid3.rows[2].cells[5].value = 'APROBADO';
+  grid3.rows[2].cells[4].value = avan['avanzo'];
+  grid3.rows[2].cells[5].value = avan['resultado'];
   grid3.rows[2].cells[6].value = '';
   grid3.rows[2].cells[7].value = '';
+}
+for (var avan in avanMm) {
   grid3.rows.add();
   grid3.rows[3].cells[0].value = 'MATEMATICA PRUEBA AVANZO';
   grid3.rows[3].cells[1].value = '';
   grid3.rows[3].cells[2].value = '';
   grid3.rows[3].cells[3].value = '';
-  grid3.rows[3].cells[4].value = '';
-  grid3.rows[3].cells[5].value = 'APROBADO';
+  grid3.rows[3].cells[4].value = avan['avanzo'];
+  grid3.rows[3].cells[5].value = avan['resultado'];
   grid3.rows[3].cells[6].value = '';
   grid3.rows[3].cells[7].value = '';
-
+}
   //Combinar las celdas de la tabla
   //primera fila
   grid3.rows[0].cells[0].columnSpan = 4;
