@@ -47,7 +47,7 @@ Future<dynamic> buscarCode(String usuariobd,String contrabd) async{
     return resultado;
 }
 
-Future<dynamic> mostrarP1(String anio,String seccion) async{
+Future<dynamic> mostrarP1(var anio,var seccion) async{
   http.Response enviar = await http.post(
     Uri.parse('https://notasincas.000webhostapp.com/notasp1.php'),
     body: <String, dynamic>{
@@ -56,6 +56,6 @@ Future<dynamic> mostrarP1(String anio,String seccion) async{
     },
   );
     var resultado = jsonDecode(enviar.body);
-    print(resultado);
+    
     return resultado;
 }
