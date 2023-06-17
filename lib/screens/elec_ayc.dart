@@ -6,7 +6,8 @@ import 'form_d.dart';
 import 'periodo.dart';
 
 class EleccionAyC extends StatefulWidget {
-  EleccionAyC({super.key, required materia1});
+  var materia1;
+  EleccionAyC({super.key, required this.materia1});
 
   @override
   State<EleccionAyC> createState() => _EleccionAyCState();
@@ -16,9 +17,9 @@ class _EleccionAyCState extends State<EleccionAyC> {
   String anio="";
   String seccionS="";
   String _seleccionada = 'Año';
-  List anios = ['Año', '1 año', '2 año', '1 y 2 año'];
+  List anios = ['Año', '1 año', '2 año'];
   String _seleccionada2 = 'Seccion';
-  List seccion = ['Seccion', 'A', 'B', 'f', 'G', 'H', 'K'];
+  List seccion = ['Seccion', 'A', 'F', 'E', 'H', 'G', 'D'];
 
   @override
   Widget build(BuildContext context) {
@@ -131,8 +132,8 @@ class _EleccionAyCState extends State<EleccionAyC> {
                         seccionS=_seleccionada2;
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) =>  Periodos(anio,seccionS)),
-                        );
+                          MaterialPageRoute(builder: (context) =>  Periodos(anio,seccionS,widget.materia1),
+                        ));
 
                     },
                     child: const Text('Aceptar'),

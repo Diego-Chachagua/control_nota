@@ -100,7 +100,7 @@ String contrabd = "";
                       var materia=2;
                        Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => EleccionAyC(materia1: materia,),
+                  MaterialPageRoute(builder: (context) => Materias(),
                   )
                        );
                   
