@@ -25,14 +25,20 @@ class Profesor extends StatefulWidget {
 
 class _ProfesorState extends State<Profesor> {
   String nombre1 = '';
+  String secciones = '' ;
+  String seccion1 = '';
   String apellido1 = '';
   String anio = '';
   String genero1 = '';
   String g = '';
-  String _seleccionada = 'Seleccione el Año';
-  List anios = ['Seleccione el Año', '1', '2', '1 y 2'];
-  String _seleccionada3 = 'Seleccione el genero';
-  List gene = ['Seleccione el genero', 'Masculino', 'Femenino'];
+  String primero = '';
+  String segundo = '';
+  String _seleccionada = 'Año';
+  List anios = ['Año', '1', '2'];
+    String _seleccionada2 = 'Seccion';
+  List seccion = ['Seccion', 'A', 'F', 'E', 'H', 'G', 'D'];
+  String _seleccionada3 = 'genero';
+  List gene = ['genero', 'Masculino', 'Femenino'];
   bool? ischecked = false;
   bool? ischecked2 = false;
   bool? ischecked3 = false;
@@ -79,17 +85,7 @@ class _ProfesorState extends State<Profesor> {
     super.dispose();
   }
  
-  List<String> menuItems = ['A', 'B', 'G', 'F', 'H', 'K', 'L', 'O'];
-  List<bool> isCheckedList = [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false
-  ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -104,43 +100,7 @@ class _ProfesorState extends State<Profesor> {
           title: const Text('Registro de Profesor'),
           backgroundColor: const Color(0x00E8E2E2),
         ),
-        drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              const DrawerHeader(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/fondo_12.jpg'), fit: BoxFit.cover),
-                ),
-                child: Text(
-                  'Secciones que dara el docente',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                  ),
-                ),
-              ),
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: menuItems.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(menuItems[index]),
-                    leading: Checkbox(
-                      value: isCheckedList[index],
-                      onChanged: (value) {
-                        setState(() {
-                          isCheckedList[index] = value!;
-                        });
-                      },
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
+        
         body: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
           children: <Widget>[Cuerpo()],
@@ -241,6 +201,17 @@ class _ProfesorState extends State<Profesor> {
     return annios;
   }
 
+    List<DropdownMenuItem<String>> getOptionsDropDownButton2() {
+    List<DropdownMenuItem<String>> secciones = [];
+    seccion.forEach((element) {
+      secciones.add(DropdownMenuItem(
+        child: Text(element),
+        value: element,
+      ));
+    });
+    return secciones;
+  }
+
   List<DropdownMenuItem<String>> GetOptionsDropDownButton3() {
     List<DropdownMenuItem<String>> genero = [];
     gene.forEach((element) {
@@ -254,41 +225,67 @@ class _ProfesorState extends State<Profesor> {
 
   Widget crearDropdDownButton() {
     return Row(
-      children: <Widget>[
-        Expanded(
-          child: Container(
-            width: 40,
-            child: DropdownButton(
+      children: <Widget>[    
+           SizedBox(width: 1),
+              DropdownButton(
               value: _seleccionada,
               items: GetOptionsDropDownButton(),
               onChanged: (value) {
                 setState(() {
                   _seleccionada = value.toString();
-                });
-              },
-            ),
-          ),
-        ),
-        const SizedBox(width: 5),
-        Expanded(
-          child: Container(
-            width: 20,
-            child: DropdownButton(
-              value: _seleccionada3,
-              items: GetOptionsDropDownButton3(),
-              onChanged: (value) {
-                setState(() {
-                  _seleccionada3 = value.toString();
-                  if (_seleccionada3 == 'Masculino') {
-                    genero1 = 'M';
-                  }else{
-                    genero1 = 'F';
+                  if(_seleccionada == '1 y 2'){
+                    primero = '1';
+                    segundo = '2';
                   }
                 });
               },
-            ),
-          ),
+                     ),
+        const SizedBox(width: 20),
+        DropdownButton(
+          value: _seleccionada2,
+          items: getOptionsDropDownButton2(),
+          onChanged: (value) {
+            secciones = _seleccionada2 = value.toString();
+              if (secciones == 'A') {
+                seccion1 = '1';
+              }
+              if (secciones == 'F') {
+                seccion1 = '2';
+              }
+              if (secciones == 'E') {
+                seccion1 = '3';
+              }
+              if (secciones == 'H') {
+                seccion1 = '4';
+              }
+              if (secciones == 'G') {
+                seccion1 = '5';
+              }
+              if (secciones == 'D') {
+                seccion1 = '6';
+              }
+            setState(() {
+
+            });
+          },
         ),
+        const SizedBox(width: 20),
+        
+           DropdownButton(
+            value: _seleccionada3,
+            items: GetOptionsDropDownButton3(),
+            onChanged: (value) {
+              setState(() {
+                _seleccionada3 = value.toString();
+                if (_seleccionada3 == 'Masculino') {
+                  genero1 = 'M';
+                }else{
+                  genero1 = 'F';
+                }
+              });
+            },
+          ),
+        
       ],
     );
   }
@@ -591,6 +588,7 @@ class _ProfesorState extends State<Profesor> {
             print(_seleccionada3);
             nombre1;
             apellido1;
+            seccion1;
             m1 = materia1;
             m2 = materia2;
             m3 = materia3;
@@ -605,7 +603,9 @@ class _ProfesorState extends State<Profesor> {
             apellido1 = apellidop.text;
             genero1;
             anio = _seleccionada;
-             ischecked = false;
+            primero;
+            segundo;
+            ischecked = false;
             ischecked2 = false;
             ischecked3 = false;
             ischecked4 = false;
@@ -617,11 +617,24 @@ class _ProfesorState extends State<Profesor> {
             ischecked10 = false;
             nombrep.text = "";
             apellidop.text = "";
-            await registroProfesor(nombre1, apellido1, anio, genero1,  m1,  m2,  m3,  m4,  m5,  m6,  m7,  m8,  m9,  m10);
+            dynamic respuesta = await registroProfesor(nombre1, seccion1, apellido1, anio, genero1,  m1,  m2,  m3,  m4,  m5,  m6,  m7,  m8,  m9,  m10, primero, segundo);
+             if (respuesta == "error") {
+              _mensaje(context);
+               //se produjo un error
+                        }
+             if (respuesta == "exito") {
+              //no hay usuario con ese nombre
+              _mensajeUsu(context);
+                        }
             // Lógica que se ejecutará cuando se presione el botón "Guardar"
             setState(() {
               informacionGuardada = 'Datos guardados';
             });
+              Navigator.pop(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Profesor()),
+                      );
           },
           child: const Text('Guardar'),
           style: ElevatedButton.styleFrom(
@@ -663,5 +676,80 @@ class _ProfesorState extends State<Profesor> {
         ),
       ),
     ]);
+  }
+
+    void _mensajeUsu(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("Exito"),
+            content: const Text(
+                'Los datos ingresados fueeron guardados'),
+            actions: [
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                     genero1;
+            anio = _seleccionada;
+            ischecked = false;
+            ischecked2 = false;
+            ischecked3 = false;
+            ischecked4 = false;
+            ischecked5 = false;
+            ischecked6 = false;
+            ischecked7 = false;
+            ischecked8 = false;
+            ischecked9 = false;
+            ischecked10 = false;
+            nombrep.text = "";
+            apellidop.text = "";
+                  },
+                  child: const Text('Aceptar'),
+                ),
+              )
+            ],
+          );
+        });
+  }
+
+  void _mensaje(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("Error"),
+            content:
+                const Text('Ocurrió un error al conectar con la base de datos'
+                    'o consulta errónea.'),
+            actions: [
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    setState(() {
+                      Navigator.pop(context);
+                       genero1;
+            anio = _seleccionada;
+            ischecked = false;
+            ischecked2 = false;
+            ischecked3 = false;
+            ischecked4 = false;
+            ischecked5 = false;
+            ischecked6 = false;
+            ischecked7 = false;
+            ischecked8 = false;
+            ischecked9 = false;
+            ischecked10 = false;
+            nombrep.text = "";
+            apellidop.text = "";
+                    });
+                  },
+                  child: const Text('Aceptar'),
+                ),
+              )
+            ],
+          );
+        });
   }
 }
