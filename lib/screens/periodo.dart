@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:control_notas/screens/usuarios.dart';
 
 import 'cuadro.dart';
 
 class Periodos extends StatefulWidget {
    String anios;
    String seccion;
-  Periodos( this.anios, this.seccion, {super.key});
+   var materia1;
+  Periodos( this.anios, this.seccion,this.materia1, {super.key});
 
   @override
   State<Periodos> createState() => _PeriodosState();
@@ -43,7 +43,7 @@ class _PeriodosState extends State<Periodos> {
             color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
               setState(() {
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>   CuadroN1(widget.anios,widget.seccion)));
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>   CuadroN1(widget.anios,widget.seccion,widget.materia1)));
                 print(widget.anios);
                 print(widget.seccion);
               });
@@ -125,21 +125,6 @@ class _PeriodosState extends State<Periodos> {
                 fontSize: 9.0,
               )
             )
-          ),
-           MaterialButton(
-            padding:const  EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
-            color: const Color.fromARGB(255, 255, 255, 255),
-            onPressed: () {
-          
-              Navigator.push(context, MaterialPageRoute(builder: (context) =>  const Usuarios()));
-            },
-            shape: const RoundedRectangleBorder(),
-            child: const Text(
-              "Siguiente",
-              style: TextStyle(
-                fontSize: 10.0,
-              ),
-            ),
           ),
         ],
           )

@@ -8,8 +8,9 @@ import '../developer/consultasf.dart';
 class CuadroN1 extends StatefulWidget {
   String anio;
   String seccion;
+  var materia1;
 
-  CuadroN1(this.anio, this.seccion, {super.key});
+  CuadroN1(this.anio, this.seccion, this.materia1, {super.key});
 
   @override
   State<CuadroN1> createState() => _CuadroN1State();
@@ -78,6 +79,7 @@ class _CuadroN1State extends State<CuadroN1> {
           
         print(grado);
         print(seccion1);
+        print(widget.materia1);
           // ignore: non_constant_identifier_names
           var nom_tem = dato["nombre_estudiante"];
           var ape_tem = dato["apellido_estudiante"];

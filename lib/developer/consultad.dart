@@ -63,23 +63,6 @@ Future<dynamic> consultap(var gradoprofe ,String seccionprofe) async{
     },
     );
 }
-
-// Future<List<Map<String, dynamic>>> getData(String seccionp, String gradop) async {
-//   String url = 'https://notasincas.000webhostapp.com/consultap.php';
-
-//   http.Response response = await http.get(Uri.parse(url));
-//   List<dynamic> jsonResponse = jsonDecode(response.body);
-
-//   List<Map<String, dynamic>> data = jsonResponse
-//       .map((item) => {
-//             'nombre_padre': item['nombre_padre'],
-//             'dui': item['dui'],
-//           })
-//       .toList();
-
-//   return data;
-// }
-
 Future<dynamic> getData(String seccionp, String gradop) async{
   http.Response enviar = await http.post(
     Uri.parse('https://notasincas.000webhostapp.com/consultap.php'),
@@ -94,5 +77,153 @@ Future<dynamic> getData(String seccionp, String gradop) async{
   } else {
 
     return resultado;
+  }
+}
+
+Future<List<dynamic>> Ll(var bastar) async {
+  final LL = await http.get(Uri.parse('https://notasincas.000webhostapp.com/LL.php?nie=$bastar'));
+  if (LL.statusCode == 200) {
+    final jsonData = json.decode(LL.body);
+    return jsonData;
+  } else {
+    throw Exception('Error al cargar los datos');
+  }
+}
+
+Future<List<dynamic>> CC(var bastar) async {
+  final LL = await http.get(Uri.parse('https://notasincas.000webhostapp.com/CC.php?nie=$bastar'));
+  if (LL.statusCode == 200) {
+    final jsonData = json.decode(LL.body);
+    return jsonData;
+  } else {
+    throw Exception('Error al cargar los datos');
+  }
+}
+
+Future<List<dynamic>> ES(var bastar) async {
+  final LL = await http.get(Uri.parse('https://notasincas.000webhostapp.com/ES.php?nie=$bastar'));
+  if (LL.statusCode == 200) {
+    final jsonData = json.decode(LL.body);
+    return jsonData;
+  } else {
+    throw Exception('Error al cargar los datos');
+  }
+}
+
+Future<List<dynamic>> MM(var bastar) async {
+  final LL = await http.get(Uri.parse('https://notasincas.000webhostapp.com/MM.php?nie=$bastar'));
+  if (LL.statusCode == 200) {
+    final jsonData = json.decode(LL.body);
+    return jsonData;
+  } else {
+    throw Exception('Error al cargar los datos');
+  }
+}
+
+Future<List<dynamic>> MC(var bastar) async {
+  final LL = await http.get(Uri.parse('https://notasincas.000webhostapp.com/MC.php?nie=$bastar'));
+  if (LL.statusCode == 200) {
+    final jsonData = json.decode(LL.body);
+    return jsonData;
+  } else {
+    throw Exception('Error al cargar los datos');
+  }
+}
+
+Future<List<dynamic>> IN(var bastar) async {
+  final LL = await http.get(Uri.parse('https://notasincas.000webhostapp.com/IN.php?nie=$bastar'));
+  if (LL.statusCode == 200) {
+    final jsonData = json.decode(LL.body);
+    return jsonData;
+  } else {
+    throw Exception('Error al cargar los datos');
+  }
+}
+
+Future<List<dynamic>> INF(var bastar) async {
+  final LL = await http.get(Uri.parse('https://notasincas.000webhostapp.com/INF.php?nie=$bastar'));
+  if (LL.statusCode == 200) {
+    final jsonData = json.decode(LL.body);
+    return jsonData;
+  } else {
+    throw Exception('Error al cargar los datos');
+  }
+}
+
+Future<List<dynamic>> OV(var bastar) async {
+  final LL = await http.get(Uri.parse('https://notasincas.000webhostapp.com/OV.php?nie=$bastar'));
+  if (LL.statusCode == 200) {
+    final jsonData = json.decode(LL.body);
+    return jsonData;
+  } else {
+    throw Exception('Error al cargar los datos');
+  }
+}
+
+Future<List<dynamic>> SEMINARIO(var bastar) async {
+  final LL = await http.get(Uri.parse('https://notasincas.000webhostapp.com/SEMI.php?nie=$bastar'));
+  if (LL.statusCode == 200) {
+    final jsonData = json.decode(LL.body);
+    return jsonData;
+  } else {
+    throw Exception('Error al cargar los datos');
+  }
+}
+
+Future<List<dynamic>> HPP(var bastar) async {
+  final LL = await http.get(Uri.parse('https://notasincas.000webhostapp.com/HPP.php?nie=$bastar'));
+  if (LL.statusCode == 200) {
+    final jsonData = json.decode(LL.body);
+    return jsonData;
+  } else {
+    throw Exception('Error al cargar los datos');
+  }
+}
+Future<List<dynamic>> ALL(var bastar) async {
+print('hola' + bastar);
+  final LL = await http.get(Uri.parse('https://notasincas.000webhostapp.com/ALL.php?nie=$bastar'));
+  if (LL.statusCode == 200) {
+    final jsonData = json.decode(LL.body);
+    return jsonData;
+  } else {
+    throw Exception('Error al cargar los datos');
+  }
+}
+
+Future<List<dynamic>> ACC(var bastar) async {
+  final LL = await http.get(Uri.parse('https://notasincas.000webhostapp.com/ACC.php?nie=$bastar'));
+  if (LL.statusCode == 200) {
+    final jsonData = json.decode(LL.body);
+    return jsonData;
+  } else {
+    throw Exception('Error al cargar los datos');
+  }
+}
+Future<List<dynamic>> AES(var bastar) async {
+  final LL = await http.get(Uri.parse('https://notasincas.000webhostapp.com/AES.php?nie=$bastar'));
+  if (LL.statusCode == 200) {
+    final jsonData = json.decode(LL.body);
+    return jsonData;
+  } else {
+    throw Exception('Error al cargar los datos');
+  }
+}
+Future<List<dynamic>> AMM(var bastar) async {
+  final LL = await http.get(Uri.parse('https://notasincas.000webhostapp.com/AMM.php?nie=$bastar'));
+  if (LL.statusCode == 200) {
+    final jsonData = json.decode(LL.body);
+    return jsonData;
+  } else {
+    throw Exception('Error al cargar los datos');
+  }
+}
+
+Future<List<dynamic>> fetchUserData(var bastar) async {
+  final LL = await http.get(Uri.parse('https://notasincas.000webhostapp.com/stundedata.php?nie=$bastar'));
+  if (LL.statusCode == 200) {
+    final jsonData = json.decode(LL.body);
+    return jsonData;
+  } else {
+    throw Exception('Error al cargar los datos');
   }
 }
