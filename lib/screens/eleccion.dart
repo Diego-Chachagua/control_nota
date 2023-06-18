@@ -43,91 +43,78 @@ class _CounterScreenState extends State<CounterScreen> {
         ),
         child:  Scaffold(
           backgroundColor: Colors.transparent,
-      body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-         const  SizedBox(height: 130,),
-          const Text('PRESIONA UNA OPCIÓN',style: TextStyle(
-            fontSize: 30,
-            color: Colors.white,
-          ),),
-          const  SizedBox(height: 150,),
-          MaterialButton(
-            padding: const  EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
-            color: const Color.fromARGB(255, 255, 255, 255),
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>const Registro()));
-              setState(() {});
-            },
-            shape: const RoundedRectangleBorder(),
-            child: const Text(
-              "Alumnos",
-              style: TextStyle(
-                fontSize: 10.0,
+      body: SingleChildScrollView(
+        child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+           const  SizedBox(height: 130,),
+            const Text('PRESIONA UNA OPCIÓN',style: TextStyle(
+              fontSize: 30,
+              color: Colors.white,
+            ),),
+            const  SizedBox(height: 150,),
+            MaterialButton(
+              padding: const  EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
+              color: const Color.fromARGB(255, 255, 255, 255),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>const Registro()));
+                setState(() {});
+              },
+              shape: const RoundedRectangleBorder(),
+              child: const Text(
+                "Alumnos",
+                style: TextStyle(
+                  fontSize: 10.0,
+                ),
               ),
             ),
-          ),
-           MaterialButton(
-            padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
-            color: const Color.fromARGB(255, 255, 255, 255),
-            onPressed: () {
-             Navigator.push(context, MaterialPageRoute(builder: (context)=> const Profesor ()));
-            },
-            shape:const  RoundedRectangleBorder(),
-            child: const Text(
-              "Profesor",
-              style: TextStyle(
-                fontSize: 10.0,
+             MaterialButton(
+              padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
+              color: const Color.fromARGB(255, 255, 255, 255),
+              onPressed: () {
+               Navigator.push(context, MaterialPageRoute(builder: (context)=> const Profesor ()));
+              },
+              shape:const  RoundedRectangleBorder(),
+              child: const Text(
+                "Profesor",
+                style: TextStyle(
+                  fontSize: 10.0,
+                ),
               ),
             ),
-          ),
-           MaterialButton(
-            padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
-            color: const Color.fromARGB(255, 255, 255, 255),
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> const EliminarDatos()));
-            },
-            shape: const RoundedRectangleBorder(),
-            child: const Text(
-              "Eliminar",
-              style: TextStyle(
-                fontSize: 10.0,
+             MaterialButton(
+              padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
+              color: const Color.fromARGB(255, 255, 255, 255),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> const EliminarDatos()));
+              },
+              shape: const RoundedRectangleBorder(),
+              child: const Text(
+                "Eliminar",
+                style: TextStyle(
+                  fontSize: 10.0,
+                ),
               ),
             ),
-          ),
-           MaterialButton(
-            padding:const  EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
-            color: const Color.fromARGB(255, 255, 255, 255),
-            onPressed: () {
-              setState(() {});
-              Navigator.push(context, MaterialPageRoute(builder: (context) =>  const VerUsuarios()));
-            },
-            shape: const RoundedRectangleBorder(),
-            child: const Text(
-              "Consulta",
-              style: TextStyle(
-                fontSize: 10.0,
+             MaterialButton(
+              padding:const  EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
+              color: const Color.fromARGB(255, 255, 255, 255),
+              onPressed: () {
+                setState(() {});
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>  const VerUsuarios()));
+              },
+              shape: const RoundedRectangleBorder(),
+              child: const Text(
+                "Consulta",
+                style: TextStyle(
+                  fontSize: 10.0,
+                ),
               ),
             ),
-          ),
-          MaterialButton(
-            padding:const  EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
-            color: const Color.fromARGB(255, 255, 255, 255),
-            onPressed: () {
-              
-              //Navigator.push(context, MaterialPageRoute(builder: (context) =>  Periodos()));
-            },
-            shape: const RoundedRectangleBorder(),
-            child: const Text(
-              "Siguiente",
-              style: TextStyle(
-                fontSize: 10.0,
-              ),
-            ),
-          ),
-      ],
-          )
+        ],
+            )
+        ),
       )
         
      ),
