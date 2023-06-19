@@ -21,7 +21,7 @@ class _EleccionAyCState extends State<EleccionAyC> {
   List anios = ['Año', '1', '2'];
   String _seleccionada2 = 'Seccion';
   List seccion = ['Seccion', 'A', 'F', 'E', 'H', 'G', 'D'];
-
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -160,7 +160,7 @@ class _EleccionAyCState extends State<EleccionAyC> {
 
                       ElevatedButton(
                       onPressed: (){
-                        
+                        print(widget.materia1);
                     },
                     child: const Text('Cancelar'),
                      )

@@ -5,18 +5,18 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 import '../developer/consultasf.dart';
 
-class CuadroN1 extends StatefulWidget {
+class CuadroP2 extends StatefulWidget {
   String anio;
   String seccion;
   var materia1;
 
-  CuadroN1(this.anio, this.seccion, this.materia1, {super.key});
+  CuadroP2(this.anio, this.seccion, this.materia1, {super.key});
 
   @override
-  State<CuadroN1> createState() => _CuadroN1State();
+  State<CuadroP2> createState() => _CuadroP2State();
 }
 
-class _CuadroN1State extends State<CuadroN1> {
+class _CuadroP2State extends State<CuadroP2> {
   final nieEstu = TextEditingController();
 
   final a1 = TextEditingController();
@@ -30,10 +30,10 @@ class _CuadroN1State extends State<CuadroN1> {
   List<String> nombre = [];
   List<String> nie3 = [];
   List<String> apellido = [];
-  List<String> act1_p1 = [];
-  List<String> act2_p1 = [];
-  List<String> po_p1 = [];
-  List<String> promedio_p1 = [];
+  List<String> act1_p2 = [];
+  List<String> act2_p2 = [];
+  List<String> po_p2 = [];
+  List<String> promedio_p2 = [];
   var reslt;
 
   @override
@@ -84,48 +84,48 @@ class _CuadroN1State extends State<CuadroN1> {
         seccion1 = "6";
       }
 
-      reslt = await mostrarP1(grado, seccion1, materia);
+      reslt = await mostrarP2(grado, seccion1, materia);
       if (reslt != "noExisten") {
         for (var i = 0; i < reslt.length; i++) {
           var dato = reslt[i];
           //variables utilizadas para guardar los datos extraidos de la base
-          var act1_p1n;
-          var act2_p1n;
-          var po_p1n;
+          var act1_p2n;
+          var act2_p2n;
+          var po_p2n;
 
           print(dato["nombre_estudiante"]);
           print(dato["nie"]);
           print(dato["apellido_estudiante"]);
-          print(dato["act1_p1"]);
-          print(dato["act2_p1"]);
-          print(dato["po_p1"]);
+          print(dato["act1_p2"]);
+          print(dato["act2_p2"]);
+          print(dato["po_p2"]);
           print(grado);
           print(seccion1);
           print(widget.materia1);
           // ignore: non_constant_identifier_names
           var nom_tem = dato["nombre_estudiante"];
           var ape_tem = dato["apellido_estudiante"];
-          if (dato["act1_p1"] != null) {
-            act1_p1n = dato["act1_p1"];
+          if (dato["act1_p2"] != null) {
+            act1_p2n = dato["act1_p2"];
           } else {
-            act1_p1n = "0";
+            act1_p2n = "0";
           }
 
-          if (dato["act2_p1"] != null) {
-            act2_p1n = dato["act2_p1"];
+          if (dato["act2_p2"] != null) {
+            act2_p2n = dato["act2_p2"];
           } else {
-            act2_p1n = "0";
+            act2_p2n = "0";
           }
 
-          if (dato["po_p1"] != null) {
-            po_p1n = dato["po_p1"];
+          if (dato["po_p2"] != null) {
+            po_p2n = dato["po_p2"];
           } else {
-            po_p1n = "0";
+            po_p2n = "0";
           }
 //variables utilizadas para calcular promedio del periodo
-          var actividad1 = int.parse(act1_p1n);
-          var actividad2 = int.parse(act2_p1n);
-          var prueba = int.parse(po_p1n);
+          var actividad1 = int.parse(act1_p2n);
+          var actividad2 = int.parse(act2_p2n);
+          var prueba = int.parse(po_p2n);
           //asignacion de valor de promedio a variabe
           var promedio = (actividad1 + actividad2 + prueba) / 3;
           // ignore: non_constant_identifier_names
@@ -136,10 +136,10 @@ class _CuadroN1State extends State<CuadroN1> {
             nombre.add(nom_tem);
             nie3.add(id_tem);
             apellido.add(ape_tem);
-            act1_p1.add(act1_p1n);
-            act2_p1.add(act2_p1n);
-            po_p1.add(po_p1n);
-            promedio_p1.add(promedio.toStringAsFixed(1));
+            act1_p2.add(act1_p2n);
+            act2_p2.add(act2_p2n);
+            po_p2.add(po_p2n);
+            promedio_p2.add(promedio.toStringAsFixed(1));
           });
         }
       }
@@ -150,7 +150,7 @@ class _CuadroN1State extends State<CuadroN1> {
   Widget build(BuildContext context) {
     var nombreM;
     var materia;
-    if (widget.materia1 == 1) {
+   if (widget.materia1 == 1) {
       nombreM = "Lenguaje";
       materia = "1";
     } else if (widget.materia1 == 2) {
@@ -225,7 +225,7 @@ class _CuadroN1State extends State<CuadroN1> {
                           width: 50,
                         ),
                         Text(
-                          'PERIODO: 1',
+                          'PERIODO: 2',
                           style: TextStyle(fontSize: 25, color: Colors.white),
                         ),
                       ],
@@ -368,8 +368,8 @@ class _CuadroN1State extends State<CuadroN1> {
                                 child: Center(
                                   child: Column(
                                     children: [
-                                      for (var i = 0; i < act1_p1.length; i++)
-                                        Text(act1_p1[i],
+                                      for (var i = 0; i < act1_p2.length; i++)
+                                        Text(act1_p2[i],
                                             style:
                                                 const TextStyle(fontSize: 15)),
                                     ],
@@ -381,8 +381,8 @@ class _CuadroN1State extends State<CuadroN1> {
                                 child: Center(
                                   child: Column(
                                     children: [
-                                      for (var i = 0; i < act2_p1.length; i++)
-                                        Text(act2_p1[i],
+                                      for (var i = 0; i < act2_p2.length; i++)
+                                        Text(act2_p2[i],
                                             style:
                                                 const TextStyle(fontSize: 15)),
                                     ],
@@ -394,8 +394,8 @@ class _CuadroN1State extends State<CuadroN1> {
                                 child: Center(
                                   child: Column(
                                     children: [
-                                      for (var i = 0; i < po_p1.length; i++)
-                                        Text(po_p1[i],
+                                      for (var i = 0; i < po_p2.length; i++)
+                                        Text(po_p2[i],
                                             style:
                                                 const TextStyle(fontSize: 15)),
                                     ],
@@ -408,9 +408,9 @@ class _CuadroN1State extends State<CuadroN1> {
                                   child: Column(
                                     children: [
                                       for (var i = 0;
-                                          i < promedio_p1.length;
+                                          i < promedio_p2.length;
                                           i++)
-                                        Text(promedio_p1[i],
+                                        Text(promedio_p2[i],
                                             style:
                                                 const TextStyle(fontSize: 15)),
                                     ],
@@ -539,51 +539,51 @@ class _CuadroN1State extends State<CuadroN1> {
                                       act1 = a1.text;
 
                                       act2 = a2.text;
-                                      pruO = po.text;
-                                      //inicio de definicion de ingreso de datos a archivo php
 
-                                      nie = nieEstu.text;
-                                      //limpieza de campos
-                                      a1.text = "";
-                                      a2.text = "";
-                                      po.text = "";
-                                      nieEstu.text = "";
-                                      //verificacion de nie si esta o no en la base
-                                      if (nie != "") {
-                                        dynamic respuesta = await verNie(nie);
-                                        if (respuesta == "noEncontrado") {
-                                          _notify(context, nie);
-                                        } else {
-                                          //insercion de datos en la base
-                                          dynamic respuesta = await insertNP1(
-                                              nie,
-                                              act1.toString(),
-                                              act2.toString(),
-                                              pruO.toString(),
-                                              materia);
-                                          if (respuesta == "error") {
-                                            //mensaje de que algo salio mal
-                                            String sms1 =
-                                                "!OPPPS Algo salio mal en consultasf.dart";
-                                            String sms2 =
-                                                "Vuelva A intentarlo ";
-                                            _notifyM(context, sms1, sms2);
+                                      pruO = po.text;
+                                      
+                                      
+                                     
+                                        //inicio de definicion de ingreso de datos a archivo php
+
+                                        nie = nieEstu.text;
+                                        //limpieza de campos
+                                        a1.text = "";
+                                        a2.text = "";
+                                        po.text = "";
+                                        nieEstu.text = "";
+                                        //verificacion de nie si esta o no en la base
+                                        if (nie != "") {
+                                          dynamic respuesta = await verNie(nie);
+                                          if (respuesta == "noEncontrado") {
+                                            _notify(context, nie);
                                           } else {
-                                            //mensaje de confirmacion
-                                            //redirigimmiento para visualizar datos
-                                            
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      CuadroN1(
-                                                          widget.anio,
-                                                          widget.seccion,
-                                                          widget.materia1),
-                                                ));
+                                            //insercion de datos en la base
+                                            dynamic respuesta = await insertNP2(
+                                                nie, act1, act2, pruO, materia);
+                                            if (respuesta == "error") {
+                                              //mensaje de que algo salio mal
+                                              String sms1="!OPPPS Algo salio mal en consultasf.dart";
+                                              String sms2="Vuelva A intentarlo ";
+                                              _notifyM(context,sms1,sms2);
+                                            } else {
+                                              //mensaje de confirmacion
+                                              //redirigimmiento para visualizar datos
+                                              _notify1(context);
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        CuadroP2(
+                                                            widget.anio,
+                                                            widget.seccion,
+                                                            widget.materia1),
+                                                  ));
+                                              
+                                            }
                                           }
                                         }
-                                      }
+                                      
 
                                       ///fin de ingreso de datos a archivo php
                                     },
@@ -650,15 +650,15 @@ class _CuadroN1State extends State<CuadroN1> {
           );
         });
   }
-
 //uso libre de mensaje de notificacion
-  void _notifyM(BuildContext context, String sms1, String sms2) {
+  void _notifyM(BuildContext context,String sms1, String sms2) {
     showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text(sms1),
-            content: Text(sms2),
+            title:  Text(sms1),
+            content: Text(
+                sms2),
             actions: [
               Center(
                 child: TextButton(
