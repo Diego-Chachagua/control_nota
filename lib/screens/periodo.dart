@@ -10,6 +10,9 @@ import 'cuadrop2.dart';
 import 'cuadrop3.dart';
 import 'cuadrop4.dart';
 import 'cuadrop4c.dart';
+import 'cuadronotas1.dart';
+import 'cuadronotas2.dart';
+import 'notaconceptual.dart';
 
 class Periodos extends StatefulWidget {
   String anios;
@@ -215,5 +218,9 @@ class _PeriodosState extends State<Periodos> {
                 ],
               ))),
         ));
+        
+     
+    
+    ;
   }
 }

@@ -16,8 +16,9 @@ class EleccionAyC extends StatefulWidget {
 class _EleccionAyCState extends State<EleccionAyC> {
   String anio="";
   String seccionS="";
+  String a = '';
   String _seleccionada = 'Año';
-  List anios = ['Año', '1 año', '2 año'];
+  List anios = ['Año', '1', '2'];
   String _seleccionada2 = 'Seccion';
   List seccion = ['Seccion', 'A', 'F', 'E', 'H', 'G', 'D'];
   
@@ -113,6 +114,24 @@ class _EleccionAyCState extends State<EleccionAyC> {
                             onChanged: (value) {
                               setState(() {
                                 _seleccionada2 = value.toString();
+                                if (_seleccionada2 == 'A') {
+                                  a = '1';
+                                }
+                                if (_seleccionada2 == 'F') {
+                                  a = '2';
+                                }
+                                if (_seleccionada2 == 'E') {
+                                  a = '3';
+                                }
+                                if (_seleccionada2 == 'H') {
+                                  a = '4';
+                                }
+                                if (_seleccionada2 == 'G') {
+                                  a = '5';
+                                }
+                                if (_seleccionada2 == 'D') {
+                                  a = '6';
+                                }
                               });
                             },
                           ),
@@ -127,9 +146,9 @@ class _EleccionAyCState extends State<EleccionAyC> {
                     ElevatedButton(
                       //inicio de definicion de guardar datos en variables
                       onPressed: (){
-                        
+                        print(widget.materia1);
                         anio=_seleccionada;
-                        seccionS=_seleccionada2;
+                        seccionS=a;
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) =>  Periodos(anio,seccionS,widget.materia1),

@@ -9,13 +9,17 @@ import 'package:syncfusion_flutter_pdf/pdf.dart';
 import '../developer/consultasj.dart';
 import 'guardarbol.dart';
 
-void generatepdf() async {
+void generatepdf3(var anios, var materia1, var seccion ) async {
     final pdfDocument = PdfDocument();
     final page = pdfDocument.pages.add();
     final Size pageSize = page.getClientSize();
     final double pageWidth = pageSize.width;
     final double pageHeight = pageSize.height;
     final PdfGraphics graphics = page.graphics;
+
+    print(anios);
+    print(materia1);
+    print(seccion);
     graphics.translateTransform(
         pageWidth, 0); // Mover la página hacia la derecha
     graphics.rotateTransform(
