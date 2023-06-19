@@ -100,7 +100,7 @@ String contrabd = "";
                       var materia=2;
                        Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Materias(),
+                  MaterialPageRoute(builder: (context) => Materia(usuariobd1: usuariobd,contrabd1: contrabd,),
                   )
                        );
                   

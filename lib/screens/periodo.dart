@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:control_notas/screens/usuarios.dart';
 
 import 'cuadro.dart';
+import 'cuadrop2.dart';
+import 'cuadrop3.dart';
+import 'cuadrop4.dart';
 
 class Periodos extends StatefulWidget {
    String anios;
@@ -61,7 +64,9 @@ class _PeriodosState extends State<Periodos> {
             padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
             color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
-              setState(() {});
+              setState(() {
+                 Navigator.push(context, MaterialPageRoute(builder: (context) =>   CuadroP2(widget.anios,widget.seccion,widget.materia1)));
+              });
             },
             shape:const  RoundedRectangleBorder(),
             child: const Text(
@@ -75,7 +80,9 @@ class _PeriodosState extends State<Periodos> {
             padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
             color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
-              setState(() {});
+              setState(() {
+               Navigator.push(context, MaterialPageRoute(builder: (context) =>   CuadroP3(widget.anios,widget.seccion,widget.materia1)));
+              });
             },
             shape: const RoundedRectangleBorder(),
             child: const Text(
@@ -89,7 +96,9 @@ class _PeriodosState extends State<Periodos> {
             padding:const  EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
             color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
-              setState(() {});
+              setState(() {
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>   CuadroP4(widget.anios,widget.seccion,widget.materia1)));
+              });
             },
             shape: const RoundedRectangleBorder(),
             child: const Text(
