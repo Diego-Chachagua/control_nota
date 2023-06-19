@@ -65,21 +65,8 @@ class _CuadroP3CState extends State<CuadroP3C> {
         grado = "2";
       }
 
-      if (widget.seccion == "A") {
-        seccion1 = "1";
-      } else if (widget.seccion == "F") {
-        seccion1 = "2";
-      } else if (widget.seccion == "E") {
-        seccion1 = "3";
-      } else if (widget.seccion == "H") {
-        seccion1 = "4";
-      } else if (widget.seccion == "G") {
-        seccion1 = "5";
-      } else if (widget.seccion == "D") {
-        seccion1 = "6";
-      }
-
-      reslt = await mostrarP3(grado, seccion1, materia);
+      
+      reslt = await mostrarP3(widget.anio, widget.seccion, materia);
       if (reslt != "noExisten") {
         for (var i = 0; i < reslt.length; i++) {
           var dato = reslt[i];

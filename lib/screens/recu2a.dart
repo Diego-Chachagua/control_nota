@@ -70,21 +70,9 @@ class _Recupera2AState extends State<Recupera2A> {
       var seccion1 = "";
       
 
-      if (widget.seccion == "A") {
-        seccion1 = "1";
-      } else if (widget.seccion == "F") {
-        seccion1 = "2";
-      } else if (widget.seccion == "E") {
-        seccion1 = "3";
-      } else if (widget.seccion == "H") {
-        seccion1 = "4";
-      } else if (widget.seccion == "G") {
-        seccion1 = "5";
-      } else if (widget.seccion == "D") {
-        seccion1 = "6";
-      }
+     
 
-      reslt = await mostrarRe2(2, seccion1, materia);
+      reslt = await mostrarRe2(widget.anio, widget.seccion, materia);
       if (reslt != "noExisten") {
         for (var i = 0; i < reslt.length; i++) {
           var dato = reslt[i];
@@ -224,6 +212,20 @@ class _Recupera2AState extends State<Recupera2A> {
       nombreM = " Informatica";
       materia = "7";
     }
+    var seccion1;
+     if (widget.seccion == "1") {
+        seccion1 = "A";
+      } else if (widget.seccion == "2") {
+        seccion1 = "F";
+      } else if (widget.seccion == "3") {
+        seccion1 = "E";
+      } else if (widget.seccion == "4") {
+        seccion1 = "H";
+      } else if (widget.seccion == "5") {
+        seccion1 = "G";
+      } else if (widget.seccion == "6") {
+        seccion1 = "D";
+      }
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Container(
@@ -254,7 +256,7 @@ class _Recupera2AState extends State<Recupera2A> {
                           width: 30,
                         ),
                         Text(
-                          'SECCION: "${widget.seccion}"',
+                          'SECCION: "${seccion1}"',
                           style: const TextStyle(
                               fontSize: 25, color: Colors.white),
                         ),

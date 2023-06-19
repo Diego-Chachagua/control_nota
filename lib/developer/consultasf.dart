@@ -170,6 +170,7 @@ Future<dynamic> mostrarP1(var anio,var seccion, var materia) async{
     },
   );
     var resultado = jsonDecode(enviar.body);
+    print(resultado);
     
     return resultado;
 }
