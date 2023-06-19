@@ -91,19 +91,11 @@ String contrabd = "";
                       _mensajeUsu(context);
                     } else {
                          if(respuesta == "profe"){
-                        // ignore: use_build_context_synchronously
-                      //  Navigator.push(
-                  //context,
-                  //MaterialPageRoute(builder: (context) => Materia(usuariobd1: usuariobd,contrabd1: contrabd)
-                  // )
-                      //  );
-                      var materia=2;
-                       Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Materia(usuariobd1: usuariobd,contrabd1: contrabd,),
-                  )
-                       );
-                  
+                        Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Materia(usuariobd1: usuariobd,contrabd1: contrabd)
+                        )
+                            );
                       }
                     }
                     }

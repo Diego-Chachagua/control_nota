@@ -4,6 +4,9 @@ import 'cuadro.dart';
 import 'cuadrop2.dart';
 import 'cuadrop3.dart';
 import 'cuadrop4.dart';
+import 'cuadronotas1.dart';
+import 'cuadronotas2.dart';
+import 'notaconceptual.dart';
 
 class Periodos extends StatefulWidget {
    String anios;
@@ -126,6 +129,34 @@ class _PeriodosState extends State<Periodos> {
             color: const Color.fromARGB(255, 255, 255, 255),
             onPressed: () {
               setState(() {});
+              generatepdf1(widget.anios, widget.materia1, widget.seccion);
+            //   if (widget.anios == '1') {
+            //   if (widget.materia1 == '5' || widget.materia1 == '8' || widget.materia1 == '9' || widget.materia1 == '10') {
+            //     generatepdf3(widget.anios, widget.materia1, widget.seccion);
+            //   }
+            // }
+
+            // if (widget.anios == '1') {
+            //   if (widget.materia1 == '1' || widget.materia1 == '2' || widget.materia1 == '3' || widget.materia1 == '4' || widget.materia1 == '6' || widget.materia1 == '7') {
+            //     print(widget.materia1);
+            //     generatepdf1(widget.anios, widget.materia1, widget.seccion);
+            //   }
+            // }
+            // if (widget.anios == '2') {
+            //   if (widget.materia1 == '5' || widget.materia1 == '8' || widget.materia1 == '9' || widget.materia1 == '10') {
+            //     generatepdf3(widget.anios, widget.materia1, widget.seccion);
+            //   }
+            // }
+            // if (widget.anios == '2') {
+            //   if (widget.materia1 == '6' || widget.materia1 == '7') {
+            //     generatepdf1(widget.anios, widget.materia1, widget.seccion);
+            //   }
+            // }
+            // if (widget.anios == '2') {
+            //   if (widget.materia1 == '1' || widget.materia1 == '2' || widget.materia1 == '3' || widget.materia1 == '4') {
+            //     generatepdf2(widget.anios, widget.materia1, widget.seccion);
+            //   }
+            // }
             },
             shape: const RoundedRectangleBorder(),
             child: const Text(
