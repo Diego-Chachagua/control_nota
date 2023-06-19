@@ -225,7 +225,7 @@ class _CuadroP4State extends State<CuadroP4> {
                           width: 50,
                         ),
                         Text(
-                          'PERIODO: 1',
+                          'PERIODO: 4',
                           style: TextStyle(fontSize: 25, color: Colors.white),
                         ),
                       ],

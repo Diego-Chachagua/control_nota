@@ -5,18 +5,18 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 import '../developer/consultasf.dart';
 
-class CuadroP2 extends StatefulWidget {
+class CuadroP4 extends StatefulWidget {
   String anio;
   String seccion;
   var materia1;
 
-  CuadroP2(this.anio, this.seccion, this.materia1, {super.key});
+  CuadroP4(this.anio, this.seccion, this.materia1, {super.key});
 
   @override
-  State<CuadroP2> createState() => _CuadroP2State();
+  State<CuadroP4> createState() => _CuadroP4State();
 }
 
-class _CuadroP2State extends State<CuadroP2> {
+class _CuadroP4State extends State<CuadroP4> {
   final nieEstu = TextEditingController();
 
   final a1 = TextEditingController();
@@ -30,10 +30,11 @@ class _CuadroP2State extends State<CuadroP2> {
   List<String> nombre = [];
   List<String> nie3 = [];
   List<String> apellido = [];
-  List<String> act1_p2 = [];
-  List<String> act2_p2 = [];
-  List<String> po_p2 = [];
-  List<String> promedio_p2 = [];
+  List<String> act1_p4 = [];
+  List<String> act2_p4 = [];
+  List<String> po_p4 = [];
+  List<String> promedio_p4 = [];
+    List<String> notaCon = [];
   var reslt;
 
   @override
@@ -41,24 +42,18 @@ class _CuadroP2State extends State<CuadroP2> {
     super.initState();
     var nombreM;
     var materia;
-    if (widget.materia1 == 1) {
-      nombreM = "Lenguaje";
-      materia = "1";
-    } else if (widget.materia1 == 2) {
-      nombreM = "Matematica";
-      materia = "2";
-    } else if (widget.materia1 == 3) {
-      nombreM = "Ciencias";
-      materia = "3";
-    } else if (widget.materia1 == 4) {
-      nombreM = " Estudios Sociales";
-      materia = "4";
-    }else if (widget.materia1 == 6) {
-      nombreM = " Ingles";
-      materia = "6";
-    }else if (widget.materia1 == 7) {
-      nombreM = " Informatica";
-      materia = "7";
+    if (widget.materia1 == 5) {
+      nombreM = "Urbanidad Moral \n y civica";
+      materia = "5";
+    } else if (widget.materia1 == 8) {
+      nombreM = "Seminario";
+      materia = "8";
+    } else if (widget.materia1 == 9) {
+      nombreM = "Orientación para\n la vida";
+      materia = "9";
+    } else if (widget.materia1 == 10) {
+      nombreM = "Habilitación para \e el empleo";
+      materia = "10";
     }
 
     (() async {
@@ -84,50 +79,60 @@ class _CuadroP2State extends State<CuadroP2> {
         seccion1 = "6";
       }
 
-      reslt = await mostrarP2(grado, seccion1, materia);
+      reslt = await mostrarP4(grado, seccion1, materia);
       if (reslt != "noExisten") {
         for (var i = 0; i < reslt.length; i++) {
           var dato = reslt[i];
           //variables utilizadas para guardar los datos extraidos de la base
-          var act1_p2n;
-          var act2_p2n;
-          var po_p2n;
+          var act1_p4n;
+          var act2_p4n;
+          var po_p4n;
 
           print(dato["nombre_estudiante"]);
           print(dato["nie"]);
           print(dato["apellido_estudiante"]);
-          print(dato["act1_p2"]);
-          print(dato["act2_p2"]);
-          print(dato["po_p2"]);
+          print(dato["act1_p4"]);
+          print(dato["act2_p4"]);
+          print(dato["po_p4"]);
           print(grado);
           print(seccion1);
           print(widget.materia1);
           // ignore: non_constant_identifier_names
           var nom_tem = dato["nombre_estudiante"];
           var ape_tem = dato["apellido_estudiante"];
-          if (dato["act1_p2"] != null) {
-            act1_p2n = dato["act1_p2"];
+          if (dato["act1_p4"] != null) {
+            act1_p4n = dato["act1_p4"];
           } else {
-            act1_p2n = "0";
+            act1_p4n = "0";
           }
 
-          if (dato["act2_p2"] != null) {
-            act2_p2n = dato["act2_p2"];
+          if (dato["act2_p4"] != null) {
+            act2_p4n = dato["act2_p4"];
           } else {
-            act2_p2n = "0";
+            act2_p4n = "0";
           }
 
-          if (dato["po_p2"] != null) {
-            po_p2n = dato["po_p2"];
+          if (dato["po_p4"] != null) {
+            po_p4n = dato["po_p4"];
           } else {
-            po_p2n = "0";
+            po_p4n = "0";
           }
 //variables utilizadas para calcular promedio del periodo
-          var actividad1 = int.parse(act1_p2n);
-          var actividad2 = int.parse(act2_p2n);
-          var prueba = int.parse(po_p2n);
+          var actividad1 = int.parse(act1_p4n);
+          var actividad2 = int.parse(act2_p4n);
+          var prueba = int.parse(po_p4n);
           //asignacion de valor de promedio a variabe
           var promedio = (actividad1 + actividad2 + prueba) / 3;
+           var nc;
+          if(promedio == 9 || promedio == 10 ){
+            nc="E";
+          }else if(promedio == 7 || promedio == 8){
+             nc="MB";
+          }else if(promedio == 5 || promedio == 6){
+             nc="B";
+          }else if(promedio >= 0 || promedio <=4){
+             nc="D";
+          }
           // ignore: non_constant_identifier_names
           var id_tem = dato["nie"];
 
@@ -136,10 +141,11 @@ class _CuadroP2State extends State<CuadroP2> {
             nombre.add(nom_tem);
             nie3.add(id_tem);
             apellido.add(ape_tem);
-            act1_p2.add(act1_p2n);
-            act2_p2.add(act2_p2n);
-            po_p2.add(po_p2n);
-            promedio_p2.add(promedio.toStringAsFixed(1));
+            act1_p4.add(act1_p4n);
+            act2_p4.add(act2_p4n);
+            po_p4.add(po_p4n);
+            promedio_p4.add(promedio.toStringAsFixed(1));
+            notaCon.add(nc);
           });
         }
       }
@@ -150,24 +156,18 @@ class _CuadroP2State extends State<CuadroP2> {
   Widget build(BuildContext context) {
     var nombreM;
     var materia;
-   if (widget.materia1 == 1) {
-      nombreM = "Lenguaje";
-      materia = "1";
-    } else if (widget.materia1 == 2) {
-      nombreM = "Matematica";
-      materia = "2";
-    } else if (widget.materia1 == 3) {
-      nombreM = "Ciencias";
-      materia = "3";
-    } else if (widget.materia1 == 4) {
-      nombreM = " Estudios Sociales";
-      materia = "4";
-    }else if (widget.materia1 == 6) {
-      nombreM = " Ingles";
-      materia = "6";
-    }else if (widget.materia1 == 7) {
-      nombreM = " Informatica";
-      materia = "7";
+   if (widget.materia1 == 5) {
+      nombreM = "Urbanidad Moral \n y civica";
+      materia = "5";
+    } else if (widget.materia1 == 8) {
+      nombreM = "Seminario";
+      materia = "8";
+    } else if (widget.materia1 == 9) {
+      nombreM = "Orientación para\n la vida";
+      materia = "9";
+    } else if (widget.materia1 == 10) {
+      nombreM = "Habilitación para \e el empleo";
+      materia = "10";
     }
     return MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -225,7 +225,7 @@ class _CuadroP2State extends State<CuadroP2> {
                           width: 50,
                         ),
                         Text(
-                          'PERIODO: 2',
+                          'PERIODO: 4',
                           style: TextStyle(fontSize: 25, color: Colors.white),
                         ),
                       ],
@@ -236,13 +236,14 @@ class _CuadroP2State extends State<CuadroP2> {
                         defaultVerticalAlignment:
                             TableCellVerticalAlignment.middle,
                         columnWidths: const {
-                          0: FractionColumnWidth(0.09),
-                          1: FractionColumnWidth(0.17),
-                          2: FractionColumnWidth(0.35),
+                           0: FractionColumnWidth(0.06),
+                          1: FractionColumnWidth(0.15),
+                          2: FractionColumnWidth(0.30),
                           3: FractionColumnWidth(0.08),
                           4: FractionColumnWidth(0.08),
                           5: FractionColumnWidth(0.08),
                           6: FractionColumnWidth(0.08),
+                          7: FractionColumnWidth(0.08),
                         },
                         border: TableBorder.all(),
                         children: [
@@ -289,6 +290,12 @@ class _CuadroP2State extends State<CuadroP2> {
                                 child: const Center(
                                   child: Text('PM'),
                                 )),
+                                Container(
+                                height: 20,
+                                color: Colors.white,
+                                child: const Center(
+                                  child: Text('NC'),
+                                )),
                           ])
                         ]),
                     //inicio de definicon de tabla para datos desde la base
@@ -297,13 +304,14 @@ class _CuadroP2State extends State<CuadroP2> {
                         defaultVerticalAlignment:
                             TableCellVerticalAlignment.middle,
                         columnWidths: const {
-                          0: FractionColumnWidth(0.09),
-                          1: FractionColumnWidth(0.17),
-                          2: FractionColumnWidth(0.35),
+                          0: FractionColumnWidth(0.06),
+                          1: FractionColumnWidth(0.15),
+                          2: FractionColumnWidth(0.30),
                           3: FractionColumnWidth(0.08),
                           4: FractionColumnWidth(0.08),
                           5: FractionColumnWidth(0.08),
                           6: FractionColumnWidth(0.08),
+                          7: FractionColumnWidth(0.08),
                         },
                         border: TableBorder.all(),
                         children: [
@@ -368,8 +376,8 @@ class _CuadroP2State extends State<CuadroP2> {
                                 child: Center(
                                   child: Column(
                                     children: [
-                                      for (var i = 0; i < act1_p2.length; i++)
-                                        Text(act1_p2[i],
+                                      for (var i = 0; i < act1_p4.length; i++)
+                                        Text(act1_p4[i],
                                             style:
                                                 const TextStyle(fontSize: 15)),
                                     ],
@@ -381,8 +389,8 @@ class _CuadroP2State extends State<CuadroP2> {
                                 child: Center(
                                   child: Column(
                                     children: [
-                                      for (var i = 0; i < act2_p2.length; i++)
-                                        Text(act2_p2[i],
+                                      for (var i = 0; i < act2_p4.length; i++)
+                                        Text(act2_p4[i],
                                             style:
                                                 const TextStyle(fontSize: 15)),
                                     ],
@@ -394,8 +402,8 @@ class _CuadroP2State extends State<CuadroP2> {
                                 child: Center(
                                   child: Column(
                                     children: [
-                                      for (var i = 0; i < po_p2.length; i++)
-                                        Text(po_p2[i],
+                                      for (var i = 0; i < po_p4.length; i++)
+                                        Text(po_p4[i],
                                             style:
                                                 const TextStyle(fontSize: 15)),
                                     ],
@@ -408,9 +416,24 @@ class _CuadroP2State extends State<CuadroP2> {
                                   child: Column(
                                     children: [
                                       for (var i = 0;
-                                          i < promedio_p2.length;
+                                          i < promedio_p4.length;
                                           i++)
-                                        Text(promedio_p2[i],
+                                        Text(promedio_p4[i],
+                                            style:
+                                                const TextStyle(fontSize: 15)),
+                                    ],
+                                  ),
+                                )),
+                                 Container(
+                                height: 20,
+                                color: Colors.white,
+                                child: Center(
+                                  child: Column(
+                                    children: [
+                                      for (var i = 0;
+                                          i < notaCon.length;
+                                          i++)
+                                        Text(notaCon[i],
                                             style:
                                                 const TextStyle(fontSize: 15)),
                                     ],
@@ -541,9 +564,7 @@ class _CuadroP2State extends State<CuadroP2> {
                                       act2 = a2.text;
 
                                       pruO = po.text;
-                                      
-                                      
-                                     
+                                  
                                         //inicio de definicion de ingreso de datos a archivo php
 
                                         nie = nieEstu.text;
@@ -559,7 +580,7 @@ class _CuadroP2State extends State<CuadroP2> {
                                             _notify(context, nie);
                                           } else {
                                             //insercion de datos en la base
-                                            dynamic respuesta = await insertNP2(
+                                            dynamic respuesta = await insertNP3(
                                                 nie, act1, act2, pruO, materia);
                                             if (respuesta == "error") {
                                               //mensaje de que algo salio mal
@@ -574,7 +595,7 @@ class _CuadroP2State extends State<CuadroP2> {
                                                   context,
                                                   MaterialPageRoute(
                                                     builder: (context) =>
-                                                        CuadroP2(
+                                                        CuadroP4(
                                                             widget.anio,
                                                             widget.seccion,
                                                             widget.materia1),

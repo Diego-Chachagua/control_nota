@@ -5,18 +5,18 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 import '../developer/consultasf.dart';
 
-class CuadroP2 extends StatefulWidget {
+class CuadroP2C extends StatefulWidget {
   String anio;
   String seccion;
   var materia1;
 
-  CuadroP2(this.anio, this.seccion, this.materia1, {super.key});
+  CuadroP2C(this.anio, this.seccion, this.materia1, {super.key});
 
   @override
-  State<CuadroP2> createState() => _CuadroP2State();
+  State<CuadroP2C> createState() => _CuadroP2CState();
 }
 
-class _CuadroP2State extends State<CuadroP2> {
+class _CuadroP2CState extends State<CuadroP2C> {
   final nieEstu = TextEditingController();
 
   final a1 = TextEditingController();
@@ -34,6 +34,7 @@ class _CuadroP2State extends State<CuadroP2> {
   List<String> act2_p2 = [];
   List<String> po_p2 = [];
   List<String> promedio_p2 = [];
+  List<String> notaCon = [];
   var reslt;
 
   @override
@@ -41,24 +42,18 @@ class _CuadroP2State extends State<CuadroP2> {
     super.initState();
     var nombreM;
     var materia;
-    if (widget.materia1 == 1) {
-      nombreM = "Lenguaje";
-      materia = "1";
-    } else if (widget.materia1 == 2) {
-      nombreM = "Matematica";
-      materia = "2";
-    } else if (widget.materia1 == 3) {
-      nombreM = "Ciencias";
-      materia = "3";
-    } else if (widget.materia1 == 4) {
-      nombreM = " Estudios Sociales";
-      materia = "4";
-    }else if (widget.materia1 == 6) {
-      nombreM = " Ingles";
-      materia = "6";
-    }else if (widget.materia1 == 7) {
-      nombreM = " Informatica";
-      materia = "7";
+    if (widget.materia1 == 5) {
+      nombreM = "Urbanidad Moral \n y civica";
+      materia = "5";
+    } else if (widget.materia1 == 8) {
+      nombreM = "Seminario";
+      materia = "8";
+    } else if (widget.materia1 == 9) {
+      nombreM = "Orientación para\n la vida";
+      materia = "9";
+    } else if (widget.materia1 == 10) {
+      nombreM = "Habilitación para \e el empleo";
+      materia = "10";
     }
 
     (() async {
@@ -128,6 +123,16 @@ class _CuadroP2State extends State<CuadroP2> {
           var prueba = int.parse(po_p2n);
           //asignacion de valor de promedio a variabe
           var promedio = (actividad1 + actividad2 + prueba) / 3;
+          var nc;
+          if(promedio == 9 || promedio == 10 ){
+            nc="E";
+          }else if(promedio == 7 || promedio == 8){
+             nc="MB";
+          }else if(promedio == 5 || promedio == 6){
+             nc="B";
+          }else if(promedio >= 0 || promedio <=4){
+             nc="D";
+          }
           // ignore: non_constant_identifier_names
           var id_tem = dato["nie"];
 
@@ -140,6 +145,7 @@ class _CuadroP2State extends State<CuadroP2> {
             act2_p2.add(act2_p2n);
             po_p2.add(po_p2n);
             promedio_p2.add(promedio.toStringAsFixed(1));
+            notaCon.add(nc);
           });
         }
       }
@@ -150,24 +156,18 @@ class _CuadroP2State extends State<CuadroP2> {
   Widget build(BuildContext context) {
     var nombreM;
     var materia;
-   if (widget.materia1 == 1) {
-      nombreM = "Lenguaje";
-      materia = "1";
-    } else if (widget.materia1 == 2) {
-      nombreM = "Matematica";
-      materia = "2";
-    } else if (widget.materia1 == 3) {
-      nombreM = "Ciencias";
-      materia = "3";
-    } else if (widget.materia1 == 4) {
-      nombreM = " Estudios Sociales";
-      materia = "4";
-    }else if (widget.materia1 == 6) {
-      nombreM = " Ingles";
-      materia = "6";
-    }else if (widget.materia1 == 7) {
-      nombreM = " Informatica";
-      materia = "7";
+  if (widget.materia1 == 5) {
+      nombreM = "Urbanidad Moral \n y civica";
+      materia = "5";
+    } else if (widget.materia1 == 8) {
+      nombreM = "Seminario";
+      materia = "8";
+    } else if (widget.materia1 == 9) {
+      nombreM = "Orientación para\n la vida";
+      materia = "9";
+    } else if (widget.materia1 == 10) {
+      nombreM = "Habilitación para \e el empleo";
+      materia = "10";
     }
     return MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -236,13 +236,14 @@ class _CuadroP2State extends State<CuadroP2> {
                         defaultVerticalAlignment:
                             TableCellVerticalAlignment.middle,
                         columnWidths: const {
-                          0: FractionColumnWidth(0.09),
-                          1: FractionColumnWidth(0.17),
-                          2: FractionColumnWidth(0.35),
+                           0: FractionColumnWidth(0.06),
+                          1: FractionColumnWidth(0.15),
+                          2: FractionColumnWidth(0.30),
                           3: FractionColumnWidth(0.08),
                           4: FractionColumnWidth(0.08),
                           5: FractionColumnWidth(0.08),
                           6: FractionColumnWidth(0.08),
+                          7: FractionColumnWidth(0.08),
                         },
                         border: TableBorder.all(),
                         children: [
@@ -289,6 +290,12 @@ class _CuadroP2State extends State<CuadroP2> {
                                 child: const Center(
                                   child: Text('PM'),
                                 )),
+                                Container(
+                                height: 20,
+                                color: Colors.white,
+                                child: const Center(
+                                  child: Text('NC'),
+                                )),
                           ])
                         ]),
                     //inicio de definicon de tabla para datos desde la base
@@ -297,13 +304,14 @@ class _CuadroP2State extends State<CuadroP2> {
                         defaultVerticalAlignment:
                             TableCellVerticalAlignment.middle,
                         columnWidths: const {
-                          0: FractionColumnWidth(0.09),
-                          1: FractionColumnWidth(0.17),
-                          2: FractionColumnWidth(0.35),
+                          0: FractionColumnWidth(0.06),
+                          1: FractionColumnWidth(0.15),
+                          2: FractionColumnWidth(0.30),
                           3: FractionColumnWidth(0.08),
                           4: FractionColumnWidth(0.08),
                           5: FractionColumnWidth(0.08),
                           6: FractionColumnWidth(0.08),
+                          7: FractionColumnWidth(0.08),
                         },
                         border: TableBorder.all(),
                         children: [
@@ -411,6 +419,21 @@ class _CuadroP2State extends State<CuadroP2> {
                                           i < promedio_p2.length;
                                           i++)
                                         Text(promedio_p2[i],
+                                            style:
+                                                const TextStyle(fontSize: 15)),
+                                    ],
+                                  ),
+                                )),
+                                Container(
+                                height: 20,
+                                color: Colors.white,
+                                child: Center(
+                                  child: Column(
+                                    children: [
+                                      for (var i = 0;
+                                          i < notaCon.length;
+                                          i++)
+                                        Text(notaCon[i],
                                             style:
                                                 const TextStyle(fontSize: 15)),
                                     ],
@@ -574,7 +597,7 @@ class _CuadroP2State extends State<CuadroP2> {
                                                   context,
                                                   MaterialPageRoute(
                                                     builder: (context) =>
-                                                        CuadroP2(
+                                                        CuadroP2C(
                                                             widget.anio,
                                                             widget.seccion,
                                                             widget.materia1),

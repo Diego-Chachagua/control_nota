@@ -225,7 +225,7 @@ class _CuadroP3State extends State<CuadroP3> {
                           width: 50,
                         ),
                         Text(
-                          'PERIODO: 1',
+                          'PERIODO: 3',
                           style: TextStyle(fontSize: 25, color: Colors.white),
                         ),
                       ],
