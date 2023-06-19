@@ -9,7 +9,7 @@ import 'package:syncfusion_flutter_pdf/pdf.dart';
 import '../developer/consultasj.dart';
 import 'guardarbol.dart';
 
-void generatepdf() async {
+void generatepdf2(var anios, var materia1, var seccion ) async {
     final pdfDocument = PdfDocument();
     final page = pdfDocument.pages.add();
     final Size pageSize = page.getClientSize();

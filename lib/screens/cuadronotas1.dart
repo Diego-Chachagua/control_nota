@@ -6,10 +6,24 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 
+import '../developer/consultad.dart';
 import '../developer/consultasj.dart';
 import 'guardarbol.dart';
 
-void generatepdf() async {
+void generatepdf1(var anios, var materia1, var seccion ) async {
+    var notas = await cuadro1(anios, materia1, seccion);
+    List<dynamic> nombre = [];
+    List<dynamic> nie = [];
+    for (var i = 0; i < notas.length; i++) {
+      var dato = notas[i];
+      var nie_tem = dato['nie'];
+      var nom_tem = dato['nombre_estudiante'];
+
+      
+            nie.add(nie_tem);
+            nombre.add(nom_tem);
+    }
+
     final pdfDocument = PdfDocument();
     final page = pdfDocument.pages.add();
     final Size pageSize = page.getClientSize();
@@ -153,10 +167,9 @@ void generatepdf() async {
     header.cells[28].style = middleCellStyle;
     header.cells[29].style = middleCellStyle;
     // ...
-
     PdfGridRow row1 = grid.rows.add();
-    grid.rows[0].cells[0].value = '';
-    grid.rows[0].cells[1].value = '';
+    grid.rows[0].cells[0].value = '1';
+    grid.rows[0].cells[1].value = nie[0];
     grid.rows[0].cells[2].value = '';
     grid.rows[0].cells[3].value = '';
     grid.rows[0].cells[4].value = '';
@@ -187,11 +200,11 @@ void generatepdf() async {
     grid.rows[0].cells[29].value = '';
     grid.rows[0].cells[30].value = '';
     grid.rows[0].cells[31].value = '';
-
+  
     row1 = grid.rows.add();
-    grid.rows[1].cells[0].value = '';
-    grid.rows[1].cells[1].value = '';
-    grid.rows[1].cells[2].value = '';
+    grid.rows[1].cells[0].value = '2';
+    grid.rows[1].cells[1].value = nie[1];
+    grid.rows[1].cells[2].value = nombre[1];
     grid.rows[1].cells[3].value = '';
     grid.rows[1].cells[4].value = '';
     grid.rows[1].cells[5].value = '';
@@ -221,7 +234,7 @@ void generatepdf() async {
     grid.rows[1].cells[29].value = '';
     grid.rows[1].cells[30].value = '';
     grid.rows[1].cells[31].value = '';
-
+  
     row1 = grid.rows.add();
     grid.rows[2].cells[0].value = '';
     grid.rows[2].cells[1].value = '';
@@ -1172,7 +1185,7 @@ void generatepdf() async {
     grid.rows[29].cells[29].value = '';
     grid.rows[29].cells[30].value = '';
     grid.rows[29].cells[31].value = '';
-
+  
     //combinacion de celdas de la cabecera
     grid.headers[0].cells[3].columnSpan = 6;
     grid.headers[0].cells[1].columnSpan = 2;

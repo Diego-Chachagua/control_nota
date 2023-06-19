@@ -227,3 +227,20 @@ Future<List<dynamic>> fetchUserData(var bastar) async {
     throw Exception('Error al cargar los datos');
   }
 }
+
+Future<List<dynamic>> cuadro1(var anios, var seccion, var materia1) async {
+  http.Response response = await http.post(
+  Uri.parse('https://notasincas.000webhostapp.com/cuadro1.php'),
+  body: <String, dynamic>{
+    'anio' : anios,
+    'seccion' :  seccion,
+    'materia' : materia1
+  },
+  );
+  if (response.statusCode == 200) {
+    final jsonData = json.decode(response.body);
+    return jsonData;
+  } else {
+    throw Exception('Error al cargar los datos');
+  }
+}
