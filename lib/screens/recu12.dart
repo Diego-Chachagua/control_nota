@@ -5,18 +5,18 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 import '../developer/consultasf.dart';
 
-class CuadroP4C extends StatefulWidget {
+class Recupera1A extends StatefulWidget {
   String anio;
   String seccion;
   var materia1;
 
-  CuadroP4C(this.anio, this.seccion, this.materia1, {super.key});
+  Recupera1A(this.anio, this.seccion, this.materia1, {super.key});
 
   @override
-  State<CuadroP4C> createState() => _CuadroP4CState();
+  State<Recupera1A> createState() => _Recupera1AState();
 }
 
-class _CuadroP4CState extends State<CuadroP4C> {
+class _Recupera1AState extends State<Recupera1A> {
   final nieEstu = TextEditingController();
 
   final a1 = TextEditingController();
@@ -30,11 +30,14 @@ class _CuadroP4CState extends State<CuadroP4C> {
   List<String> nombre = [];
   List<String> nie3 = [];
   List<String> apellido = [];
-  List<String> act1_p4 = [];
-  List<String> act2_p4 = [];
-  List<String> po_p4 = [];
-  List<String> promedio_p4 = [];
-    List<String> notaCon = [];
+  List<String> re1 = [];
+  List<String> re2 = [];
+  
+  List<String> promedio_f = [];
+  List<String> promedio_p = [];
+  List<String> result = [];
+  
+
   var reslt;
 
   @override
@@ -42,28 +45,30 @@ class _CuadroP4CState extends State<CuadroP4C> {
     super.initState();
     var nombreM;
     var materia;
-    if (widget.materia1 == 5) {
-      nombreM = "Urbanidad Moral \n y civica";
-      materia = "5";
-    } else if (widget.materia1 == 8) {
-      nombreM = "Seminario";
-      materia = "8";
-    } else if (widget.materia1 == 9) {
-      nombreM = "Orientación para\n la vida";
-      materia = "9";
-    } else if (widget.materia1 == 10) {
-      nombreM = "Habilitación para \e el empleo";
-      materia = "10";
+    if (widget.materia1 == 1) {
+      nombreM = "Lenguaje";
+      materia = "1";
+    } else if (widget.materia1 == 2) {
+      nombreM = "Matematica";
+      materia = "2";
+    } else if (widget.materia1 == 3) {
+      nombreM = "Ciencias";
+      materia = "3";
+    } else if (widget.materia1 == 4) {
+      nombreM = " Estudios Sociales";
+      materia = "4";
+    }else if (widget.materia1 == 6) {
+      nombreM = " Ingles";
+      materia = "6";
+    }else if (widget.materia1 == 7) {
+      nombreM = " Informatica";
+      materia = "7";
     }
 
     (() async {
       var grado = "";
       var seccion1 = "";
-      if (widget.anio == "1 año") {
-        grado = "1";
-      } else if (widget.anio == "2 año") {
-        grado = "2";
-      }
+      
 
       if (widget.seccion == "A") {
         seccion1 = "1";
@@ -79,60 +84,92 @@ class _CuadroP4CState extends State<CuadroP4C> {
         seccion1 = "6";
       }
 
-      reslt = await mostrarP4(grado, seccion1, materia);
+      reslt = await mostrarRe1(1, seccion1, materia);
       if (reslt != "noExisten") {
         for (var i = 0; i < reslt.length; i++) {
           var dato = reslt[i];
           //variables utilizadas para guardar los datos extraidos de la base
-          var act1_p4n;
-          var act2_p4n;
-          var po_p4n;
+          var re1;
+          var re2;
+          var avanzo;
 
           print(dato["nombre_estudiante"]);
           print(dato["nie"]);
           print(dato["apellido_estudiante"]);
-          print(dato["act1_p4"]);
-          print(dato["act2_p4"]);
-          print(dato["po_p4"]);
+          print(dato["promedio_p1"]);
+          print(dato["promedio_p2"]);
+          print(dato["promedio_p3"]);
+          print(dato["promedio_p4"]);
+          print(dato["re1"]);
+          print(dato["re2"]);
+          
           print(grado);
           print(seccion1);
           print(widget.materia1);
           // ignore: non_constant_identifier_names
           var nom_tem = dato["nombre_estudiante"];
           var ape_tem = dato["apellido_estudiante"];
-          if (dato["act1_p4"] != null) {
-            act1_p4n = dato["act1_p4"];
+          if (dato["re1"] != null) {
+            re1 = dato["re1"];
           } else {
-            act1_p4n = "0";
+            re1= "0";
           }
 
-          if (dato["act2_p4"] != null) {
-            act2_p4n = dato["act2_p4"];
+          if (dato["re2"] != null) {
+            re2 = dato["re2"];
           } else {
-            act2_p4n = "0";
+            re2 = "0";
           }
 
-          if (dato["po_p4"] != null) {
-            po_p4n = dato["po_p4"];
-          } else {
-            po_p4n = "0";
+         
+          //pasar valores de variables de la base a variables var de tipo int para el calculo
+          
+          var r1=int.parse(re1);
+          var r2=int.parse(re2);
+          
+          var promedioca;//promedio con avanzo 
+          var promediof;//promedio final
+          //asginacion y comvercion de datos para el calculo de promedio
+          var promediop1=dato["promedio_p1"];
+          var promediop2=dato["promedio_p2"];
+          var promediop3=dato["promedio_p3"];
+          var promediop4=dato["promedio_p4"];
+          var promedio1 = int.parse(promediop1);
+          var promedio2 = int.parse(promediop2);
+          var promedio3 = int.parse(promediop3);
+          var promedio4 = int.parse(promediop4);
+          
+          var promediop = (promedio1+promedio2+promedio3+promedio4)/4;//calculo del promedio inicial 
+           if(promediop<6){
+            if(r1!=0){
+              promedioca=(promediop+r1)/2;
+            }else{
+              promedioca=promediop;
+            }
+           }else{
+            promedioca=promediop;
+           }
+           if(promedioca<6){
+            if(r2!=0){
+              promediof=(promedioca+re2)/2;
+
+
+            }else{
+              promediof=promedioca;
+            }
+           }else{
+            promediof=promedioca;
+           }
+          
+          var notac;
+          if(promediof>5){
+            notac="Aprobado";
+          }else if(promediof<=5){
+            notac="Reprobado";
           }
-//variables utilizadas para calcular promedio del periodo
-          var actividad1 = int.parse(act1_p4n);
-          var actividad2 = int.parse(act2_p4n);
-          var prueba = int.parse(po_p4n);
-          //asignacion de valor de promedio a variabe
-          var promedio = (actividad1 + actividad2 + prueba) / 3;
-           var nc;
-          if(promedio == 9 || promedio == 10 ){
-            nc="E";
-          }else if(promedio == 7 || promedio == 8){
-             nc="MB";
-          }else if(promedio == 5 || promedio == 6){
-             nc="B";
-          }else if(promedio >= 0 || promedio <=4){
-             nc="D";
-          }
+
+
+          
           // ignore: non_constant_identifier_names
           var id_tem = dato["nie"];
 
@@ -141,11 +178,12 @@ class _CuadroP4CState extends State<CuadroP4C> {
             nombre.add(nom_tem);
             nie3.add(id_tem);
             apellido.add(ape_tem);
-            act1_p4.add(act1_p4n);
-            act2_p4.add(act2_p4n);
-            po_p4.add(po_p4n);
-            promedio_p4.add(promedio.toStringAsFixed(1));
-            notaCon.add(nc);
+            re1.add(re1);
+            re2.add(re2);
+            
+            promedio_p.add(promediop.toStringAsFixed(1));
+            promedio_f.add(promediof.toStringAsFixed(1));
+            result.add(notac);
           });
         }
       }
@@ -156,18 +194,24 @@ class _CuadroP4CState extends State<CuadroP4C> {
   Widget build(BuildContext context) {
     var nombreM;
     var materia;
-   if (widget.materia1 == 5) {
-      nombreM = "Urbanidad Moral \n y civica";
-      materia = "5";
-    } else if (widget.materia1 == 8) {
-      nombreM = "Seminario";
-      materia = "8";
-    } else if (widget.materia1 == 9) {
-      nombreM = "Orientación para\n la vida";
-      materia = "9";
-    } else if (widget.materia1 == 10) {
-      nombreM = "Habilitación para \e el empleo";
-      materia = "10";
+   if (widget.materia1 == 1) {
+      nombreM = "Lenguaje";
+      materia = "1";
+    } else if (widget.materia1 == 2) {
+      nombreM = "Matematica";
+      materia = "2";
+    } else if (widget.materia1 == 3) {
+      nombreM = "Ciencias";
+      materia = "3";
+    } else if (widget.materia1 == 4) {
+      nombreM = " Estudios Sociales";
+      materia = "4";
+    }else if (widget.materia1 == 6) {
+      nombreM = " Ingles";
+      materia = "6";
+    }else if (widget.materia1 == 7) {
+      nombreM = " Informatica";
+      materia = "7";
     }
     return MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -191,7 +235,7 @@ class _CuadroP4CState extends State<CuadroP4C> {
                           width: 50,
                         ),
                         Text(
-                          'GRADO: "${widget.anio}°"',
+                          'GRADO: "2° año"',
                           style: const TextStyle(
                               fontSize: 25, color: Colors.white),
                         ),
@@ -221,11 +265,12 @@ class _CuadroP4CState extends State<CuadroP4C> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: const [
+                        
                         SizedBox(
                           width: 50,
                         ),
                         Text(
-                          'PERIODO: 4',
+                          'Recuperaciones\n Extraordinarias',
                           style: TextStyle(fontSize: 25, color: Colors.white),
                         ),
                       ],
@@ -236,14 +281,15 @@ class _CuadroP4CState extends State<CuadroP4C> {
                         defaultVerticalAlignment:
                             TableCellVerticalAlignment.middle,
                         columnWidths: const {
-                           0: FractionColumnWidth(0.06),
-                          1: FractionColumnWidth(0.15),
-                          2: FractionColumnWidth(0.30),
-                          3: FractionColumnWidth(0.08),
-                          4: FractionColumnWidth(0.08),
-                          5: FractionColumnWidth(0.08),
-                          6: FractionColumnWidth(0.08),
-                          7: FractionColumnWidth(0.08),
+                          0: FractionColumnWidth(0.05),
+                          1: FractionColumnWidth(0.13),
+                          2: FractionColumnWidth(0.28),
+                          3: FractionColumnWidth(0.06),
+                          4: FractionColumnWidth(0.06),
+                          5: FractionColumnWidth(0.06),
+                          6: FractionColumnWidth(0.06),
+                          
+                          7: FractionColumnWidth(0.15),
                         },
                         border: TableBorder.all(),
                         children: [
@@ -270,31 +316,32 @@ class _CuadroP4CState extends State<CuadroP4C> {
                                 height: 20,
                                 color: Colors.white,
                                 child: const Center(
-                                  child: Text('A1'),
+                                  child: Text('PP'),
                                 )),
                             Container(
                                 height: 20,
                                 color: Colors.white,
                                 child: const Center(
-                                  child: Text('A2'),
+                                  child: Text('R1'),
                                 )),
+                            
                             Container(
                                 height: 20,
                                 color: Colors.white,
                                 child: const Center(
-                                  child: Text('PO'),
-                                )),
-                            Container(
-                                height: 20,
-                                color: Colors.white,
-                                child: const Center(
-                                  child: Text('PM'),
+                                  child: Text('R2'),
                                 )),
                                 Container(
                                 height: 20,
                                 color: Colors.white,
                                 child: const Center(
-                                  child: Text('NC'),
+                                  child: Text('PF'),
+                                )),
+                                Container(
+                                height: 20,
+                                color: Colors.white,
+                                child: const Center(
+                                  child: Text('Resultado'),
                                 )),
                           ])
                         ]),
@@ -304,14 +351,15 @@ class _CuadroP4CState extends State<CuadroP4C> {
                         defaultVerticalAlignment:
                             TableCellVerticalAlignment.middle,
                         columnWidths: const {
-                          0: FractionColumnWidth(0.06),
-                          1: FractionColumnWidth(0.15),
-                          2: FractionColumnWidth(0.30),
-                          3: FractionColumnWidth(0.08),
-                          4: FractionColumnWidth(0.08),
-                          5: FractionColumnWidth(0.08),
-                          6: FractionColumnWidth(0.08),
-                          7: FractionColumnWidth(0.08),
+                          0: FractionColumnWidth(0.05),
+                          1: FractionColumnWidth(0.13),
+                          2: FractionColumnWidth(0.28),
+                          3: FractionColumnWidth(0.06),
+                          4: FractionColumnWidth(0.06),
+                          5: FractionColumnWidth(0.06),
+                          6: FractionColumnWidth(0.06),
+                          
+                          7: FractionColumnWidth(0.15),
                         },
                         border: TableBorder.all(),
                         children: [
@@ -376,8 +424,8 @@ class _CuadroP4CState extends State<CuadroP4C> {
                                 child: Center(
                                   child: Column(
                                     children: [
-                                      for (var i = 0; i < act1_p4.length; i++)
-                                        Text(act1_p4[i],
+                                      for (var i = 0; i < promedio_p.length; i++)
+                                        Text(promedio_p[i],
                                             style:
                                                 const TextStyle(fontSize: 15)),
                                     ],
@@ -389,26 +437,14 @@ class _CuadroP4CState extends State<CuadroP4C> {
                                 child: Center(
                                   child: Column(
                                     children: [
-                                      for (var i = 0; i < act2_p4.length; i++)
-                                        Text(act2_p4[i],
+                                      for (var i = 0; i < re1.length; i++)
+                                        Text(re1[i],
                                             style:
                                                 const TextStyle(fontSize: 15)),
                                     ],
                                   ),
                                 )),
-                            Container(
-                                height: 20,
-                                color: Colors.white,
-                                child: Center(
-                                  child: Column(
-                                    children: [
-                                      for (var i = 0; i < po_p4.length; i++)
-                                        Text(po_p4[i],
-                                            style:
-                                                const TextStyle(fontSize: 15)),
-                                    ],
-                                  ),
-                                )),
+                            
                             Container(
                                 height: 20,
                                 color: Colors.white,
@@ -416,24 +452,39 @@ class _CuadroP4CState extends State<CuadroP4C> {
                                   child: Column(
                                     children: [
                                       for (var i = 0;
-                                          i < promedio_p4.length;
+                                          i < re2.length;
                                           i++)
-                                        Text(promedio_p4[i],
+                                        Text(re2[i],
                                             style:
                                                 const TextStyle(fontSize: 15)),
                                     ],
                                   ),
                                 )),
-                                 Container(
+                                Container(
                                 height: 20,
                                 color: Colors.white,
                                 child: Center(
                                   child: Column(
                                     children: [
                                       for (var i = 0;
-                                          i < notaCon.length;
+                                          i < promedio_f.length;
                                           i++)
-                                        Text(notaCon[i],
+                                        Text(promedio_f[i],
+                                            style:
+                                                const TextStyle(fontSize: 15)),
+                                    ],
+                                  ),
+                                )),
+                                Container(
+                                height: 20,
+                                color: Colors.white,
+                                child: Center(
+                                  child: Column(
+                                    children: [
+                                      for (var i = 0;
+                                          i < result.length;
+                                          i++)
+                                        Text(result[i],
                                             style:
                                                 const TextStyle(fontSize: 15)),
                                     ],
@@ -497,30 +548,13 @@ class _CuadroP4CState extends State<CuadroP4C> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   const Text(
-                                    'Actividad 1:',
+                                    'Recuperacion \n Extraordinaria 1:',
                                     style: TextStyle(color: Colors.white),
                                   ),
                                   const SizedBox(
                                     width: 2,
                                   ),
-                                  Container(
-                                    color: Colors.white,
-                                    width: 50,
-                                    height: 20,
-                                    child: Center(
-                                        child: TextField(
-                                      controller: a1,
-                                      keyboardType: TextInputType.number,
-                                    )),
-                                  ),
-                                  const SizedBox(width: 15),
-                                  const Text(
-                                    'Actividad 2:',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
+                                  
                                   Container(
                                     color: Colors.white,
                                     width: 50,
@@ -533,7 +567,7 @@ class _CuadroP4CState extends State<CuadroP4C> {
                                   ),
                                   const SizedBox(width: 15),
                                   const Text(
-                                    'Prueba:',
+                                    'Recuperacion \n Extraordinaria 2:',
                                     style: TextStyle(color: Colors.white),
                                   ),
                                   const SizedBox(
@@ -564,13 +598,16 @@ class _CuadroP4CState extends State<CuadroP4C> {
                                       act2 = a2.text;
 
                                       pruO = po.text;
-                                  
+                                      
+                                      
+                                     
                                         //inicio de definicion de ingreso de datos a archivo php
 
                                         nie = nieEstu.text;
                                         //limpieza de campos
                                         a1.text = "";
-                                        a2.text = "";
+                                        
+                                        
                                         po.text = "";
                                         nieEstu.text = "";
                                         //verificacion de nie si esta o no en la base
@@ -580,8 +617,8 @@ class _CuadroP4CState extends State<CuadroP4C> {
                                             _notify(context, nie);
                                           } else {
                                             //insercion de datos en la base
-                                            dynamic respuesta = await insertNP3(
-                                                nie, act1, act2, pruO, materia);
+                                            dynamic respuesta = await insertRe1(
+                                                nie, act1, pruO, materia);
                                             if (respuesta == "error") {
                                               //mensaje de que algo salio mal
                                               String sms1="!OPPPS Algo salio mal en consultasf.dart";
@@ -595,7 +632,7 @@ class _CuadroP4CState extends State<CuadroP4C> {
                                                   context,
                                                   MaterialPageRoute(
                                                     builder: (context) =>
-                                                        CuadroP4C(
+                                                        Recupera1A(
                                                             widget.anio,
                                                             widget.seccion,
                                                             widget.materia1),
