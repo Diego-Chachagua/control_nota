@@ -182,7 +182,7 @@ class _PeriodosState extends State<Periodos> {
                       color: const Color.fromARGB(255, 255, 255, 255),
                       onPressed: () {
                         setState(() {
-                          if (widget.anios == "1 año") {
+                          if (widget.anios == "1") {
                           Navigator.push(
                               context,
                               MaterialPageRoute(

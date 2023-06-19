@@ -30,8 +30,8 @@ class _Recupera1AState extends State<Recupera1A> {
   List<String> nombre = [];
   List<String> nie3 = [];
   List<String> apellido = [];
-  List<String> re1 = [];
-  List<String> re2 = [];
+  List<String> re_1 = [];
+  List<String> re_2 = [];
   
   List<String> promedio_f = [];
   List<String> promedio_p = [];
@@ -166,9 +166,8 @@ class _Recupera1AState extends State<Recupera1A> {
             nombre.add(nom_tem);
             nie3.add(id_tem);
             apellido.add(ape_tem);
-            re1.add(re1);
-            re2.add(re2);
-            
+            re_1.add(re1);
+            re_2.add(re2);    
             promedio_p.add(promediop.toStringAsFixed(1));
             promedio_f.add(promediof.toStringAsFixed(1));
             result.add(notac);
@@ -291,7 +290,7 @@ class _Recupera1AState extends State<Recupera1A> {
                           5: FractionColumnWidth(0.06),
                           6: FractionColumnWidth(0.06),
                           
-                          7: FractionColumnWidth(0.15),
+                          7: FractionColumnWidth(0.17),
                         },
                         border: TableBorder.all(),
                         children: [
@@ -361,7 +360,7 @@ class _Recupera1AState extends State<Recupera1A> {
                           5: FractionColumnWidth(0.06),
                           6: FractionColumnWidth(0.06),
                           
-                          7: FractionColumnWidth(0.15),
+                          7: FractionColumnWidth(0.17),
                         },
                         border: TableBorder.all(),
                         children: [
@@ -439,8 +438,8 @@ class _Recupera1AState extends State<Recupera1A> {
                                 child: Center(
                                   child: Column(
                                     children: [
-                                      for (var i = 0; i < re1.length; i++)
-                                        Text(re1[i],
+                                      for (var i = 0; i < re_1.length; i++)
+                                        Text(re_1[i],
                                             style:
                                                 const TextStyle(fontSize: 15)),
                                     ],
@@ -454,9 +453,9 @@ class _Recupera1AState extends State<Recupera1A> {
                                   child: Column(
                                     children: [
                                       for (var i = 0;
-                                          i < re2.length;
+                                          i < re_2.length;
                                           i++)
-                                        Text(re2[i],
+                                        Text(re_2[i],
                                             style:
                                                 const TextStyle(fontSize: 15)),
                                     ],
