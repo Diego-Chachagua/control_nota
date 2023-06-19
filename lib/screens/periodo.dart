@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:control_notas/screens/usuarios.dart';
 
 import 'cuadro.dart';
 import 'cuadrop2.dart';
@@ -135,21 +134,6 @@ class _PeriodosState extends State<Periodos> {
                 fontSize: 9.0,
               )
             )
-          ),
-           MaterialButton(
-            padding:const  EdgeInsets.symmetric(horizontal: 80, vertical: 10.0),
-            color: const Color.fromARGB(255, 255, 255, 255),
-            onPressed: () {
-          
-              Navigator.push(context, MaterialPageRoute(builder: (context) =>  const Usuarios()));
-            },
-            shape: const RoundedRectangleBorder(),
-            child: const Text(
-              "Siguiente",
-              style: TextStyle(
-                fontSize: 10.0,
-              ),
-            ),
           ),
         ],
           )

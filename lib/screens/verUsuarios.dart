@@ -6,6 +6,7 @@ import 'package:control_notas/screens/manual.dart';
 import 'dart:typed_data';
 
 import '../developer/consultad.dart';
+import 'boleta3.dart';
 import 'consultaprofe.dart';
 import 'estudiantes.dart';
 
@@ -405,8 +406,8 @@ class _VerUsuariosState extends State<VerUsuarios> {
             ElevatedButton(
               onPressed: () {
                 // Acción del botón
-                String duibd = '';
-                generatePdf(duibd);
+                var bastar = textField4Controller.text;
+                generatePdf3(bastar);
               },
               child: const Text('Ver'),
               style: ElevatedButton.styleFrom(
