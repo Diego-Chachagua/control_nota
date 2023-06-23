@@ -228,19 +228,32 @@ Future<List<dynamic>> fetchUserData(var bastar) async {
   }
 }
 
+
 Future<List<dynamic>> cuadro1(var anios, var seccion, var materia1) async {
-  http.Response response = await http.post(
-  Uri.parse('https://notasincas.000webhostapp.com/cuadro1.php'),
-  body: <String, dynamic>{
-    'anio' : anios,
-    'seccion' :  seccion,
-    'materia' : materia1
-  },
-  );
+  String anios1 = anios.toString();
+  String seccion1 = seccion.toString();
+  String materia11 = materia1.toString();
+  print(anios1);
+  print(seccion1);
+  print(materia11);
+  
+  final response = await http.get(Uri.parse('https://notasincas.000webhostapp.com/cuadro1.php?anio=$anios1&seccion=$seccion1&materia=$materia11'));
+  
   if (response.statusCode == 200) {
     final jsonData = json.decode(response.body);
-    return jsonData;
+
+    if (jsonData is List) {
+      // Si el resultado es una lista, hay datos disponibles
+      return jsonData;
+    } else if (jsonData is String && jsonData == 'nohaydatos') {
+      // Si el resultado es la cadena 'nohaydatos', no hay datos disponibles
+      return []; // Devuelve una lista vacía
+    } else {
+      // El resultado no es un JSON válido
+      throw Exception('Respuesta del servidor inválida');
+    }
   } else {
+    // Error en la respuesta del servidor
     throw Exception('Error al cargar los datos');
   }
 }
