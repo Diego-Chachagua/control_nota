@@ -5,18 +5,18 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 import '../developer/consultasf.dart';
 
-class CuadroP4 extends StatefulWidget {
+class CuadroP4C extends StatefulWidget {
   String anio;
   String seccion;
   var materia1;
 
-  CuadroP4(this.anio, this.seccion, this.materia1, {super.key});
+  CuadroP4C(this.anio, this.seccion, this.materia1, {super.key});
 
   @override
-  State<CuadroP4> createState() => _CuadroP4State();
+  State<CuadroP4C> createState() => _CuadroP4CState();
 }
 
-class _CuadroP4State extends State<CuadroP4> {
+class _CuadroP4CState extends State<CuadroP4C> {
   final nieEstu = TextEditingController();
 
   final a1 = TextEditingController();
@@ -65,21 +65,8 @@ class _CuadroP4State extends State<CuadroP4> {
         grado = "2";
       }
 
-      if (widget.seccion == "A") {
-        seccion1 = "1";
-      } else if (widget.seccion == "F") {
-        seccion1 = "2";
-      } else if (widget.seccion == "E") {
-        seccion1 = "3";
-      } else if (widget.seccion == "H") {
-        seccion1 = "4";
-      } else if (widget.seccion == "G") {
-        seccion1 = "5";
-      } else if (widget.seccion == "D") {
-        seccion1 = "6";
-      }
 
-      reslt = await mostrarP4(grado, seccion1, materia);
+      reslt = await mostrarP4(widget.anio, widget.seccion, materia);
       if (reslt != "noExisten") {
         for (var i = 0; i < reslt.length; i++) {
           var dato = reslt[i];
@@ -169,6 +156,20 @@ class _CuadroP4State extends State<CuadroP4> {
       nombreM = "Habilitación para \e el empleo";
       materia = "10";
     }
+    var seccion1;
+     if (widget.seccion == "1") {
+        seccion1 = "A";
+      } else if (widget.seccion == "2") {
+        seccion1 = "F";
+      } else if (widget.seccion == "3") {
+        seccion1 = "E";
+      } else if (widget.seccion == "4") {
+        seccion1 = "H";
+      } else if (widget.seccion == "5") {
+        seccion1 = "G";
+      } else if (widget.seccion == "6") {
+        seccion1 = "D";
+      }
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Container(
@@ -199,7 +200,7 @@ class _CuadroP4State extends State<CuadroP4> {
                           width: 30,
                         ),
                         Text(
-                          'SECCION: "${widget.seccion}"',
+                          'SECCION: "${seccion1}"',
                           style: const TextStyle(
                               fontSize: 25, color: Colors.white),
                         ),
@@ -595,7 +596,7 @@ class _CuadroP4State extends State<CuadroP4> {
                                                   context,
                                                   MaterialPageRoute(
                                                     builder: (context) =>
-                                                        CuadroP4(
+                                                        CuadroP4C(
                                                             widget.anio,
                                                             widget.seccion,
                                                             widget.materia1),

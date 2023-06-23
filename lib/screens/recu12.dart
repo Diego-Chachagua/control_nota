@@ -5,18 +5,18 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 import '../developer/consultasf.dart';
 
-class CuadroP4 extends StatefulWidget {
+class Recupera1A extends StatefulWidget {
   String anio;
   String seccion;
   var materia1;
 
-  CuadroP4(this.anio, this.seccion, this.materia1, {super.key});
+  Recupera1A(this.anio, this.seccion, this.materia1, {super.key});
 
   @override
-  State<CuadroP4> createState() => _CuadroP4State();
+  State<Recupera1A> createState() => _Recupera1AState();
 }
 
-class _CuadroP4State extends State<CuadroP4> {
+class _Recupera1AState extends State<Recupera1A> {
   final nieEstu = TextEditingController();
 
   final a1 = TextEditingController();
@@ -30,10 +30,14 @@ class _CuadroP4State extends State<CuadroP4> {
   List<String> nombre = [];
   List<String> nie3 = [];
   List<String> apellido = [];
-  List<String> act1_p4 = [];
-  List<String> act2_p4 = [];
-  List<String> po_p4 = [];
-  List<String> promedio_p4 = [];
+  List<String> re_1 = [];
+  List<String> re_2 = [];
+  
+  List<String> promedio_f = [];
+  List<String> promedio_p = [];
+  List<String> result = [];
+  
+
   var reslt;
 
   @override
@@ -64,58 +68,96 @@ class _CuadroP4State extends State<CuadroP4> {
     (() async {
       var grado = "";
       var seccion1 = "";
-      if (widget.anio == "1 año") {
-        grado = "1";
-      } else if (widget.anio == "2 año") {
-        grado = "2";
-      }
+      
 
      
 
-      reslt = await mostrarP4(widget.anio, widget.seccion, materia);
+     reslt = await mostrarRe1(widget.anio, widget.seccion, materia);
       if (reslt != "noExisten") {
         for (var i = 0; i < reslt.length; i++) {
           var dato = reslt[i];
           //variables utilizadas para guardar los datos extraidos de la base
-          var act1_p4n;
-          var act2_p4n;
-          var po_p4n;
+          var re1;
+          var re2;
+          var avanzo;
 
           print(dato["nombre_estudiante"]);
           print(dato["nie"]);
           print(dato["apellido_estudiante"]);
-          print(dato["act1_p4"]);
-          print(dato["act2_p4"]);
-          print(dato["po_p4"]);
+          print(dato["promedio_p1"]);
+          print(dato["promedio_p2"]);
+          print(dato["promedio_p3"]);
+          print(dato["promedio_p4"]);
+          print(dato["re1"]);
+          print(dato["re2"]);
+          
           print(grado);
           print(seccion1);
           print(widget.materia1);
           // ignore: non_constant_identifier_names
           var nom_tem = dato["nombre_estudiante"];
           var ape_tem = dato["apellido_estudiante"];
-          if (dato["act1_p4"] != null) {
-            act1_p4n = dato["act1_p4"];
+          if (dato["re1"] != null) {
+            re1 = dato["re1"];
           } else {
-            act1_p4n = "0";
+            re1= "0";
           }
 
-          if (dato["act2_p4"] != null) {
-            act2_p4n = dato["act2_p4"];
+          if (dato["re2"] != null) {
+            re2 = dato["re2"];
           } else {
-            act2_p4n = "0";
+            re2 = "0";
           }
 
-          if (dato["po_p4"] != null) {
-            po_p4n = dato["po_p4"];
-          } else {
-            po_p4n = "0";
+         
+          //pasar valores de variables de la base a variables var de tipo int para el calculo
+          
+          var r1=int.parse(re1);
+          var r2=int.parse(re2);
+          
+          var promedioca;//promedio con avanzo 
+          var promediof;//promedio final
+          //asginacion y comvercion de datos para el calculo de promedio
+          var promediop1=dato["promedio_p1"];
+          var promediop2=dato["promedio_p2"];
+          var promediop3=dato["promedio_p3"];
+          var promediop4=dato["promedio_p4"];
+          var promedio1 = int.parse(promediop1);
+          var promedio2 = int.parse(promediop2);
+          var promedio3 = int.parse(promediop3);
+          var promedio4 = int.parse(promediop4);
+          
+          var promediop = (promedio1+promedio2+promedio3+promedio4)/4;//calculo del promedio inicial 
+           if(promediop<6){
+            if(r1!=0){
+              promedioca=(promediop+r1)/2;
+            }else{
+              promedioca=promediop;
+            }
+           }else{
+            promedioca=promediop;
+           }
+           if(promedioca<6){
+            if(r2!=0){
+              promediof=(promedioca+re2)/2;
+
+
+            }else{
+              promediof=promedioca;
+            }
+           }else{
+            promediof=promedioca;
+           }
+          
+          var notac;
+          if(promediof>5){
+            notac="Aprobado";
+          }else if(promediof<=5){
+            notac="Reprobado";
           }
-//variables utilizadas para calcular promedio del periodo
-          var actividad1 = int.parse(act1_p4n);
-          var actividad2 = int.parse(act2_p4n);
-          var prueba = int.parse(po_p4n);
-          //asignacion de valor de promedio a variabe
-          var promedio = (actividad1 + actividad2 + prueba) / 3;
+
+
+          
           // ignore: non_constant_identifier_names
           var id_tem = dato["nie"];
 
@@ -124,10 +166,11 @@ class _CuadroP4State extends State<CuadroP4> {
             nombre.add(nom_tem);
             nie3.add(id_tem);
             apellido.add(ape_tem);
-            act1_p4.add(act1_p4n);
-            act2_p4.add(act2_p4n);
-            po_p4.add(po_p4n);
-            promedio_p4.add(promedio.toStringAsFixed(1));
+            re_1.add(re1);
+            re_2.add(re2);    
+            promedio_p.add(promediop.toStringAsFixed(1));
+            promedio_f.add(promediof.toStringAsFixed(1));
+            result.add(notac);
           });
         }
       }
@@ -138,7 +181,7 @@ class _CuadroP4State extends State<CuadroP4> {
   Widget build(BuildContext context) {
     var nombreM;
     var materia;
-    if (widget.materia1 == 1) {
+   if (widget.materia1 == 1) {
       nombreM = "Lenguaje";
       materia = "1";
     } else if (widget.materia1 == 2) {
@@ -193,7 +236,7 @@ class _CuadroP4State extends State<CuadroP4> {
                           width: 50,
                         ),
                         Text(
-                          'GRADO: "${widget.anio}°"',
+                          'GRADO: "2° año"',
                           style: const TextStyle(
                               fontSize: 25, color: Colors.white),
                         ),
@@ -223,11 +266,12 @@ class _CuadroP4State extends State<CuadroP4> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: const [
+                        
                         SizedBox(
                           width: 50,
                         ),
                         Text(
-                          'PERIODO: 4',
+                          'Recuperaciones\n Extraordinarias',
                           style: TextStyle(fontSize: 25, color: Colors.white),
                         ),
                       ],
@@ -238,13 +282,15 @@ class _CuadroP4State extends State<CuadroP4> {
                         defaultVerticalAlignment:
                             TableCellVerticalAlignment.middle,
                         columnWidths: const {
-                          0: FractionColumnWidth(0.09),
-                          1: FractionColumnWidth(0.17),
-                          2: FractionColumnWidth(0.35),
-                          3: FractionColumnWidth(0.08),
-                          4: FractionColumnWidth(0.08),
-                          5: FractionColumnWidth(0.08),
-                          6: FractionColumnWidth(0.08),
+                          0: FractionColumnWidth(0.05),
+                          1: FractionColumnWidth(0.13),
+                          2: FractionColumnWidth(0.28),
+                          3: FractionColumnWidth(0.06),
+                          4: FractionColumnWidth(0.06),
+                          5: FractionColumnWidth(0.06),
+                          6: FractionColumnWidth(0.06),
+                          
+                          7: FractionColumnWidth(0.17),
                         },
                         border: TableBorder.all(),
                         children: [
@@ -271,25 +317,32 @@ class _CuadroP4State extends State<CuadroP4> {
                                 height: 20,
                                 color: Colors.white,
                                 child: const Center(
-                                  child: Text('A1'),
+                                  child: Text('PP'),
                                 )),
                             Container(
                                 height: 20,
                                 color: Colors.white,
                                 child: const Center(
-                                  child: Text('A2'),
+                                  child: Text('R1'),
                                 )),
+                            
                             Container(
                                 height: 20,
                                 color: Colors.white,
                                 child: const Center(
-                                  child: Text('PO'),
+                                  child: Text('R2'),
                                 )),
-                            Container(
+                                Container(
                                 height: 20,
                                 color: Colors.white,
                                 child: const Center(
-                                  child: Text('PM'),
+                                  child: Text('PF'),
+                                )),
+                                Container(
+                                height: 20,
+                                color: Colors.white,
+                                child: const Center(
+                                  child: Text('Resultado'),
                                 )),
                           ])
                         ]),
@@ -299,13 +352,15 @@ class _CuadroP4State extends State<CuadroP4> {
                         defaultVerticalAlignment:
                             TableCellVerticalAlignment.middle,
                         columnWidths: const {
-                          0: FractionColumnWidth(0.09),
-                          1: FractionColumnWidth(0.17),
-                          2: FractionColumnWidth(0.35),
-                          3: FractionColumnWidth(0.08),
-                          4: FractionColumnWidth(0.08),
-                          5: FractionColumnWidth(0.08),
-                          6: FractionColumnWidth(0.08),
+                          0: FractionColumnWidth(0.05),
+                          1: FractionColumnWidth(0.13),
+                          2: FractionColumnWidth(0.28),
+                          3: FractionColumnWidth(0.06),
+                          4: FractionColumnWidth(0.06),
+                          5: FractionColumnWidth(0.06),
+                          6: FractionColumnWidth(0.06),
+                          
+                          7: FractionColumnWidth(0.17),
                         },
                         border: TableBorder.all(),
                         children: [
@@ -370,8 +425,8 @@ class _CuadroP4State extends State<CuadroP4> {
                                 child: Center(
                                   child: Column(
                                     children: [
-                                      for (var i = 0; i < act1_p4.length; i++)
-                                        Text(act1_p4[i],
+                                      for (var i = 0; i < promedio_p.length; i++)
+                                        Text(promedio_p[i],
                                             style:
                                                 const TextStyle(fontSize: 15)),
                                     ],
@@ -383,26 +438,14 @@ class _CuadroP4State extends State<CuadroP4> {
                                 child: Center(
                                   child: Column(
                                     children: [
-                                      for (var i = 0; i < act2_p4.length; i++)
-                                        Text(act2_p4[i],
+                                      for (var i = 0; i < re_1.length; i++)
+                                        Text(re_1[i],
                                             style:
                                                 const TextStyle(fontSize: 15)),
                                     ],
                                   ),
                                 )),
-                            Container(
-                                height: 20,
-                                color: Colors.white,
-                                child: Center(
-                                  child: Column(
-                                    children: [
-                                      for (var i = 0; i < po_p4.length; i++)
-                                        Text(po_p4[i],
-                                            style:
-                                                const TextStyle(fontSize: 15)),
-                                    ],
-                                  ),
-                                )),
+                            
                             Container(
                                 height: 20,
                                 color: Colors.white,
@@ -410,9 +453,39 @@ class _CuadroP4State extends State<CuadroP4> {
                                   child: Column(
                                     children: [
                                       for (var i = 0;
-                                          i < promedio_p4.length;
+                                          i < re_2.length;
                                           i++)
-                                        Text(promedio_p4[i],
+                                        Text(re_2[i],
+                                            style:
+                                                const TextStyle(fontSize: 15)),
+                                    ],
+                                  ),
+                                )),
+                                Container(
+                                height: 20,
+                                color: Colors.white,
+                                child: Center(
+                                  child: Column(
+                                    children: [
+                                      for (var i = 0;
+                                          i < promedio_f.length;
+                                          i++)
+                                        Text(promedio_f[i],
+                                            style:
+                                                const TextStyle(fontSize: 15)),
+                                    ],
+                                  ),
+                                )),
+                                Container(
+                                height: 20,
+                                color: Colors.white,
+                                child: Center(
+                                  child: Column(
+                                    children: [
+                                      for (var i = 0;
+                                          i < result.length;
+                                          i++)
+                                        Text(result[i],
                                             style:
                                                 const TextStyle(fontSize: 15)),
                                     ],
@@ -476,30 +549,13 @@ class _CuadroP4State extends State<CuadroP4> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   const Text(
-                                    'Actividad 1:',
+                                    'Recuperacion \n Extraordinaria 1:',
                                     style: TextStyle(color: Colors.white),
                                   ),
                                   const SizedBox(
                                     width: 2,
                                   ),
-                                  Container(
-                                    color: Colors.white,
-                                    width: 50,
-                                    height: 20,
-                                    child: Center(
-                                        child: TextField(
-                                      controller: a1,
-                                      keyboardType: TextInputType.number,
-                                    )),
-                                  ),
-                                  const SizedBox(width: 15),
-                                  const Text(
-                                    'Actividad 2:',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
+                                  
                                   Container(
                                     color: Colors.white,
                                     width: 50,
@@ -512,7 +568,7 @@ class _CuadroP4State extends State<CuadroP4> {
                                   ),
                                   const SizedBox(width: 15),
                                   const Text(
-                                    'Prueba:',
+                                    'Recuperacion \n Extraordinaria 2:',
                                     style: TextStyle(color: Colors.white),
                                   ),
                                   const SizedBox(
@@ -543,13 +599,16 @@ class _CuadroP4State extends State<CuadroP4> {
                                       act2 = a2.text;
 
                                       pruO = po.text;
-                                  
+                                      
+                                      
+                                     
                                         //inicio de definicion de ingreso de datos a archivo php
 
                                         nie = nieEstu.text;
                                         //limpieza de campos
                                         a1.text = "";
-                                        a2.text = "";
+                                        
+                                        
                                         po.text = "";
                                         nieEstu.text = "";
                                         //verificacion de nie si esta o no en la base
@@ -559,8 +618,8 @@ class _CuadroP4State extends State<CuadroP4> {
                                             _notify(context, nie);
                                           } else {
                                             //insercion de datos en la base
-                                            dynamic respuesta = await insertNP3(
-                                                nie, act1, act2, pruO, materia);
+                                            dynamic respuesta = await insertRe1(
+                                                nie, act1, pruO, materia);
                                             if (respuesta == "error") {
                                               //mensaje de que algo salio mal
                                               String sms1="!OPPPS Algo salio mal en consultasf.dart";
@@ -574,7 +633,7 @@ class _CuadroP4State extends State<CuadroP4> {
                                                   context,
                                                   MaterialPageRoute(
                                                     builder: (context) =>
-                                                        CuadroP4(
+                                                        Recupera1A(
                                                             widget.anio,
                                                             widget.seccion,
                                                             widget.materia1),

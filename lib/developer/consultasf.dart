@@ -106,6 +106,48 @@ Future<dynamic> insertNP4(String? nieEstu,String? a1, String? a2 , String? po,va
     
 }
 
+Future<dynamic> insertRe2(String? nieEstu,String? a1, String? a2 , String? po,var materia) async{
+  http.Response enviar = await http.post(
+    Uri.parse('https://notasincas.000webhostapp.com/recup2.php'),
+    body: <String, dynamic>{
+      "niestu": nieEstu, 
+      "a1":a1, 
+      "a2":a2,
+      "po":po,
+      "materia":materia,
+    },
+  );
+  if (enviar.statusCode == 201) {
+    return "error";
+  } else {
+
+    return enviar.body;
+  }
+    
+    
+}
+
+Future<dynamic> insertRe1(String? nieEstu,String? a1, String? po,var materia) async{
+  http.Response enviar = await http.post(
+    Uri.parse('https://notasincas.000webhostapp.com/recup1.php'),
+    body: <String, dynamic>{
+      "niestu": nieEstu, 
+      "a1":a1, 
+      
+      "po":po,
+      "materia":materia,
+    },
+  );
+  if (enviar.statusCode == 201) {
+    return "error";
+  } else {
+
+    return enviar.body;
+  }
+    
+    
+}
+
 Future<dynamic> buscarCode(String usuariobd,String contrabd) async{
   http.Response enviar = await http.post(
     Uri.parse('https://notasincas.000webhostapp.com/codeprofe.php'),
@@ -128,6 +170,7 @@ Future<dynamic> mostrarP1(var anio,var seccion, var materia) async{
     },
   );
     var resultado = jsonDecode(enviar.body);
+    print(resultado);
     
     return resultado;
 }
@@ -162,6 +205,34 @@ Future<dynamic> mostrarP3(var anio,var seccion, var materia) async{
 Future<dynamic> mostrarP4(var anio,var seccion, var materia) async{
   http.Response enviar = await http.post(
     Uri.parse('https://notasincas.000webhostapp.com/notasp4.php'),
+    body: <String, dynamic>{
+      "anio":anio ,  
+      "seccion":seccion,
+      "materia":materia,
+    },
+  );
+    var resultado = jsonDecode(enviar.body);
+    
+    return resultado;
+}
+
+Future<dynamic> mostrarRe2(var anio,var seccion, var materia) async{
+  http.Response enviar = await http.post(
+    Uri.parse('https://notasincas.000webhostapp.com/notasrec2.php'),
+    body: <String, dynamic>{
+      "anio":anio ,  
+      "seccion":seccion,
+      "materia":materia,
+    },
+  );
+    var resultado = jsonDecode(enviar.body);
+    
+    return resultado;
+}
+
+Future<dynamic> mostrarRe1(var anio,var seccion, var materia) async{
+  http.Response enviar = await http.post(
+    Uri.parse('https://notasincas.000webhostapp.com/notasrec1.php'),
     body: <String, dynamic>{
       "anio":anio ,  
       "seccion":seccion,

@@ -70,21 +70,9 @@ class _CuadroN1State extends State<CuadroN1> {
         grado = "2";
       }
 
-      if (widget.seccion == "A") {
-        seccion1 = "1";
-      } else if (widget.seccion == "F") {
-        seccion1 = "2";
-      } else if (widget.seccion == "E") {
-        seccion1 = "3";
-      } else if (widget.seccion == "H") {
-        seccion1 = "4";
-      } else if (widget.seccion == "G") {
-        seccion1 = "5";
-      } else if (widget.seccion == "D") {
-        seccion1 = "6";
-      }
+     
 
-      reslt = await mostrarP1(grado, seccion1, materia);
+      reslt = await mostrarP1(widget.anio, widget.seccion, materia);
       if (reslt != "noExisten") {
         for (var i = 0; i < reslt.length; i++) {
           var dato = reslt[i];
@@ -93,7 +81,9 @@ class _CuadroN1State extends State<CuadroN1> {
           var act2_p1n;
           var po_p1n;
 
+          // ignore: avoid_print
           print(dato["nombre_estudiante"]);
+          
           print(dato["nie"]);
           print(dato["apellido_estudiante"]);
           print(dato["act1_p1"]);
@@ -101,9 +91,11 @@ class _CuadroN1State extends State<CuadroN1> {
           print(dato["po_p1"]);
           print(grado);
           print(seccion1);
-          print(widget.materia1);
+          print(materia);
+          print("hola");
           // ignore: non_constant_identifier_names
           var nom_tem = dato["nombre_estudiante"];
+          // ignore: non_constant_identifier_names
           var ape_tem = dato["apellido_estudiante"];
           if (dato["act1_p1"] != null) {
             act1_p1n = dato["act1_p1"];
@@ -169,6 +161,20 @@ class _CuadroN1State extends State<CuadroN1> {
       nombreM = " Informatica";
       materia = "7";
     }
+    var seccion1;
+     if (widget.seccion == "1") {
+        seccion1 = "A";
+      } else if (widget.seccion == "2") {
+        seccion1 = "F";
+      } else if (widget.seccion == "3") {
+        seccion1 = "E";
+      } else if (widget.seccion == "4") {
+        seccion1 = "H";
+      } else if (widget.seccion == "5") {
+        seccion1 = "G";
+      } else if (widget.seccion == "6") {
+        seccion1 = "D";
+      }
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Container(
@@ -199,7 +205,7 @@ class _CuadroN1State extends State<CuadroN1> {
                           width: 30,
                         ),
                         Text(
-                          'SECCION: "${widget.seccion}"',
+                          'SECCION: $seccion1',
                           style: const TextStyle(
                               fontSize: 25, color: Colors.white),
                         ),
@@ -292,7 +298,7 @@ class _CuadroN1State extends State<CuadroN1> {
                           ])
                         ]),
                     //inicio de definicon de tabla para datos desde la base
-
+                    
                     Table(
                         defaultVerticalAlignment:
                             TableCellVerticalAlignment.middle,

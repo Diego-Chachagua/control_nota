@@ -65,21 +65,9 @@ class _CuadroP1CState extends State<CuadroP1C> {
         grado = "2";
       }
 
-      if (widget.seccion == "A") {
-        seccion1 = "1";
-      } else if (widget.seccion == "F") {
-        seccion1 = "2";
-      } else if (widget.seccion == "E") {
-        seccion1 = "3";
-      } else if (widget.seccion == "H") {
-        seccion1 = "4";
-      } else if (widget.seccion == "G") {
-        seccion1 = "5";
-      } else if (widget.seccion == "D") {
-        seccion1 = "6";
-      }
+      
 
-      reslt = await mostrarP1(grado, seccion1, materia);
+      reslt = await mostrarP1(widget.anio, widget.seccion, materia);
       if (reslt != "noExisten") {
         for (var i = 0; i < reslt.length; i++) {
           var dato = reslt[i];
@@ -169,6 +157,20 @@ class _CuadroP1CState extends State<CuadroP1C> {
       nombreM = "Habilitación para \e el empleo";
       materia = "10";
     }
+    var seccion1;
+     if (widget.seccion == "1") {
+        seccion1 = "A";
+      } else if (widget.seccion == "2") {
+        seccion1 = "F";
+      } else if (widget.seccion == "3") {
+        seccion1 = "E";
+      } else if (widget.seccion == "4") {
+        seccion1 = "H";
+      } else if (widget.seccion == "5") {
+        seccion1 = "G";
+      } else if (widget.seccion == "6") {
+        seccion1 = "D";
+      }
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Container(
@@ -199,7 +201,7 @@ class _CuadroP1CState extends State<CuadroP1C> {
                           width: 30,
                         ),
                         Text(
-                          'SECCION: "${widget.seccion}"',
+                          'SECCION: "${seccion1}"',
                           style: const TextStyle(
                               fontSize: 25, color: Colors.white),
                         ),
